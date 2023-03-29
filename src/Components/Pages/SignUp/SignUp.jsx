@@ -2,7 +2,7 @@ import React from "react";
 import "./SignUp.css";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
@@ -22,12 +22,12 @@ const SignUp = () => {
         <div className="upperDiv">
           <h3 className="admin">Admin Portal</h3>
           <select className="lang">
-            <option>English (US)</option>
+            <option>English (UK)</option>
           </select>
         </div>
         <div className="lowerDiv">
           <div className="signUpDiv">
-            <h1 className="signUp">SignIn</h1>
+            <p className="signUp">Sign in</p>
           </div>
 
           <input type="text" id="email" value="" placeholder="Email Address" />
@@ -41,11 +41,14 @@ const SignUp = () => {
             SignIn
           </button>
 
-          <p>
+          {/* <p>
             <a className="modelForgetBtn" href="/ForgetPassword">
               Forgot Password ?
             </a>
-          </p>
+          </p> */}
+          <Link className="modelForgetBtn" to="/forgetpassword">
+            Forgot Password ?
+          </Link>
         </div>
       </div>
     </div>

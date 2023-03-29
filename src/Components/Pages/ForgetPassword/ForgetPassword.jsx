@@ -2,7 +2,7 @@ import React from "react";
 import "./ForgetPassword.css";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ForgetPassword = () => {
   return (
@@ -20,12 +20,12 @@ const ForgetPassword = () => {
       </div>
       <div className="rightDiv">
         <div className="upperDiv">
-          <h3 className="admin">Business Customer Manger</h3>
-          <select className="lang">
-            <option>English (US)</option>
+          <h3 className="adminDiv">Business Customer Manager</h3>
+          <select className="langForget">
+            <option>English (Uk)</option>
           </select>
         </div>
-        <div className="lowerDiv">
+        <div className="lowerDivForget">
           <div className="forgetPassDiv">
             <h1 className="forgetPass">Forgot Password ?</h1>
             <h3 className="belowPass">
@@ -33,18 +33,15 @@ const ForgetPassword = () => {
             </h3>
           </div>
           <input type="text" id="email" value="" placeholder="Email Address" />
-          <button className="confirmBtn" type="submit">
+          <button className="forgetBtn" type="submit">
             Confirm
           </button>
           <p>
             or&nbsp;
-            <a className="modelForgetBtn" href="/ForgetPassword">
+            <Link className="modelForgetBtn" to="/">
               Go Back!
-            </a>
+            </Link>
           </p>
-          {/* <Link className="modelForgetBtn" to="/SignUp">
-            Go Back!
-          </Link> */}
         </div>
       </div>
     </div>

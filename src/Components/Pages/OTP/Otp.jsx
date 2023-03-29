@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // import OtpInput from "react-otp-input";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
@@ -27,13 +28,13 @@ const OTP = () => {
         </div>
       </div>
       <div className="rightDiv">
-        <div className="upperDiv">
+        <div className="upperDivOtp">
           {/* <h3 className="admin">Business Customer Manger</h3> */}
-          <select className="lang">
-            <option>English (US)</option>
+          <select className="langOtp">
+            <option>English (UK)</option>
           </select>
         </div>
-        <div className="lowerDiv">
+        <div className="lowerDivOtp">
           <div className="otpDiv">
             <h1 className="verificationCode">Verification Code</h1>
             <h3 className="belowCode">
@@ -52,7 +53,7 @@ const OTP = () => {
                   width: "11%",
                   marginRight: "10px",
                   fontSize: "30px",
-                  borderWidth: "0 0 2px",
+                  borderWidth: "0 0 1px",
                   borderColor: "#868686",
                   outline: "0",
                   border: "none",
@@ -67,9 +68,9 @@ const OTP = () => {
           </button>
           <p>
             No code received? &nbsp;
-            <a className="modelForgetBtn" href="/ForgetPassword">
+            <Link className="modelForgetBtn" to="/resetpassword">
               Resend Code
-            </a>
+            </Link>
           </p>
         </div>
       </div>

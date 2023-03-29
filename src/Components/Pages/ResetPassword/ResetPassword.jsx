@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
 import "./ResetPassword.css";
@@ -20,12 +20,12 @@ const ResetPassword = () => {
       </div>
       <div className="rightDiv">
         <div className="upperDiv">
-          <h3 className="admin">Business Customer Manager</h3>
-          <select className="lang">
-            <option>English (US)</option>
+          <h3 className="adminReset">Business Customer Manager</h3>
+          <select className="langReset">
+            <option>English (UK)</option>
           </select>
         </div>
-        <div className="lowerDiv">
+        <div className="lowerDivReset">
           <div className="resetPassDiv">
             <h1 className="resetPass">Reset Password</h1>
           </div>
@@ -44,11 +44,16 @@ const ResetPassword = () => {
           <button className="confirmPassBtn" type="submit">
             Confirm Password
           </button>
-          <p>
+          <p className="paragraph">
             or&nbsp;
-            <a className="modelForgetBtn" href="/SignUp">
+            <Link className="modelForgetBtn" to="/forgetpassword">
               Go Back!
-            </a>
+            </Link>
+          </p>
+          <p>
+            <Link className="modelForgetBtn" to="/otp">
+              Go to Otp!
+            </Link>
           </p>
         </div>
       </div>

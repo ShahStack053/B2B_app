@@ -76,7 +76,7 @@
     line-height: 35px;
     color: #000000;
     height: 30px;
-    width: 12%;
+    width: 120px;
     border: 1px solid #B9B8B8;
     border-radius: 7px;
     text-align: center;
@@ -86,7 +86,7 @@
 .lang {
     background: #F3F3F3;
     height: 32px;
-    width: 15%;
+    width: 120px;
     border-radius: 7px;
     font-family: 'Poppins';
     font-style: normal;
@@ -104,7 +104,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 87.3vh
+    height: 85vh
 }
 
 .signUpDiv {
@@ -113,12 +113,8 @@
 
 .signUp {
     font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 800;
     font-size: 24px;
     color: #2D2D2D;
-    height: 35px;
-
 }
 
 
@@ -147,5 +143,6 @@ input {
     font-size: 14px;
     line-height: 35px;
     color: #868686;
-
+    margin-top: 15px;
+    text-decoration: none;
 }
