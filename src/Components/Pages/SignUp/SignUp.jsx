@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignUp.css";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignUp = () => {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  const myFunction = () => {
+    if (values.email !== "" && values.password.length > 6) {
+      axios({
+        method: "post",
+        url: "https://api-customer-dev.b2bprice.store/api/Auth/Login",
+        data: values,
+      })
+        .then(function (res) {
+          if (res.status === 200) {
+            console.log("token==>>>", res.data.data.token);
+            navigate("/dashboard");
+            localStorage.setItem("AuthToken", res.data.data.token);
+          }
+        })
+        .catch((err) => {
+          console.log("error==>>", err);
+        });
+    } else if (values.password.length <= 6 && values.password.length > 0) {
+      window.alert("password must be greater than 6 digit");
+    } else if (values.password.length === 0) {
+      window.alert("Please Enter the Password");
+    } else if (values.email === "") {
+      window.alert("Please Enter the Email");
+    } else {
+      window.alert("Please Enter the email and password");
+    }
+  };
   return (
     <div className="flexContainer">
       <div className="leftDiv">
@@ -14,7 +48,7 @@ const SignUp = () => {
         <div className="sloganDiv">
           <img className="illustration" src={Illustration} alt="illustration" />
           <h3 className="slogon">
-            Business Customer Supplies Ordering Solution{" "}
+            Business Customer Supplies Ordering Solution
           </h3>
         </div>
       </div>
@@ -30,14 +64,21 @@ const SignUp = () => {
             <p className="signUp">Sign in</p>
           </div>
 
-          <input type="text" id="email" value="" placeholder="Email Address" />
+          <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            // onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setValues({ ...values, email: e.target.value })}
+          />
           <input
             type="password"
             id="password"
-            value=""
             placeholder="Password"
+            // onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
-          <button className="submitBtn" type="submit">
+          <button className="submitBtn" type="submit" onClick={myFunction}>
             SignIn
           </button>
 

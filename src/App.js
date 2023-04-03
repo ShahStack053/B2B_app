@@ -5,6 +5,7 @@ import SignUp from "./Components/Pages/SignUp/SignUp";
 // import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
+import FeaturedTable from "./Components/featureTable/FeaturedTable";
 
 //fonts
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/table" element={<FeaturedTable />} />
         </Routes>
       </BrowserRouter>
     </div>

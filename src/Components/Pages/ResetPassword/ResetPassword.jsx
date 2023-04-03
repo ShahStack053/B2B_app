@@ -29,18 +29,8 @@ const ResetPassword = () => {
           <div className="resetPassDiv">
             <h1 className="resetPass">Reset Password</h1>
           </div>
-          <input
-            type="password"
-            id="password"
-            value=""
-            placeholder="New Password"
-          />
-          <input
-            type="password"
-            id="password"
-            value=""
-            placeholder="Confirm Password"
-          />
+          <input type="password" id="password" placeholder="New Password" />
+          <input type="password" id="password" placeholder="Confirm Password" />
           <button className="confirmPassBtn" type="submit">
             Confirm Password
           </button>

@@ -2,6 +2,8 @@ import React from "react";
 import logo from "../../../Assets/Images/logo.png";
 import userImage from "../../../Assets/Images/userImage.png";
 import { Card, Input } from "antd";
+import FeaturedTable from "../../featureTable/FeaturedTable";
+// import FeatureWidgetCard from "../../featureWidgetCard/FeatureWidgetCard";
 
 import "./Dashboard.css";
 
@@ -122,7 +124,7 @@ const Dashboard = () => {
             </Card>
 
             <div className="widgets-order-div">
-              <Card className="widget-order-card">
+              <Card className="widget-order-card1">
                 <div className="widget-up">
                   <span>
                     <ShoppingOutlined />
@@ -141,7 +143,7 @@ const Dashboard = () => {
                   </p>
                 </div>
               </Card>
-              <Card className="widget-order-card">
+              <Card className="widget-order-card2">
                 <div className="widget-up">
                   <span>
                     <ShoppingOutlined />
@@ -160,7 +162,7 @@ const Dashboard = () => {
                   </p>
                 </div>
               </Card>
-              <Card className="widget-order-card">
+              <Card className="widget-order-card3">
                 <div className="widget-up">
                   <span>
                     <ShoppingOutlined />
@@ -179,7 +181,7 @@ const Dashboard = () => {
                   </p>
                 </div>
               </Card>
-              <Card className="widget-order-card">
+              <Card className="widget-order-card4">
                 <div className="widget-up">
                   <span>
                     <ShoppingOutlined />
@@ -293,6 +295,34 @@ const Dashboard = () => {
                   &nbsp; 3.02% &nbsp;
                   <span className="card-month">From May</span>
                 </p>
+              </div>
+            </Card>
+          </div>
+          <div className="widgets-featureInfo-div">
+            <Card className="widgets-customer-div">
+              <div className="widgets-customerTitle-div">
+                <span className="widgets-customer-title">
+                  Top 10 Business Customer
+                </span>
+                <select className="sales-month">
+                  <option>8 Jul&nbsp; - &nbsp;24 Jul</option>
+                </select>
+              </div>
+              <div className="widgets-customerInfo-div">
+                <FeaturedTable />
+              </div>
+            </Card>
+            <Card className="widgets-top-order-div">
+              <div className="widgets-orderTitle-div">
+                <span className="widgets-order-title">
+                  Top 10 Frequently Ordered Products
+                </span>
+                <select className="sales-month">
+                  <option>8 Jul&nbsp; - &nbsp;24 Jul</option>
+                </select>
+              </div>
+              <div className="widgets-orderInfo-div">
+                <FeaturedTable />
               </div>
             </Card>
           </div>
