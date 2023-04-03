@@ -27,6 +27,7 @@
     width: 94%;
 }
 
+
 .sloganDiv {
     text-align: center;
     align-items: center;
@@ -67,39 +68,36 @@
 
 }
 
-.adminReset {
+.admin {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 35px;
     color: #000000;
-    height: 35px;
-    width: 236px;
+    height: 30px;
+    width: 120px;
     border: 1px solid #B9B8B8;
     border-radius: 7px;
     text-align: center;
 }
 
-.langReset {
+
+.lang {
     background: #F3F3F3;
     height: 32px;
-    width: 16%;
+    width: 120px;
     border-radius: 7px;
     font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
     font-size: 14px;
     border: none;
     text-align: center;
     margin-top: 13px;
-    line-height: 35px;
 }
 
 
-
-
-.lowerDivReset {
+.lowerDiv {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,20 +105,18 @@
     height: 85vh
 }
 
-.resetPassDiv {
+.signInDiv {
     width: 51%;
 }
 
-.resetPass {
+.signIn {
     font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 800;
     font-size: 24px;
     color: #2D2D2D;
-
 }
 
-.reset-input {
+
+.signIn-input {
     outline: 0;
     border-width: 0 0 2px;
     border-color: #868686;
@@ -128,20 +124,14 @@
     height: 50px;
 }
 
-.confirmPassBtn {
+.submitBtn {
     background: linear-gradient(90.55deg, #1879B8 0.29%, #14A3D8 98.5%);
     border-radius: 7px;
     width: 52%;
     height: 50px;
     color: white;
     border-color: white;
-    margin-top: 33px;
-}
-
-.paragraph {
-    font-family: 'Poppins';
-    font-style: normal;
-    color: #868686
+    margin-top: 37px;
 }
 
 .modelForgetBtn {
@@ -151,5 +141,6 @@
     font-size: 14px;
     line-height: 35px;
     color: #868686;
-
+    margin-top: 15px;
+    text-decoration: none;
 }

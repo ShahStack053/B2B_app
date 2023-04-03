@@ -1,19 +1,53 @@
 import React from "react";
+import OTPInput from "otp-input-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import OtpInput from "react-otp-input";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
+import axios from "axios";
+
 import "./Otp.css";
 
 const OTP = () => {
-  const [otp, setOtp] = useState(Array(4).fill(""));
+  const [OTP, setOTP] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleChange = (event, index) => {
-    const newOtp = [...otp];
-    newOtp[index] = event.target.value;
-    setOtp(newOtp);
+  const myFunction = () => {
+    const otpData = {
+      OTP,
+      provider: "",
+      email: location.state.email,
+    };
+    console.log("OTPData===>>", otpData);
+    if (OTP !== "") {
+      axios({
+        method: "post",
+        url: "https://api-customer-dev.b2bprice.store/api/Auth/TwostepVerification",
+        data: { otpData },
+      })
+        .then(function (res) {
+          if (res.status === 200) {
+            navigate("/resetpassword");
+          }
+        })
+        .catch((err) => {
+          console.log("error==>>", err);
+          navigate("/resetpassword");
+        });
+    } else {
+      window.alert("Please Enter the OTP");
+    }
   };
+
+  // const [otp, setOtp] = useState(Array(4).fill(""));
+
+  // const handleChange = (event, index) => {
+  //   const newOtp = [...otp];
+  //   newOtp[index] = event.target.value;
+  //   setOtp(newOtp);
+  // };
   return (
     <div className="flexContainer">
       <div className="leftDiv">
@@ -42,28 +76,31 @@ const OTP = () => {
             </h3>
           </div>
           <div className="otpContainer">
-            {otp.map((digit, index) => (
-              <input
-                key={index}
-                type="text"
-                maxLength={1}
-                value={digit}
-                onChange={(event) => handleChange(event, index)}
-                style={{
-                  width: "11%",
-                  marginRight: "10px",
-                  fontSize: "30px",
-                  borderWidth: "0 0 1px",
-                  borderColor: "#868686",
-                  outline: "0",
-                  border: "none",
-                  borderBottom: "1px solid Gray",
-                  textAlign: "center",
-                }}
-              />
-            ))}
+            <OTPInput
+              value={OTP}
+              onChange={setOTP}
+              // autoFocus
+              OTPLength={4}
+              otpType="number"
+              disabled={false}
+              className="otpClass"
+              // secure
+
+              style={
+                {
+                  // width: "90px",
+                  // marginRight: "10px",
+                  // fontSize: "30px",
+                  // borderWidth: "0 0 1px",
+                  // borderColor: "#868686",
+                  // outline: "0",
+                  // border: "none",
+                  // textAlign: "center",
+                }
+              }
+            />
           </div>
-          <button className="confirmBtn" type="submit">
+          <button className="confirmBtn" type="submit" onClick={myFunction}>
             Confirm Code
           </button>
           <p>

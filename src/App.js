@@ -1,6 +1,7 @@
 import ForgetPassword from "./Components/Pages/ForgetPassword/ForgetPassword";
 import OTP from "./Components/Pages/OTP/Otp";
 import ResetPassword from "./Components/Pages/ResetPassword/ResetPassword";
+import SignIn from "./Components/Pages/SignIn/SignIn";
 import SignUp from "./Components/Pages/SignUp/SignUp";
 // import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -33,7 +34,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignUp />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/otp" element={<OTP />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />

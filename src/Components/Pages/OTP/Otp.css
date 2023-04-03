@@ -101,6 +101,22 @@
     align-items: center;
 }
 
+.OTPInput {
+    text-align: center;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #868686;
+    width: 51%;
+    height: 50px;
+    margin-right: 20px;
+}
+
+.otpClass {
+
+    width: 66%;
+    margin-right: 83px;
+}
+
 .verificationCode {
     font-family: 'Poppins';
     font-style: normal;

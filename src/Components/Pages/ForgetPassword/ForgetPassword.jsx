@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ForgetPassword.css";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const ForgetPassword = () => {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  console.log("email===>>:", email);
+  const myFunction = () => {
+    if (email !== "") {
+      axios({
+        method: "post",
+        url: "https://api-customer-dev.b2bprice.store/api/Auth/ForgotPassword",
+        data: { email },
+      })
+        .then(function (res) {
+          if (res.status === 200) {
+            console.log("token==>>>", res);
+            navigate("/otp", { state: { email } });
+          }
+        })
+        .catch((err) => {
+          console.log("error==>>", err);
+        });
+    } else {
+      window.alert("Please Enter the Email");
+    }
+  };
+
   return (
     <div className="flexContainer">
       <div className="leftDiv">
@@ -14,7 +39,7 @@ const ForgetPassword = () => {
         <div className="sloganDiv">
           <img className="illustration" src={Illustration} alt="illustration" />
           <h3 className="slogon">
-            Business Customer Supplies Ordering Solution{" "}
+            Business Customer Supplies Ordering Solution
           </h3>
         </div>
       </div>
@@ -32,8 +57,14 @@ const ForgetPassword = () => {
               Please enter the registered email to reset password
             </h3>
           </div>
-          <input type="text" id="email" value="" placeholder="Email Address" />
-          <button className="forgetBtn" type="submit">
+          <input
+            className="forgetPass-input"
+            type="text"
+            id="email"
+            placeholder="Email Address"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button className="forgetBtn" type="submit" onClick={myFunction}>
             Confirm
           </button>
           <p>

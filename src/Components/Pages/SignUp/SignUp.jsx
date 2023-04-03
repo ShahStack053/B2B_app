@@ -7,38 +7,56 @@ import axios from "axios";
 
 const SignUp = () => {
   const [values, setValues] = useState({
+    fName: "",
     email: "",
+    companyName: "",
+    custCategory: "",
     password: "",
+    confirmPassword: "",
   });
   const navigate = useNavigate();
 
+  console.log(
+    "fname===>",
+    values.fName,
+    "email===>",
+    values.email,
+    "companyName===>",
+    values.companyName,
+    "custCategory===>",
+    values.custCategory,
+    "password===>",
+    values.password,
+    "confirmPassword===>",
+    values.confirmPassword
+  );
+
   const myFunction = () => {
-    if (values.email !== "" && values.password.length > 6) {
-      axios({
-        method: "post",
-        url: "https://api-customer-dev.b2bprice.store/api/Auth/Login",
-        data: values,
+    const createData = {
+      id: 0,
+      bcName: values.fName,
+      enName: values.companyName,
+      bcCategoryId: 1,
+      email: values.email,
+      password: values.password,
+      confrimPassword: values.confirmPassword,
+      termsAndCondition: true,
+    };
+    axios({
+      method: "post",
+      url: "https://api-customer-dev.b2bprice.store/api/BCUserRegister/CreateUpdate",
+      data: { createData },
+    })
+      .then(function (res) {
+        if (res.status === 200) {
+          navigate("/");
+        }
       })
-        .then(function (res) {
-          if (res.status === 200) {
-            console.log("token==>>>", res.data.data.token);
-            navigate("/dashboard");
-            localStorage.setItem("AuthToken", res.data.data.token);
-          }
-        })
-        .catch((err) => {
-          console.log("error==>>", err);
-        });
-    } else if (values.password.length <= 6 && values.password.length > 0) {
-      window.alert("password must be greater than 6 digit");
-    } else if (values.password.length === 0) {
-      window.alert("Please Enter the Password");
-    } else if (values.email === "") {
-      window.alert("Please Enter the Email");
-    } else {
-      window.alert("Please Enter the email and password");
-    }
+      .catch((err) => {
+        console.log("error==>>", err);
+      });
   };
+
   return (
     <div className="flexContainer">
       <div className="leftDiv">
@@ -61,10 +79,19 @@ const SignUp = () => {
         </div>
         <div className="lowerDiv">
           <div className="signUpDiv">
-            <p className="signUp">Sign in</p>
+            <p className="signUp">Create Account</p>
           </div>
 
           <input
+            className="signup-input"
+            type="text"
+            id="fName"
+            placeholder="Full Name"
+            // onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setValues({ ...values, fName: e.target.value })}
+          />
+          <input
+            className="signup-input"
             type="email"
             id="email"
             placeholder="Email Address"
@@ -72,24 +99,58 @@ const SignUp = () => {
             onChange={(e) => setValues({ ...values, email: e.target.value })}
           />
           <input
+            className="signup-input"
+            type="text"
+            id="companyName"
+            placeholder="Add Company Name"
+            // onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>
+              setValues({ ...values, companyName: e.target.value })
+            }
+          />
+          <input
+            className="signup-input"
+            type="text"
+            id="custCategory"
+            placeholder="Select Customer Category"
+            // onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) =>
+              setValues({ ...values, custCategory: e.target.value })
+            }
+          />
+          <input
+            className="signup-input"
             type="password"
             id="password"
             placeholder="Password"
             // onChange={(e) => setPassword(e.target.value)}
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
+          <input
+            className="signup-input"
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm Password"
+            // onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) =>
+              setValues({ ...values, confirmPassword: e.target.value })
+            }
+          />
           <button className="submitBtn" type="submit" onClick={myFunction}>
-            SignIn
+            Create Account
           </button>
 
           {/* <p>
-            <a className="modelForgetBtn" href="/ForgetPassword">
-              Forgot Password ?
-            </a>
-          </p> */}
-          <Link className="modelForgetBtn" to="/forgetpassword">
-            Forgot Password ?
-          </Link>
+        <a className="modelForgetBtn" href="/ForgetPassword">
+          Forgot Password ?
+        </a>
+      </p> */}
+          <p className="paragraph">
+            Already have an account? &nbsp;
+            <Link className="modelForgetBtn" to="/">
+              Sign In
+            </Link>
+          </p>
         </div>
       </div>
     </div>
