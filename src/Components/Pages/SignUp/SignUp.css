@@ -116,7 +116,7 @@
 }
 
 
-.input {
+.signup-input {
     outline: 0;
     border-width: 0 0 2px;
     border-color: #868686;
@@ -132,6 +132,12 @@
     color: white;
     border-color: white;
     margin-top: 37px;
+}
+
+.paragraph {
+    font-family: 'Poppins';
+    font-style: normal;
+    color: #868686
 }
 
 .modelForgetBtn {
