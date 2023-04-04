@@ -4,6 +4,18 @@ import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import LangDropDown from "../../Dropdown/LangDropDown";
+
+export const Checkbox = () => {
+  return (
+    <div>
+      <input type="checkbox" id="checkbox" />
+      <label htmlFor="checkbox">
+        &nbsp;&nbsp; Accept Terms & Conditions and Privacy Policy
+      </label>
+    </div>
+  );
+};
 
 const SignUp = () => {
   const [values, setValues] = useState({
@@ -64,18 +76,24 @@ const SignUp = () => {
           <img className="logo" src={Frame} alt="B2b Logo" />
         </div>
         <div className="sloganDiv">
-          <img className="illustration" src={Illustration} alt="illustration" />
-          <h3 className="slogon">
+          <img
+            className="illustration-signup"
+            src={Illustration}
+            alt="illustration"
+          />
+          <h3 className="slogon-signup">
             Business Customer Supplies Ordering Solution
           </h3>
         </div>
       </div>
       <div className="rightDiv">
         <div className="upperDiv">
-          <h3 className="admin">Admin Portal</h3>
-          <select className="lang">
+          <h3 className="admin-signup">Business Customer Manager</h3>
+          <LangDropDown />
+          {/* <select className="lang-signup">
             <option>English (UK)</option>
-          </select>
+            <option>Arabic (KSA)</option>
+          </select> */}
         </div>
         <div className="lowerDiv">
           <div className="signUpDiv">
@@ -136,6 +154,9 @@ const SignUp = () => {
               setValues({ ...values, confirmPassword: e.target.value })
             }
           />
+          <div className="checkbox-paragraph">
+            <Checkbox />
+          </div>
           <button className="submitBtn" type="submit" onClick={myFunction}>
             Create Account
           </button>
@@ -145,9 +166,9 @@ const SignUp = () => {
           Forgot Password ?
         </a>
       </p> */}
-          <p className="paragraph">
+          <p className="signup-paragraph">
             Already have an account? &nbsp;
-            <Link className="modelForgetBtn" to="/">
+            <Link className="model-signin-btn" to="/">
               Sign In
             </Link>
           </p>

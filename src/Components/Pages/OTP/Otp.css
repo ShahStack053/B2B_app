@@ -35,18 +35,17 @@
 
 }
 
-.illustration {
-    height: 160px;
-    width: 84%;
+.illustration-otp {
+    height: 71%;
+    width: 86%;
 }
 
-.slogon {
-    font-family: 'Gotham';
+.slogon-otp {
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 17px;
-
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 8%;
     color: #FFFFFF;
 }
 
@@ -79,8 +78,9 @@
     border: none;
     text-align: center;
     margin-top: 13px;
-    line-height: 35px;
+    outline: none;
 }
+
 
 
 .lowerDivOtp {
@@ -93,28 +93,6 @@
 
 .otpDiv {
     width: 50%;
-}
-
-.otpContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.OTPInput {
-    text-align: center;
-    outline: 0;
-    border-width: 0 0 2px;
-    border-color: #868686;
-    width: 51%;
-    height: 50px;
-    margin-right: 20px;
-}
-
-.otpClass {
-
-    width: 66%;
-    margin-right: 83px;
 }
 
 .verificationCode {
@@ -136,6 +114,24 @@
 }
 
 
+.otpContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: red; */
+    width: 50%;
+    height: 10%;
+}
+
+.otpContainer input[type="tel"] {
+    width: 26% !important;
+    height: 32px !important;
+    text-align: center !important;
+    /* margin-right: 20px !important; */
+    border: none !important;
+    border-bottom: 1px solid gray !important;
+    outline: none !important;
+}
 
 .confirmBtn {
     background: linear-gradient(90.55deg, #1879B8 0.29%, #14A3D8 98.5%);
@@ -145,15 +141,28 @@
     color: white;
     border-color: white;
     margin-top: 33px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
 }
 
+.otp-paragraph {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #868686;
+}
 
-.modelForgetBtn {
+.model-resendCode-btn {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 35px;
-    color: #868686;
+    color: #5534b1;
+    text-decoration: none;
 
 }

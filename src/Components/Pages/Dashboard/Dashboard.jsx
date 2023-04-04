@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../../../Assets/Images/logo.png";
 import userImage from "../../../Assets/Images/userImage.png";
 import { Card, Input } from "antd";
-import FeaturedTable from "../../featureTable/FeaturedTable";
 // import FeatureWidgetCard from "../../featureWidgetCard/FeatureWidgetCard";
 
 import "./Dashboard.css";
@@ -26,6 +25,12 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
+import LangDropDown from "../../Dropdown/LangDropDown";
+import PersonDropDown from "../../Dropdown/PersonDropDown";
+import MonthDropDown from "../../Dropdown/MonthDropDown";
+import FeaturedCusTable from "../../featureTable/FeaturedCusTable";
+import FeaturedProductTable from "../../featureTable/FeaturedProductTable";
+import LineChart from "../../Chart/LineChart";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -36,7 +41,7 @@ function getItem(label, key, icon, children, type) {
   };
 }
 //date
-const date = new Date();
+const date = new Date("28 Jul, 2022");
 const options = { year: "numeric", month: "short", day: "numeric" };
 const formattedDate = date.toLocaleDateString("en-US", options);
 // formattedDate will be "Jul 28, 2022"
@@ -72,9 +77,10 @@ const Dashboard = () => {
         </div>
         <div className="lowerSidebar">
           <Menu defaultSelectedKeys={["1"]} mode="inline" items={items} />
-          <select className="langSide">
+          <LangDropDown />
+          {/* <select className="langSide">
             <option>English (UK)</option>
-          </select>
+          </select> */}
         </div>
       </div>
       <div className="rightSideDiv">
@@ -95,9 +101,11 @@ const Dashboard = () => {
               <BellOutlined />
             </span>
             <img src={userImage} alt="userImage" className="userImage" />
-            <select className="personDropDown">
+            <PersonDropDown />
+            {/* <select className="personDropDown">
               <option>Jamal</option>
-            </select>
+              <option>Jamal</option>
+            </select> */}
           </div>
         </div>
         <div className="container">
@@ -115,12 +123,15 @@ const Dashboard = () => {
                   </p>
                 </div>
                 <div className="graph-month-div">
-                  <select className="graph-month">
+                  <MonthDropDown />
+                  {/* <select className="graph-month">
                     <option>This Month</option>
-                  </select>
+                  </select> */}
                 </div>
               </div>
-              <div className="graph">graph</div>
+              <div className="graph">
+                <LineChart />
+              </div>
             </Card>
 
             <div className="widgets-order-div">
@@ -309,20 +320,20 @@ const Dashboard = () => {
                 </select>
               </div>
               <div className="widgets-customerInfo-div">
-                <FeaturedTable />
+                <FeaturedCusTable />
               </div>
             </Card>
-            <Card className="widgets-top-order-div">
-              <div className="widgets-orderTitle-div">
-                <span className="widgets-order-title">
+            <Card className="widgets-top-product-div">
+              <div className="widgets-productTitle-div">
+                <span className="widgets-product-title">
                   Top 10 Frequently Ordered Products
                 </span>
                 <select className="sales-month">
                   <option>8 Jul&nbsp; - &nbsp;24 Jul</option>
                 </select>
               </div>
-              <div className="widgets-orderInfo-div">
-                <FeaturedTable />
+              <div className="widgets-productInfo-div">
+                <FeaturedProductTable />
               </div>
             </Card>
           </div>

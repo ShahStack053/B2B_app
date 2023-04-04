@@ -8,6 +8,7 @@ import Illustration from "../../../Assets/Images/Illustration.png";
 import axios from "axios";
 
 import "./Otp.css";
+import LangDropDown from "../../Dropdown/LangDropDown";
 
 const OTP = () => {
   const [OTP, setOTP] = useState("");
@@ -55,8 +56,12 @@ const OTP = () => {
           <img className="logo" src={Frame} alt="B2b Logo" />
         </div>
         <div className="sloganDiv">
-          <img className="illustration" src={Illustration} alt="illustration" />
-          <h3 className="slogon">
+          <img
+            className="illustration-otp"
+            src={Illustration}
+            alt="illustration"
+          />
+          <h3 className="slogon-otp">
             Business Customer Supplies Ordering Solution{" "}
           </h3>
         </div>
@@ -64,9 +69,11 @@ const OTP = () => {
       <div className="rightDiv">
         <div className="upperDivOtp">
           {/* <h3 className="admin">Business Customer Manger</h3> */}
-          <select className="langOtp">
+          <LangDropDown />
+          {/* <select className="langOtp">
             <option>English (UK)</option>
-          </select>
+            <option>Arabic (KSA)</option>
+          </select> */}
         </div>
         <div className="lowerDivOtp">
           <div className="otpDiv">
@@ -77,35 +84,31 @@ const OTP = () => {
           </div>
           <div className="otpContainer">
             <OTPInput
+              className="otp-input"
               value={OTP}
               onChange={setOTP}
-              // autoFocus
+              autoFocus
               OTPLength={4}
               otpType="number"
               disabled={false}
-              className="otpClass"
-              // secure
 
-              style={
-                {
-                  // width: "90px",
-                  // marginRight: "10px",
-                  // fontSize: "30px",
-                  // borderWidth: "0 0 1px",
-                  // borderColor: "#868686",
-                  // outline: "0",
-                  // border: "none",
-                  // textAlign: "center",
-                }
-              }
+              // secure
+              // style={{
+              //   width: "12%",
+              //   height: "32px",
+              //   textAlign: "center",
+              //   marginRight: "20px",
+              //   border: "none",
+              //   borderBottom: "1px solid gray",
+              // }}
             />
           </div>
           <button className="confirmBtn" type="submit" onClick={myFunction}>
             Confirm Code
           </button>
-          <p>
+          <p className="otp-paragraph">
             No code received? &nbsp;
-            <Link className="modelForgetBtn" to="/resetpassword">
+            <Link className="model-resendCode-btn" to="/resetpassword">
               Resend Code
             </Link>
           </p>

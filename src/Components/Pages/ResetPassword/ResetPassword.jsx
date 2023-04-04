@@ -4,6 +4,7 @@ import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
 import "./ResetPassword.css";
 import axios from "axios";
+import LangDropDown from "../../Dropdown/LangDropDown";
 
 const ResetPassword = () => {
   const [values, setValues] = useState({
@@ -49,18 +50,24 @@ const ResetPassword = () => {
           <img className="logo" src={Frame} alt="B2b Logo" />
         </div>
         <div className="sloganDiv">
-          <img className="illustration" src={Illustration} alt="illustration" />
-          <h3 className="slogon">
-            Business Customer Supplies Ordering Solution{" "}
+          <img
+            className="illustration-reset"
+            src={Illustration}
+            alt="illustration"
+          />
+          <h3 className="slogon-reset">
+            Business Customer Supplies Ordering Solution
           </h3>
         </div>
       </div>
       <div className="rightDiv">
         <div className="upperDiv">
           <h3 className="adminReset">Business Customer Manager</h3>
-          <select className="langReset">
+          <LangDropDown />
+          {/* <select className="langReset">
             <option>English (UK)</option>
-          </select>
+            <option>Arabic (KSA)</option>
+          </select> */}
         </div>
         <div className="lowerDivReset">
           <div className="resetPassDiv">
@@ -87,9 +94,9 @@ const ResetPassword = () => {
           <button className="confirmPassBtn" type="submit" onClick={myFunction}>
             Confirm Password
           </button>
-          <p className="paragraph">
+          <p className="reset-paragraph">
             or&nbsp;
-            <Link className="modelForgetBtn" to="/forgetpassword">
+            <Link className="model-reset-back-btn" to="/forgetpassword">
               Go Back!
             </Link>
           </p>

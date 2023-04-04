@@ -36,18 +36,17 @@
 
 }
 
-.illustration {
-    height: 160px;
-    width: 84%;
+.illustration-signin {
+    height: 71%;
+    width: 86%;
 }
 
-.slogon {
-    font-family: 'Gotham';
+.slogon-signin {
+    font-family: 'Poppins';
     font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 17px;
-
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 8%;
     color: #FFFFFF;
 }
 
@@ -94,6 +93,7 @@
     border: none;
     text-align: center;
     margin-top: 13px;
+    outline: none;
 }
 
 
@@ -111,6 +111,8 @@
 
 .signIn {
     font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
     font-size: 24px;
     color: #2D2D2D;
 }
@@ -118,10 +120,14 @@
 
 .signIn-input {
     outline: 0;
-    border-width: 0 0 2px;
-    border-color: #868686;
+    border-width: 0 0 1px;
+    border-color: solid #868686;
     width: 51%;
     height: 50px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .submitBtn {
@@ -132,6 +138,9 @@
     color: white;
     border-color: white;
     margin-top: 37px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 14px;
 }
 
 .modelForgetBtn {

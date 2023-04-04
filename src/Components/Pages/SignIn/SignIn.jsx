@@ -4,6 +4,7 @@ import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import LangDropDown from "../../Dropdown/LangDropDown";
 
 const SignIn = () => {
   const [values, setValues] = useState({
@@ -46,8 +47,12 @@ const SignIn = () => {
           <img className="logo" src={Frame} alt="B2b Logo" />
         </div>
         <div className="sloganDiv">
-          <img className="illustration" src={Illustration} alt="illustration" />
-          <h3 className="slogon">
+          <img
+            className="illustration-signin"
+            src={Illustration}
+            alt="illustration"
+          />
+          <h3 className="slogon-signin">
             Business Customer Supplies Ordering Solution
           </h3>
         </div>
@@ -55,9 +60,11 @@ const SignIn = () => {
       <div className="rightDiv">
         <div className="upperDiv">
           <h3 className="admin">Admin Portal</h3>
-          <select className="lang">
+          <LangDropDown />
+          {/* <select className="lang">
             <option>English (UK)</option>
-          </select>
+            <option>Arabic (KSA)</option>
+          </select> */}
         </div>
         <div className="lowerDiv">
           <div className="signInDiv">
@@ -81,7 +88,7 @@ const SignIn = () => {
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
           <button className="submitBtn" type="submit" onClick={myFunction}>
-            SignIn
+            Sign in
           </button>
 
           {/* <p>

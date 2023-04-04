@@ -6,7 +6,8 @@ import SignUp from "./Components/Pages/SignUp/SignUp";
 // import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Components/Pages/Dashboard/Dashboard";
-import FeaturedTable from "./Components/featureTable/FeaturedTable";
+import MonthDropDown from "./Components/Dropdown/MonthDropDown";
+import LineChart from "./Components/Chart/LineChart";
 
 //fonts
 
@@ -40,7 +41,8 @@ function App() {
           <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/table" element={<FeaturedTable />} />
+          <Route path="/lang" element={<MonthDropDown />} />
+          <Route path="/chart" element={<LineChart />} />
         </Routes>
       </BrowserRouter>
     </div>

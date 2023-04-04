@@ -4,6 +4,7 @@ import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import LangDropDown from "../../Dropdown/LangDropDown";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
@@ -37,8 +38,12 @@ const ForgetPassword = () => {
           <img className="logo" src={Frame} alt="B2b Logo" />
         </div>
         <div className="sloganDiv">
-          <img className="illustration" src={Illustration} alt="illustration" />
-          <h3 className="slogon">
+          <img
+            className="illustration-forget"
+            src={Illustration}
+            alt="illustration"
+          />
+          <h3 className="slogon-forget">
             Business Customer Supplies Ordering Solution
           </h3>
         </div>
@@ -46,9 +51,11 @@ const ForgetPassword = () => {
       <div className="rightDiv">
         <div className="upperDiv">
           <h3 className="adminDiv">Business Customer Manager</h3>
-          <select className="langForget">
+          <LangDropDown />
+          {/* <select className="langForget">
             <option>English (Uk)</option>
-          </select>
+            <option>Arabic (KSA)</option>
+          </select> */}
         </div>
         <div className="lowerDivForget">
           <div className="forgetPassDiv">
@@ -67,9 +74,9 @@ const ForgetPassword = () => {
           <button className="forgetBtn" type="submit" onClick={myFunction}>
             Confirm
           </button>
-          <p>
+          <p className="forget-paragraph">
             or&nbsp;
-            <Link className="modelForgetBtn" to="/">
+            <Link className="model-goBack-btn" to="/">
               Go Back!
             </Link>
           </p>
