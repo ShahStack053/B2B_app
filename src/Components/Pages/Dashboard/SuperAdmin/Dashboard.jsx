@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../../../Assets/Images/logo.png";
-import userImage from "../../../Assets/Images/userImage.png";
+import logo from "../../../../Assets/Images/logo.png";
+import userImage from "../../../../Assets/Images/userImage.png";
 import { Card, Input } from "antd";
 // import FeatureWidgetCard from "../../featureWidgetCard/FeatureWidgetCard";
 
@@ -25,12 +25,12 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Menu } from "antd";
-import LangDropDown from "../../Dropdown/LangDropDown";
-import PersonDropDown from "../../Dropdown/PersonDropDown";
-import MonthDropDown from "../../Dropdown/MonthDropDown";
-import FeaturedCusTable from "../../featureTable/FeaturedCusTable";
-import FeaturedProductTable from "../../featureTable/FeaturedProductTable";
-import LineChart from "../../Chart/LineChart";
+import LangDropDown from "../../../Dropdown/LangDropDown";
+import PersonDropDown from "../../../Dropdown/PersonDropDown";
+import MonthDropDown from "../../../Dropdown/MonthDropDown";
+import FeaturedCusTable from "../../../featureTable/FeaturedCusTable";
+import FeaturedProductTable from "../../../featureTable/FeaturedProductTable";
+import LineChart from "../../../Chart/LineChart";
 function getItem(label, key, icon, children, type) {
   return {
     key,
@@ -54,9 +54,9 @@ const finalDate = `${day} ${month}, ${year}`;
 //Side bar Item
 const items = [
   getItem("Dashboard", "1", <AppstoreOutlined />),
-  getItem("Products", "2", <ShopOutlined />),
-  getItem("Orders", "3", <ShoppingCartOutlined />),
-  getItem("RFQs", "4", <FormOutlined />),
+  getItem("Orders", "2", <ShoppingCartOutlined />),
+  getItem("Request for Quotations", "3", <FormOutlined />),
+  getItem("My Products", "4", <ShopOutlined />),
   getItem("Finances", "5", <BarChartOutlined />),
   getItem("Admins", "6", <TeamOutlined />),
   getItem("Dark Stores", "7", <ShopFilled />),
@@ -64,9 +64,10 @@ const items = [
   {
     type: "divider",
   },
-  getItem("Profile", "9", <UserOutlined />),
-  getItem("Settings", "10", <SettingOutlined />),
-  getItem("Logout", "11", <LogoutOutlined />),
+  getItem("Manage Users", "9", <UserOutlined />),
+  getItem("Profile", "10", <UserOutlined />),
+  getItem("Settings", "11", <SettingOutlined />),
+  getItem("Logout", "12", <LogoutOutlined />),
 ];
 const Dashboard = () => {
   return (
@@ -76,11 +77,24 @@ const Dashboard = () => {
           <img className="logobar" src={logo} alt="B2b Logo" />
         </div>
         <div className="lowerSidebar">
-          <Menu defaultSelectedKeys={["1"]} mode="inline" items={items} />
-          <LangDropDown />
+          <Menu
+            style={{
+              fontFamily: "Poppins",
+              fontSize: "14px",
+              fontWeight: "400",
+              color: "#000000",
+            }}
+            defaultSelectedKeys={["1"]}
+            mode="inline"
+            items={items}
+          />
+
           {/* <select className="langSide">
             <option>English (UK)</option>
           </select> */}
+        </div>
+        <div className="LangDropDiv">
+          <LangDropDown />
         </div>
       </div>
       <div className="rightSideDiv">
@@ -93,7 +107,7 @@ const Dashboard = () => {
             />
           </div>
           <div className="dashboardTopBarDiv">
-            <h3 className="dashboardTop">Dashboard</h3>
+            <h3 className="dashboardTop">Super Admin</h3>
           </div>
           <div className="topBarRight">
             <p className="DateTop">{finalDate}</p>

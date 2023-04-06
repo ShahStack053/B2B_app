@@ -4,12 +4,16 @@ import { Dropdown, Space, Menu } from "antd";
 
 const items = [
   {
-    label: "This Month",
+    label: "Today",
     key: "0",
   },
   {
-    label: "Previous Month",
+    label: "Last_Seven-Day",
     key: "1",
+  },
+  {
+    label: "This-Month",
+    key: "2",
   },
 ];
 
@@ -34,10 +38,13 @@ const MonthDropDown = () => {
     >
       <Space
         style={{
-          height: "fit-content",
+          height: 35,
           fontFamily: "Poppins",
           fontSize: "14px",
           color: "#000000",
+          background: " #F3F3F3",
+          padding: 10,
+          borderRadius: 12,
         }}
       >
         {selectedLang} <DownOutlined />

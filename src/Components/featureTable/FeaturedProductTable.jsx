@@ -41,7 +41,7 @@ const data = [
 ];
 const FeaturedProductTable = () => {
   const [sortedInfo, setSortedInfo] = useState({});
-  const handleChange = (sorter) => {
+  const handleChange = (pagination, filters, sorter) => {
     console.log(sorter);
     setSortedInfo(sorter);
   };
@@ -60,6 +60,7 @@ const FeaturedProductTable = () => {
             color: "#606060",
             fontFamily: "Poppins",
             fontStyle: "normal",
+            fontSize: "12.2195px",
             fontWeight: 400,
           }}
         >
@@ -68,8 +69,10 @@ const FeaturedProductTable = () => {
       ),
       dataIndex: "name",
       key: "name",
-      sorter: (a, b) => a.name.length - b.name.length,
-      sortOrder: sortedInfo.columnKey === "name" ? sortedInfo.order : null,
+      // sorter: (a, b) => a.name.length - b.name.length,
+      // sortOrder: sortedInfo.columnKey === "name" ? sortedInfo.order : null,
+      sorter: (a, b) => a.name.localeCompare(b.name),
+      sortOrder: sortedInfo.columnKey === "name" && sortedInfo.order,
       ellipsis: true,
       render: (text, record) => (
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -104,6 +107,7 @@ const FeaturedProductTable = () => {
             color: "#606060",
             fontFamily: "Poppins",
             fontStyle: "normal",
+            fontSize: "12.2195px",
             fontWeight: 400,
           }}
         >
@@ -112,8 +116,12 @@ const FeaturedProductTable = () => {
       ),
       dataIndex: "price",
       key: "price",
-      sorter: (a, b) => a.price - b.price,
-      sortOrder: sortedInfo.columnKey === "price" ? sortedInfo.order : null,
+      // sorter: (a, b) => a.price - b.price,
+      // sortOrder: sortedInfo.columnKey === "price" ? sortedInfo.order : null,
+      sorter: (a, b) =>
+        parseFloat(a.price.replace(/[^0-9.-]+/g, "")) -
+        parseFloat(b.price.replace(/[^0-9.-]+/g, "")),
+      sortOrder: sortedInfo.columnKey === "price" && sortedInfo.order,
       ellipsis: true,
       render: (text) => (
         <span
@@ -136,6 +144,7 @@ const FeaturedProductTable = () => {
             color: "#606060",
             fontFamily: "Poppins",
             fontStyle: "normal",
+            fontSize: "12.2195px",
             fontWeight: 400,
           }}
         >
@@ -145,8 +154,10 @@ const FeaturedProductTable = () => {
       dataIndex: "orders",
       key: "orders",
 
-      sorter: (a, b) => a.orders.length - b.orders.length,
-      sortOrder: sortedInfo.columnKey === "orders" ? sortedInfo.order : null,
+      // sorter: (a, b) => a.orders.length - b.orders.length,
+      // sortOrder: sortedInfo.columnKey === "orders" ? sortedInfo.order : null,
+      sorter: (a, b) => a.orders - b.orders,
+      sortOrder: sortedInfo.columnKey === "orders" && sortedInfo.order,
       ellipsis: true,
       render: (text) => (
         <span

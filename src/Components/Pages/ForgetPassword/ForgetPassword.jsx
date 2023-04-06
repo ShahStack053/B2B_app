@@ -32,12 +32,12 @@ const ForgetPassword = () => {
   };
 
   return (
-    <div className="flexContainer">
-      <div className="leftDiv">
-        <div className="logoDiv">
-          <img className="logo" src={Frame} alt="B2b Logo" />
+    <div className="flexContainer-forget">
+      <div className="leftDiv-forget">
+        <div className="logoDiv-forget">
+          <img className="logo-forget" src={Frame} alt="B2b Logo" />
         </div>
-        <div className="sloganDiv">
+        <div className="sloganDiv-forget">
           <img
             className="illustration-forget"
             src={Illustration}
@@ -48,17 +48,17 @@ const ForgetPassword = () => {
           </h3>
         </div>
       </div>
-      <div className="rightDiv">
-        <div className="upperDiv">
-          <h3 className="adminDiv">Business Customer Manager</h3>
+      <div className="rightDiv-forget">
+        <div className="upperDiv-forget">
+          <h3 className="admin-forget">Business Customer Manager</h3>
           <LangDropDown />
           {/* <select className="langForget">
             <option>English (Uk)</option>
             <option>Arabic (KSA)</option>
           </select> */}
         </div>
-        <div className="lowerDivForget">
-          <div className="forgetPassDiv">
+        <div className="lowerDiv-forget">
+          <div className="forgetPass-div">
             <h1 className="forgetPass">Forgot Password ?</h1>
             <h3 className="belowPass">
               Please enter the registered email to reset password
@@ -76,8 +76,34 @@ const ForgetPassword = () => {
           </button>
           <p className="forget-paragraph">
             or&nbsp;
-            <Link className="model-goBack-btn" to="/">
+            <Link
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "15px",
+                fontWeight: "500",
+                textDecoration: "none",
+                color: " #1879B8",
+                cursor: "pointer",
+              }}
+              to="/"
+            >
               Go Back!
+            </Link>
+          </p>
+          <p className="forget-paragraph">
+            or&nbsp;
+            <Link
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "15px",
+                fontWeight: "500",
+                textDecoration: "none",
+                color: " #1879B8",
+                cursor: "pointer",
+              }}
+              to="/otp"
+            >
+              Go to otp!
             </Link>
           </p>
         </div>

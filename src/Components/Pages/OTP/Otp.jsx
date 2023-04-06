@@ -50,12 +50,12 @@ const OTP = () => {
   //   setOtp(newOtp);
   // };
   return (
-    <div className="flexContainer">
-      <div className="leftDiv">
-        <div className="logoDiv">
-          <img className="logo" src={Frame} alt="B2b Logo" />
+    <div className="flexContainer-otp">
+      <div className="leftDiv-otp">
+        <div className="logoDiv-otp">
+          <img className="logo-otp" src={Frame} alt="B2b Logo" />
         </div>
-        <div className="sloganDiv">
+        <div className="sloganDiv-otp">
           <img
             className="illustration-otp"
             src={Illustration}
@@ -66,9 +66,9 @@ const OTP = () => {
           </h3>
         </div>
       </div>
-      <div className="rightDiv">
-        <div className="upperDivOtp">
-          {/* <h3 className="admin">Business Customer Manger</h3> */}
+      <div className="rightDiv-otp">
+        <div className="upperDiv-otp">
+          <h3 className="admin-otp">Business Customer Manager</h3>
           <LangDropDown />
           {/* <select className="langOtp">
             <option>English (UK)</option>
@@ -91,16 +91,6 @@ const OTP = () => {
               OTPLength={4}
               otpType="number"
               disabled={false}
-
-              // secure
-              // style={{
-              //   width: "12%",
-              //   height: "32px",
-              //   textAlign: "center",
-              //   marginRight: "20px",
-              //   border: "none",
-              //   borderBottom: "1px solid gray",
-              // }}
             />
           </div>
           <button className="confirmBtn" type="submit" onClick={myFunction}>
@@ -108,8 +98,34 @@ const OTP = () => {
           </button>
           <p className="otp-paragraph">
             No code received? &nbsp;
-            <Link className="model-resendCode-btn" to="/resetpassword">
+            <Link
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "15px",
+                fontWeight: "500",
+                textDecoration: "none",
+                color: " #1879B8",
+                cursor: "pointer",
+              }}
+              to="/resetpassword"
+            >
               Resend Code
+            </Link>
+          </p>
+          <p className="forget-paragraph">
+            or&nbsp;
+            <Link
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "15px",
+                fontWeight: "500",
+                textDecoration: "none",
+                color: " #1879B8",
+                cursor: "pointer",
+              }}
+              to="/forgetpassword"
+            >
+              Go Back!
             </Link>
           </p>
         </div>

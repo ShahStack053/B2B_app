@@ -8,7 +8,7 @@ import LangDropDown from "../../Dropdown/LangDropDown";
 
 export const Checkbox = () => {
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       <input type="checkbox" id="checkbox" />
       <label htmlFor="checkbox">
         &nbsp;&nbsp; Accept Terms & Conditions and Privacy Policy
@@ -70,12 +70,12 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flexContainer">
-      <div className="leftDiv">
-        <div className="logoDiv">
-          <img className="logo" src={Frame} alt="B2b Logo" />
+    <div className="flexContainer-signup">
+      <div className="leftDiv-signup">
+        <div className="logoDiv-signup">
+          <img className="logo-signup" src={Frame} alt="B2b Logo" />
         </div>
-        <div className="sloganDiv">
+        <div className="sloganDiv-signup">
           <img
             className="illustration-signup"
             src={Illustration}
@@ -86,8 +86,8 @@ const SignUp = () => {
           </h3>
         </div>
       </div>
-      <div className="rightDiv">
-        <div className="upperDiv">
+      <div className="rightDiv-signup">
+        <div className="upperDiv-signup">
           <h3 className="admin-signup">Business Customer Manager</h3>
           <LangDropDown />
           {/* <select className="lang-signup">
@@ -95,9 +95,10 @@ const SignUp = () => {
             <option>Arabic (KSA)</option>
           </select> */}
         </div>
-        <div className="lowerDiv">
+        <div className="lowerDiv-signup">
           <div className="signUpDiv">
-            <p className="signUp">Create Account</p>
+            Create Account
+            {/* <p className="signUp"></p> */}
           </div>
 
           <input
@@ -157,7 +158,7 @@ const SignUp = () => {
           <div className="checkbox-paragraph">
             <Checkbox />
           </div>
-          <button className="submitBtn" type="submit" onClick={myFunction}>
+          <button className="create-btn" type="submit" onClick={myFunction}>
             Create Account
           </button>
 
@@ -167,8 +168,18 @@ const SignUp = () => {
         </a>
       </p> */}
           <p className="signup-paragraph">
-            Already have an account? &nbsp;
-            <Link className="model-signin-btn" to="/">
+            Already have an account ? &nbsp;
+            <Link
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "15px",
+                fontWeight: "500",
+                textDecoration: "none",
+                color: " #1879B8",
+                cursor: "pointer",
+              }}
+              to="/"
+            >
               Sign In
             </Link>
           </p>

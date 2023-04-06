@@ -1,0 +1,357 @@
+.flex-bc {
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+.sideBar-bc {
+    flex-direction: column;
+    width: 20%;
+    justify-content: space-between;
+}
+
+.logoSidebar-bc {
+    /* background: purple; */
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logobar-bc {
+    height: 45%;
+    width: 50%;
+}
+
+.lowerSidebar-bc {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: purple; */
+}
+
+.LangDropDiv-bc {
+    align-items: start;
+    width: 100%;
+    /* background-color: rgb(13, 61, 104); */
+    display: flex;
+    justify-content: center;
+}
+
+/* 
+.langSide {
+    background: #F3F3F3;
+    height: 32px;
+    width: 120px;
+    border-radius: 7px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    outline: none;
+} */
+
+.rightSideDiv-bc {
+    width: 80%;
+    flex-direction: column;
+}
+
+.topBar-bc {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    /* background: red; */
+    margin: 8px;
+}
+
+
+.searchLeftTop-bc {
+    /* background-color: rebeccapurple; */
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.Input-bc {
+    background: #FFFFFF;
+    border: 1px solid #EFEEEB;
+    border-radius: 12px;
+    width: 75%;
+    height: 50%;
+}
+
+.dashboardTopBarDiv-bc {
+    /* background: yellowgreen; */
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboardTop-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+
+}
+
+.topBarRight-bc {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.DateTop-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #A3A3A3;
+    width: 28%;
+}
+
+.iconbellTop-bc {
+    width: 8%;
+}
+
+.userImage-bc {
+    width: 11%;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 2%;
+}
+
+.personDropDown-bc {
+    width: 20%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 16px;
+    border: none;
+    text-align: center;
+    margin-right: 8%;
+    outline: none;
+}
+
+.container-bc {
+    background-color: rgb(224, 247, 247);
+    padding: 25px;
+}
+
+.main-bc {
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    grid-gap: 25px;
+}
+
+
+.graph-div-up-bc {
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+}
+
+.graph-credential-div-bc {
+    align-items: center;
+}
+
+.graph-title-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+
+}
+
+.graph-price-bc {
+    margin-top: 1%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22.4024px;
+    color: #000000;
+
+
+}
+
+.graph-percentage-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14.2561px;
+    color: #16C098;
+
+}
+
+.graph-month-div-bc {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* .graph-month {
+    background: #F3F3F3;
+    height: 32px;
+    width: 45%;
+    border-radius: 7px;
+    font-family: 'Poppins';
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    margin-top: 4%;
+    outline: none;
+} */
+
+/* .widgets-order-div {
+    display: grid;
+    grid-template-areas:
+        '1 1'
+        '1 1';
+    grid-gap: 25px;
+
+
+    .widget-order-card {
+    width: 100%;
+    height: 100%;
+}
+} */
+
+
+.widgets-order-div-bc {
+    display: flex;
+    flex-grow: wrap;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.widget-order-card1-bc {
+    /* width: 48%;
+    height: 48%;
+    margin-bottom: 4%; */
+    width: 48%;
+    height: 47%;
+    margin-bottom: 5%;
+}
+
+.widget-order-card2-bc {
+    /* width: 48%;
+    height: 48%;
+    margin-bottom: 4%; */
+    width: 47%;
+    height: 47%;
+    margin-bottom: 5%;
+}
+
+.widget-order-card3-bc {
+    width: 48%;
+    height: 48%;
+}
+
+.widget-order-card4-bc {
+    /* width: 48%;
+    height: 48%; */
+    width: 47%;
+    height: 48%;
+}
+
+
+
+
+.widgets-card-div-bc {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.widget-card-bc {
+    width: 18.5%;
+    height: fit-content;
+}
+
+.widget-up-bc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-title-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    /* font-size: 12.2195px; */
+    font-size: 11.2195px;
+    color: #606060;
+}
+
+.card-orders-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22.4024px;
+    color: #000000;
+
+}
+
+.card-percentage-rise-bc {
+    font-family: 'Poppins';
+    font-size: 10.3809px;
+    color: #16C098;
+}
+
+.card-percentage-fall-bc {
+    font-family: 'Poppins';
+    font-size: 10.9622px;
+    color: #FF0000;
+}
+
+.card-month-bc {
+    font-family: 'Poppins';
+    font-size: 10.3809px;
+    color: #606060;
+}
+
+.widgets-featureInfo-div-bc {
+    display: flex;
+    margin-top: 25px;
+}
+
+
+
+.sales-month-bc {
+    font-family: 'Poppins';
+    font-size: 12px;
+    color: #000000;
+    /* background: #F3F3F3; */
+    height: 30px;
+    width: 110px;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+}
+
+
+
+.widgets-top-product-div-bc {
+    height: 100%;
+}
+
+.widgets-productTitle-div-bc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.widgets-product-title-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}

@@ -41,34 +41,35 @@ const SignIn = () => {
     }
   };
   return (
-    <div className="flexContainer">
-      <div className="leftDiv">
-        <div className="logoDiv">
-          <img className="logo" src={Frame} alt="B2b Logo" />
+    <div className="flexContainer-signIn">
+      <div className="leftDiv-signIn">
+        <div className="logoDiv-signIn">
+          <img className="logo-signIn" src={Frame} alt="B2b Logo" />
         </div>
-        <div className="sloganDiv">
+        <div className="sloganDiv-signIn">
           <img
-            className="illustration-signin"
+            className="illustration-signIn"
             src={Illustration}
             alt="illustration"
           />
-          <h3 className="slogon-signin">
+          <h3 className="slogon-signIn">
             Business Customer Supplies Ordering Solution
           </h3>
         </div>
       </div>
-      <div className="rightDiv">
-        <div className="upperDiv">
-          <h3 className="admin">Admin Portal</h3>
+      <div className="rightDiv-signIn">
+        <div className="upperDiv-signIn">
+          <h3 className="admin-signIn">Business Customer Manager</h3>
           <LangDropDown />
           {/* <select className="lang">
             <option>English (UK)</option>
             <option>Arabic (KSA)</option>
           </select> */}
         </div>
-        <div className="lowerDiv">
+        <div className="lowerDiv-signIn">
           <div className="signInDiv">
-            <p className="signIn">Sign in</p>
+            Sign in
+            {/* <p className="signIn"></p> */}
           </div>
 
           <input
@@ -87,7 +88,11 @@ const SignIn = () => {
             // onChange={(e) => setPassword(e.target.value)}
             onChange={(e) => setValues({ ...values, password: e.target.value })}
           />
-          <button className="submitBtn" type="submit" onClick={myFunction}>
+          <button
+            className="submitBtn-signIn"
+            type="submit"
+            onClick={myFunction}
+          >
             Sign in
           </button>
 
@@ -96,9 +101,27 @@ const SignIn = () => {
               Forgot Password ?
             </a>
           </p> */}
-          <Link className="modelForgetBtn" to="/forgetpassword">
+          <Link className="modelForgetBtn-signIn" to="/forgetpassword">
             Forgot Password ?
           </Link>
+        </div>
+        <div className="model-btnDiv-signIn">
+          <p className="signIn-paragraph">
+            Don't have an account ? &nbsp;
+            <Link
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "15px",
+                fontWeight: "500",
+                textDecoration: "none",
+                color: " #1879B8",
+                cursor: "pointer",
+              }}
+              to="/signup"
+            >
+              Sign up here!
+            </Link>
+          </p>
         </div>
       </div>
     </div>

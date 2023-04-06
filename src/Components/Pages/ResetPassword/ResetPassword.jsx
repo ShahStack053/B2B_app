@@ -44,12 +44,12 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="flexContainer">
-      <div className="leftDiv">
-        <div className="logoDiv">
-          <img className="logo" src={Frame} alt="B2b Logo" />
+    <div className="flexContainer-reset">
+      <div className="leftDiv-reset">
+        <div className="logoDiv-reset">
+          <img className="logo-reset" src={Frame} alt="B2b Logo" />
         </div>
-        <div className="sloganDiv">
+        <div className="sloganDiv-reset">
           <img
             className="illustration-reset"
             src={Illustration}
@@ -60,18 +60,19 @@ const ResetPassword = () => {
           </h3>
         </div>
       </div>
-      <div className="rightDiv">
-        <div className="upperDiv">
-          <h3 className="adminReset">Business Customer Manager</h3>
+      <div className="rightDiv-reset">
+        <div className="upperDiv-reset">
+          <h3 className="admin-reset">Business Customer Manager</h3>
           <LangDropDown />
           {/* <select className="langReset">
             <option>English (UK)</option>
             <option>Arabic (KSA)</option>
           </select> */}
         </div>
-        <div className="lowerDivReset">
-          <div className="resetPassDiv">
-            <h1 className="resetPass">Reset Password</h1>
+        <div className="lowerDiv-reset">
+          <div className="resetPass-div">
+            Reset Password
+            {/* <h1 className="resetPass"></h1> */}
           </div>
           <input
             className="reset-input"
@@ -91,18 +92,27 @@ const ResetPassword = () => {
               setValues({ ...values, confirmPassword: e.target.value })
             }
           />
-          <button className="confirmPassBtn" type="submit" onClick={myFunction}>
+          <button
+            className="confirmPass-btn"
+            type="submit"
+            onClick={myFunction}
+          >
             Confirm Password
           </button>
           <p className="reset-paragraph">
             or&nbsp;
-            <Link className="model-reset-back-btn" to="/forgetpassword">
+            <Link
+              style={{
+                fontFamily: "Poppins",
+                fontSize: "15px",
+                fontWeight: "500",
+                textDecoration: "none",
+                color: " #1879B8",
+                cursor: "pointer",
+              }}
+              to="/otp"
+            >
               Go Back!
-            </Link>
-          </p>
-          <p>
-            <Link className="modelForgetBtn" to="/otp">
-              Go to Otp!
             </Link>
           </p>
         </div>

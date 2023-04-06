@@ -1,6 +1,8 @@
 import { Table } from "antd";
+import "./FeatureTable.css";
 import { useState } from "react";
 import userImage from "../../Assets/Images/userImage.png";
+
 const data = [
   {
     key: "1",
@@ -16,7 +18,7 @@ const data = [
     email: "raza@123.com",
     avatar: userImage,
     price: "SAR 1,560.93",
-    orders: 856,
+    orders: 865,
   },
   {
     key: "3",
@@ -40,21 +42,16 @@ const data = [
     email: "raza@123.com",
     avatar: userImage,
     price: "SAR 108,880.93",
-    orders: 866,
+    orders: 886,
   },
 ];
+
 const FeaturedCusTable = () => {
   const [sortedInfo, setSortedInfo] = useState({});
-  const handleChange = (sorter) => {
-    console.log(sorter);
+
+  const handleChange = (pagination, filters, sorter) => {
     setSortedInfo(sorter);
   };
-  // const setOrderSort = () => {
-  //   setSortedInfo({
-  //     order: "descend",
-  //     columnKey: "orders",
-  //   });
-  // };
 
   const columns = [
     {
@@ -65,6 +62,8 @@ const FeaturedCusTable = () => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
+            fontSize: "12.2195px",
+            width: 160,
           }}
         >
           Business Customer Name
@@ -72,8 +71,8 @@ const FeaturedCusTable = () => {
       ),
       dataIndex: "name",
       key: "name",
-      sorter: (a, b) => a.name.length - b.name.length,
-      sortOrder: sortedInfo.columnKey === "name" ? sortedInfo.order : null,
+      sorter: (a, b) => a.name.localeCompare(b.name),
+      sortOrder: sortedInfo.columnKey === "name" && sortedInfo.order,
       ellipsis: true,
       render: (text, record) => (
         <div>
@@ -84,7 +83,7 @@ const FeaturedCusTable = () => {
               width: "30px",
               height: "30px",
               borderRadius: "50%",
-              marginRight: "10px",
+              marginRight: "14px",
             }}
           />
           <div style={{ display: "inline-block" }}>
@@ -113,9 +112,8 @@ const FeaturedCusTable = () => {
           </div>
         </div>
       ),
+      width: "35%",
     },
-
-    //=================================Price================================
     {
       title: (
         <div
@@ -123,7 +121,9 @@ const FeaturedCusTable = () => {
             color: "#606060",
             fontFamily: "Poppins",
             fontStyle: "normal",
+            fontSize: "12.2195px",
             fontWeight: 400,
+            textAlign: "center",
           }}
         >
           Price
@@ -131,22 +131,26 @@ const FeaturedCusTable = () => {
       ),
       dataIndex: "price",
       key: "price",
-      sorter: (a, b) => a.price - b.price,
-      sortOrder: sortedInfo.columnKey === "price" ? sortedInfo.order : null,
+      sorter: (a, b) =>
+        parseFloat(a.price.replace(/[^0-9.-]+/g, "")) -
+        parseFloat(b.price.replace(/[^0-9.-]+/g, "")),
+      sortOrder: sortedInfo.columnKey === "price" && sortedInfo.order,
       ellipsis: true,
       render: (text) => (
-        <span
+        <div
           style={{
             color: "#000000",
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
             fontSize: "14px",
+            width: "20%",
           }}
         >
           {text}
-        </span>
+        </div>
       ),
+      width: "20%",
     },
     {
       title: (
@@ -156,6 +160,8 @@ const FeaturedCusTable = () => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
+            fontSize: "12.2195px",
+            width: "10%",
           }}
         >
           Total Orders
@@ -163,12 +169,11 @@ const FeaturedCusTable = () => {
       ),
       dataIndex: "orders",
       key: "orders",
-
-      sorter: (a, b) => a.orders.length - b.orders.length,
-      sortOrder: sortedInfo.columnKey === "orders" ? sortedInfo.order : null,
+      sorter: (a, b) => a.orders - b.orders,
+      sortOrder: sortedInfo.columnKey === "orders" && sortedInfo.order,
       ellipsis: true,
       render: (text) => (
-        <span
+        <div
           style={{
             color: "#000000",
             fontFamily: "Poppins",
@@ -178,26 +183,20 @@ const FeaturedCusTable = () => {
           }}
         >
           {text}
-        </span>
+        </div>
       ),
+      width: "22%",
     },
   ];
+
   return (
-    <>
-      {/* <Space
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        <Button onClick={setOrderSort}> Sort age </Button>
-      </Space> */}
-      <Table
-        columns={columns}
-        dataSource={data}
-        onChange={handleChange}
-        pagination={false}
-      />
-    </>
+    <Table
+      columns={columns}
+      dataSource={data}
+      onChange={handleChange}
+      pagination={false}
+    />
   );
 };
+
 export default FeaturedCusTable;

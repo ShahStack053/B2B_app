@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Menu } from "antd";
+import lang from "../../Assets/Images/lang.png";
+import dropIcon from "../../Assets/Images/dropIcon.png";
 
 const items = [
   {
@@ -21,12 +23,20 @@ const LangDropDown = () => {
     setSelectedLang(selectedItem.label);
   };
 
+  const langIconStyle = { width: "25px", marginLeft: 10 };
+  const dropIconStyle = { width: "10px" };
+
   return (
     <Dropdown
       overlay={
         <Menu onClick={handleMenuClick}>
           {items.map((item) => (
-            <Menu.Item key={item.key}>{item.label}</Menu.Item>
+            <Menu.Item key={item.key}>
+              <Space>
+                <img src={lang} alt="Language" style={langIconStyle} />
+                {item.label}
+              </Space>
+            </Menu.Item>
           ))}
         </Menu>
       }
@@ -37,9 +47,15 @@ const LangDropDown = () => {
           fontFamily: "Poppins",
           fontSize: "14px",
           color: "#000000",
+          background: "#F3F3F3",
+          height: 39,
+          width: 170,
+          borderRadius: 7,
+          marginTop: 14,
         }}
       >
-        {selectedLang} <DownOutlined />
+        <img src={lang} alt="Language" style={langIconStyle} /> {selectedLang}{" "}
+        <img src={dropIcon} alt="Language" style={dropIconStyle} />
       </Space>
     </Dropdown>
   );
