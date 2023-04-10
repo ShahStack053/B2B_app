@@ -9,6 +9,8 @@ import Dashboard from "./Components/Pages/Dashboard/SuperAdmin/Dashboard";
 import MonthDropDown from "./Components/Dropdown/MonthDropDown";
 import LineChart from "./Components/Chart/LineChart";
 import DashboardBc from "./Components/Pages/Dashboard/BC/DashboardBc";
+//import FeatureWidgetCard from "./Components/featureWidgetCard/FeatureOrderCard/FeatureOrderCard";
+import FeatureValueOrderCard from "./Components/featureWidgetCard/FeatureValueOrderCard/FeatureValueOrderCard";
 
 //fonts
 
@@ -45,6 +47,7 @@ function App() {
           <Route path="/bc" element={<DashboardBc />} />
           <Route path="/lang" element={<MonthDropDown />} />
           <Route path="/chart" element={<LineChart />} />
+          <Route path="/card" element={<FeatureValueOrderCard />} />
         </Routes>
       </BrowserRouter>
     </div>

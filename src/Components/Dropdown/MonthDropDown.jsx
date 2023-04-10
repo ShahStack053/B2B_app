@@ -2,35 +2,31 @@ import React, { useState } from "react";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Menu } from "antd";
 
-const items = [
+const dates = [
   {
-    label: "Today",
+    label: "8 Jul - 24 Jul",
     key: "0",
   },
   {
-    label: "Last_Seven-Day",
+    label: "1 Jul - 10 Jul",
     key: "1",
-  },
-  {
-    label: "This-Month",
-    key: "2",
   },
 ];
 
 const MonthDropDown = () => {
-  const [selectedLang, setSelectedLang] = useState(items[0].label);
+  const [selectedDates, setSelectedDates] = useState(dates[0].label);
 
-  const handleMenuClick = (e) => {
-    const selectedItem = items.find((item) => item.key === e.key);
-    setSelectedLang(selectedItem.label);
+  const handleClick = (e) => {
+    const selectedItem = dates.find((value) => value.key === e.key);
+    setSelectedDates(selectedItem.label);
   };
 
   return (
     <Dropdown
       overlay={
-        <Menu onClick={handleMenuClick}>
-          {items.map((item) => (
-            <Menu.Item key={item.key}>{item.label}</Menu.Item>
+        <Menu onClick={handleClick}>
+          {dates.map((value) => (
+            <Menu.Item key={value.key}>{value.label}</Menu.Item>
           ))}
         </Menu>
       }
@@ -47,7 +43,7 @@ const MonthDropDown = () => {
           borderRadius: 12,
         }}
       >
-        {selectedLang} <DownOutlined />
+        {selectedDates} <DownOutlined />
       </Space>
     </Dropdown>
   );

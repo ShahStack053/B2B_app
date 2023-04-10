@@ -1,0 +1,78 @@
+.widgets-card-div-bc {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.widget-card-bc {
+    width: 210.35px;
+    height: 212px;
+}
+
+.widget-up-bc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.widget-orderImages-bc {
+    background: #E8E8E8;
+    border-radius: 9.2195px;
+    width: 22px;
+    padding: 3px;
+}
+
+/* .widget-dash-bc {
+    background: #E8E8E8;
+    opacity: 0.4;
+    border-radius: 9.2195px;
+    width: 24px;
+    height: 25px;
+    padding: 6px;
+} */
+
+.widget-cardImages-bc {
+    background: #E8E8E8;
+    border-radius: 9.2195px;
+    width: 17px;
+    /* height: 22px; */
+    padding: 6px;
+}
+
+
+
+.card-title-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    /* font-size: 12.2195px; */
+    font-size: 11.2195px;
+    color: #606060;
+}
+
+.card-orders-bc {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22.4024px;
+    color: #000000;
+
+}
+
+.card-percentage-rise-bc {
+    font-family: 'Poppins';
+    font-size: 10.3809px;
+    color: #16C098;
+}
+
+.card-percentage-fall-bc {
+    font-family: 'Poppins';
+    font-size: 10.9622px;
+    color: #FF0000;
+}
+
+.card-month-bc {
+    font-family: 'Poppins';
+    font-size: 10.3809px;
+    color: #606060;
+}
