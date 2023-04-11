@@ -1,5 +1,5 @@
 import React from "react";
-import { DashOutlined, RiseOutlined } from "@ant-design/icons";
+import { DashOutlined, RiseOutlined, FallOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import openValue from "../../../Assets/Images/openValue.png";
 import "./FeatureValueOrderCard.css";
@@ -13,25 +13,37 @@ const FeatureValueOrderCard = ({
 }) => {
   return (
     <div>
-      <Card className="widget-card-bc">
-        <div className="widget-up-bc">
+      <Card className="widget-card">
+        <div className="widget-valueCard-up">
           <span>
             <img
-              className="widget-cardImages-bc"
+              className="widget-valueCard-Image"
               src={openValue}
               alt="CompletedOrder.png"
             />
           </span>
           <span>
-            <DashOutlined className="widget-dash-bc" />
+            <DashOutlined className="widget-valueCard-dash" />
           </span>
         </div>
         <div>
-          <span className="card-title-bc">{name}Orders</span>
-          <p className="card-orders-bc">SAR &nbsp;{totalOrderValue}</p>
-          <p className="card-percentage-rise-bc">
-            <RiseOutlined /> &nbsp; {percentage}% &nbsp;
-            <span className="card-month-bc">From {previousMonthName}</span>
+          <span className="widget-valueCard-title">{name}</span>
+          <p className="widget-valueCard-value">SAR &nbsp;{totalOrderValue}</p>
+
+          <p className="widget-valueCard-percentage">
+            <span
+              style={{
+                fontFamily: "Poppins",
+                fontSize: 10.3809,
+                color: percentage >= 0 ? " #16C098" : "#FF0000",
+              }}
+            >
+              {percentage >= 0 ? <RiseOutlined /> : <FallOutlined />}
+              &nbsp; {percentage}% &nbsp;
+            </span>
+            <span className="widget-valueCard-month">
+              From {previousMonthName}
+            </span>
           </p>
         </div>
       </Card>

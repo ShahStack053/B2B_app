@@ -1,380 +1,383 @@
 import React from "react";
-import logo from "../../../../Assets/Images/logo.png";
-import userImage from "../../../../Assets/Images/userImage.png";
-import { Card, Input } from "antd";
-// import FeatureWidgetCard from "../../featureWidgetCard/FeatureWidgetCard";
 
-import "./Dashboard.css";
+// import rejectedOrderImage from "../../../../Assets/Images/rejectedOrderImage.png";
+// import pendingOrderImage from "../../../../Assets/Images/pendingOrderImage.png";
+// import newOrderImage from "../../../../Assets/Images/newOrderImage.png";
+// import completedOrderImage from "../../../../Assets/Images/completedOrderImage.png";
+//import bcPendingApprovalImage from "../../../../Assets/Images/bcPendingApprovalImage.png";
+//import totalBcImage from "../../../../Assets/Images/totalBcImage.png";
+//import openValue from "../../../../Assets/Images/openValue.png";
+import totalBcUsersImage from "../../../../Assets/Images/totalBcUsersImage.png";
+import { Card } from "antd";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { DownOutlined } from "@ant-design/icons";
+import { Dropdown, Space, Menu } from "antd";
 
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  FormOutlined,
-  UserOutlined,
-  TeamOutlined,
-  ShoppingCartOutlined,
-  ShopOutlined,
-  SettingOutlined,
-  SearchOutlined,
-  RiseOutlined,
-  BellOutlined,
-  ShopFilled,
-  FallOutlined,
-  DashOutlined,
-  ShoppingOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons";
-import { Menu } from "antd";
-import LangDropDown from "../../../Dropdown/LangDropDown";
-import PersonDropDown from "../../../Dropdown/PersonDropDown";
-import MonthDropDown from "../../../Dropdown/MonthDropDown";
-import FeaturedCusTable from "../../../featureTable/FeaturedCusTable";
+import FeatureOrderCard from "../../../featureWidgetCard/FeatureOrderCard/FeatureOrderCard";
+import FeatureValueOrderCard from "../../../featureWidgetCard/FeatureValueOrderCard/FeatureValueOrderCard";
 import FeaturedProductTable from "../../../featureTable/FeaturedProductTable";
 import LineChart from "../../../Chart/LineChart";
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-//date
-const date = new Date("28 Jul, 2022");
-const options = { year: "numeric", month: "short", day: "numeric" };
-const formattedDate = date.toLocaleDateString("en-US", options);
-// formattedDate will be "Jul 28, 2022"
+import "./Dashboard.css";
 
-const month = formattedDate.split(" ")[0];
-const day = formattedDate.split(" ")[1].slice(0, -1);
-const year = formattedDate.split(" ")[2];
-const finalDate = `${day} ${month}, ${year}`;
+import { RiseOutlined, FallOutlined, DashOutlined } from "@ant-design/icons";
+import FeatureCustomerCard from "../../../featureWidgetCard/FeatureCustomerCard/FeatureCustomerCard";
 
-//Side bar Item
-const items = [
-  getItem("Dashboard", "1", <AppstoreOutlined />),
-  getItem("Orders", "2", <ShoppingCartOutlined />),
-  getItem("Request for Quotations", "3", <FormOutlined />),
-  getItem("My Products", "4", <ShopOutlined />),
-  getItem("Finances", "5", <BarChartOutlined />),
-  getItem("Admins", "6", <TeamOutlined />),
-  getItem("Dark Stores", "7", <ShopFilled />),
-  getItem("Business Customers", "8", <TeamOutlined />),
+//===========================Values for MonthdropDown====================
+const values = [
   {
-    type: "divider",
+    label: "Today",
+    key: "0",
   },
-  getItem("Manage Users", "9", <UserOutlined />),
-  getItem("Profile", "10", <UserOutlined />),
-  getItem("Settings", "11", <SettingOutlined />),
-  getItem("Logout", "12", <LogoutOutlined />),
+  {
+    label: "Last_Seven-Day",
+    key: "1",
+  },
+  {
+    label: "This-Month",
+    key: "2",
+  },
+];
+
+//============================ Values of Date dropDown =======================
+const dates = [
+  {
+    label: "8 Jul - 24 Jul",
+    key: "0",
+  },
+  {
+    label: "1 Jul - 10 Jul",
+    key: "1",
+  },
 ];
 const Dashboard = () => {
-  return (
-    <div className="flexDashboard">
-      <div className="sideBar">
-        <div className="logoSidebar">
-          <img className="logobar" src={logo} alt="B2b Logo" />
-        </div>
-        <div className="lowerSidebar">
-          <Menu
-            style={{
-              fontFamily: "Poppins",
-              fontSize: "14px",
-              fontWeight: "400",
-              color: "#000000",
-            }}
-            defaultSelectedKeys={["1"]}
-            mode="inline"
-            items={items}
-          />
+  const [orders, setOrders] = useState([]);
+  const [orderValues, setOrderValues] = useState([]);
+  const [BCustomer, setBCustomer] = useState([]);
+  const [BcUser, setBcUser] = useState([]);
+  const [freqOrderProduct, setFreqOrderProduct] = useState([]);
+  const [graphData, setgraphData] = useState([]);
 
-          {/* <select className="langSide">
-            <option>English (UK)</option>
-          </select> */}
+  //===================================UseState For MonthDropDOwn=================
+  const [selectedDuration, setSelectedDuration] = useState(values[2].label);
+
+  const handleMenuClick = (e) => {
+    const selectedItem = values.find((value) => value.key === e.key);
+    setSelectedDuration(selectedItem.label);
+  };
+  //===================================UseEffect For orders=================
+  useEffect(() => {
+    var data = JSON.stringify({
+      duration: selectedDuration,
+    });
+    axios({
+      method: "post",
+      url: `https://api-customer-dev.b2bprice.store/api/BCDashboard/GetOrderDashboard`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("data====>", res.data.data);
+        setOrders(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, [selectedDuration]);
+
+  //===================================UseEffect For ordersValues=================
+  useEffect(() => {
+    var data = JSON.stringify({
+      duration: selectedDuration,
+    });
+    axios({
+      method: "post",
+      url: `https://api-customer-dev.b2bprice.store/api/BCDashboard/GetOrderValueDashboard`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("dataValues====>", res.data.data);
+        setOrderValues(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, [selectedDuration]);
+  //===================================UseEffect For BusinessCustomer=================
+  useEffect(() => {
+    var data = JSON.stringify({
+      duration: selectedDuration,
+    });
+    axios({
+      method: "post",
+      url: `https://api-customer-dev.b2bprice.store/api/BCDashboard/GetBCCustomerDashboard`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("dataBCustomer====>", res.data.data);
+        setBCustomer(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, [selectedDuration]);
+  //===================================UseEffect For BusinessCustomer Users=================
+  useEffect(() => {
+    var data = JSON.stringify({
+      duration: selectedDuration,
+    });
+    axios({
+      method: "post",
+      url: `https://api-customer-dev.b2bprice.store/api/BCDashboard/GetBCUserDashboard`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("dataBCuser====>", res.data.data);
+        setBcUser(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, [selectedDuration]);
+  //=====================================Use Effect For graph Data=================
+  useEffect(() => {
+    var data = JSON.stringify({
+      duration: selectedDuration,
+    });
+    axios({
+      method: "post",
+      url: `https://api-customer-dev.b2bprice.store/api/BCDashboard/GetOrderGraph`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("dataGraphOrder====>", res.data.data);
+        setgraphData(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, [selectedDuration]);
+  //====================================UseState for Date Drop Down==========================
+  const [selectedDates, setSelectedDates] = useState(dates[0].label);
+
+  const handleClick = (e) => {
+    const selectedItem = dates.find((value) => value.key === e.key);
+    setSelectedDates(selectedItem.label);
+  };
+  //===================================UseEffect For Frequently Order Product=================
+  useEffect(() => {
+    var data = JSON.stringify({
+      duration: selectedDates,
+    });
+    axios({
+      method: "post",
+      url: `https://api-customer-dev.b2bprice.store/api/BCDashboard/GetFrequentOrderProduct`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("dataProduct====>", res.data.data);
+        setFreqOrderProduct(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, [selectedDates]);
+
+  return (
+    <div className="container">
+      <div className="main">
+        <div className="graph-div">
+          <Card className="graph-card">
+            <div className="graph-card-up">
+              <div className="graph-credential-div">
+                <span className="graph-title"> Overall Orders</span>
+                <p className="graph-price">
+                  Orders Dummy&nbsp;&nbsp;
+                  <span className="graph-percentage">
+                    <RiseOutlined />
+                    &nbsp; 13.02%
+                  </span>
+                </p>
+              </div>
+              <div className="graph-month-div">
+                <Dropdown
+                  overlay={
+                    <Menu onClick={handleMenuClick}>
+                      {values.map((value) => (
+                        <Menu.Item key={value.key}>{value.label}</Menu.Item>
+                      ))}
+                    </Menu>
+                  }
+                  trigger={["click"]}
+                >
+                  <Space
+                    style={{
+                      height: 35,
+                      fontFamily: "Poppins",
+                      fontSize: "14px",
+                      color: "#000000",
+                      background: " #F3F3F3",
+                      padding: 10,
+                      borderRadius: 12,
+                    }}
+                  >
+                    {selectedDuration} <DownOutlined />
+                  </Space>
+                </Dropdown>
+              </div>
+            </div>
+            <div className="graph">
+              <LineChart graphData={graphData} />
+            </div>
+          </Card>
         </div>
-        <div className="LangDropDiv">
-          <LangDropDown />
+        <div className="widgets-order-div">
+          {orders?.map((x, i) => {
+            return (
+              <FeatureOrderCard
+                key={i}
+                count={x.count}
+                name={x.name}
+                previousMonthName={x.previousMonthName}
+                percentage={x.percentage}
+              />
+            );
+          })}
         </div>
       </div>
-      <div className="rightSideDiv">
-        <div className="topBar">
-          <div className="searchLeftTop">
-            <Input
-              style={{ borderRadius: 18, width: 265 }}
-              placeholder="Search..."
-              prefix={<SearchOutlined />}
+      {/* RAaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+      <div className="widgets-card-div">
+        {orderValues?.map((x, i) => {
+          return (
+            <FeatureValueOrderCard
+              key={i}
+              openOrderValue={x.openOrderValue}
+              totalOrderValue={x.totalOrderValue}
+              name={x.name}
+              previousMonthName={x.previousMonthName}
+              percentage={x.percentage}
             />
-          </div>
-          <div className="dashboardTopBarDiv">
-            <h3 className="dashboardTop">Super Admin</h3>
-          </div>
-          <div className="topBarRight">
-            <p className="DateTop">{finalDate}</p>
-            <span className="iconbellTop">
-              <BellOutlined />
+          );
+        })}
+        {BcUser.map((BcUser) => (
+          <Card className="widget-card">
+            <div className="widget-userCard-up">
+              <span>
+                <img
+                  className="widget-userCard-Image"
+                  src={totalBcUsersImage}
+                  alt="CompletedOrder.png"
+                />
+              </span>
+              <span>
+                <DashOutlined className="widget-userCard-dash" />
+              </span>
+            </div>
+            <div>
+              <span className="widget-userCard-title"> {BcUser.name}</span>
+              <p className="widget-userCard-count"> {BcUser.count}</p>
+              <p className="widget-userCard-percentage">
+                <span
+                  style={{
+                    fontFamily: "Poppins",
+                    fontSize: 10.3809,
+                    color: BcUser.percentage >= 0 ? " #16C098" : "#FF0000",
+                  }}
+                >
+                  {BcUser.percentage >= 0 ? <RiseOutlined /> : <FallOutlined />}
+                  &nbsp; {BcUser.percentage}% &nbsp;
+                </span>
+                <span className="widget-userCard-month">
+                  From {BcUser.previousMonthName}
+                </span>
+              </p>
+            </div>
+          </Card>
+        ))}
+        <>
+          {BCustomer?.map((x, i) => {
+            return (
+              <FeatureCustomerCard
+                key={i}
+                count={x.count}
+                name={x.name}
+                previousMonthName={x.previousMonthName}
+                percentage={x.percentage}
+              />
+            );
+          })}
+        </>
+      </div>
+      <div className="widgets-featureInfo-div">
+        <Card className="widgets-top-product-div">
+          <div className="widgets-productTitle-div">
+            <span className="widgets-product-title">
+              Top 10 Frequently Ordered Products
             </span>
-            <img src={userImage} alt="userImage" className="userImage" />
-            <PersonDropDown />
-            {/* <select className="personDropDown">
-              <option>Jamal</option>
-              <option>Jamal</option>
-            </select> */}
+            <Dropdown
+              overlay={
+                <Menu onClick={handleClick}>
+                  {dates.map((value) => (
+                    <Menu.Item key={value.key}>{value.label}</Menu.Item>
+                  ))}
+                </Menu>
+              }
+              trigger={["click"]}
+            >
+              <Space
+                style={{
+                  height: 35,
+                  fontFamily: "Poppins",
+                  fontSize: "14px",
+                  color: "#000000",
+                  //background: " #F3F3F3",
+                  padding: 10,
+                  borderRadius: 12,
+                }}
+              >
+                {selectedDates} <DownOutlined />
+              </Space>
+            </Dropdown>
           </div>
-        </div>
-        <div className="container">
-          <div className="main">
-            <Card className="graph-div">
-              <div className="graph-div-up">
-                <div className="graph-credential-div">
-                  <span className="graph-title"> Overall Orders</span>
-                  <p className="graph-price">
-                    SAR 238,560.93&nbsp;&nbsp;
-                    <span className="graph-percentage">
-                      <RiseOutlined />
-                      &nbsp; 13.02%
-                    </span>
-                  </p>
-                </div>
-                <div className="graph-month-div">
-                  <MonthDropDown />
-                  {/* <select className="graph-month">
-                    <option>This Month</option>
-                  </select> */}
-                </div>
-              </div>
-              <div className="graph">
-                <LineChart />
-              </div>
-            </Card>
-
-            <div className="widgets-order-div">
-              <Card className="widget-order-card1">
-                <div className="widget-up">
-                  <span>
-                    <ShoppingOutlined />
-                  </span>
-                  <span>
-                    <DashOutlined />
-                  </span>
-                </div>
-                <div>
-                  <span className="card-title"> Completed Orders</span>
-                  <p className="card-orders"> 10,856</p>
-                  <p className="card-percentage-rise">
-                    <RiseOutlined />
-                    &nbsp; 13.02% &nbsp;
-                    <span className="card-month">From May</span>
-                  </p>
-                </div>
-              </Card>
-              <Card className="widget-order-card2">
-                <div className="widget-up">
-                  <span>
-                    <ShoppingOutlined />
-                  </span>
-                  <span>
-                    <DashOutlined />
-                  </span>
-                </div>
-                <div>
-                  <span className="card-title">New Orders</span>
-                  <p className="card-orders"> 563</p>
-                  <p className="card-percentage-rise">
-                    <RiseOutlined />
-                    &nbsp; 3.02% &nbsp;
-                    <span className="card-month">From May</span>
-                  </p>
-                </div>
-              </Card>
-              <Card className="widget-order-card3">
-                <div className="widget-up">
-                  <span>
-                    <ShoppingOutlined />
-                  </span>
-                  <span>
-                    <DashOutlined />
-                  </span>
-                </div>
-                <div>
-                  <span className="card-title"> Pending Orders</span>
-                  <p className="card-orders"> 23</p>
-                  <p className="card-percentage-rise">
-                    <RiseOutlined />
-                    &nbsp; 6.02%% &nbsp;
-                    <span className="card-month">From May</span>
-                  </p>
-                </div>
-              </Card>
-              <Card className="widget-order-card4">
-                <div className="widget-up">
-                  <span>
-                    <ShoppingOutlined />
-                  </span>
-                  <span>
-                    <DashOutlined />
-                  </span>
-                </div>
-                <div>
-                  <span className="card-title"> Rejected Orders</span>
-                  <p className="card-orders"> 122</p>
-                  <p className="card-percentage-fall">
-                    <FallOutlined />
-                    &nbsp; 0.32% &nbsp;
-                    <span className="card-month">From May</span>
-                  </p>
-                </div>
-              </Card>
-            </div>
+          <div className="widgets-productInfo-div">
+            <FeaturedProductTable freqOrderProduct={freqOrderProduct} />
           </div>
-          <div className="widgets-card-div">
-            <Card className="widget-card">
-              <div className="widget-up">
-                <span>
-                  <ShoppingOutlined />
-                </span>
-                <span>
-                  <DashOutlined />
-                </span>
-              </div>
-              <div>
-                <span className="card-title"> Total Order Value</span>
-                <p className="card-orders"> 18,560.93</p>
-                <p className="card-percentage-rise">
-                  <RiseOutlined /> &nbsp; 13.02% &nbsp;
-                  <span className="card-month">From May</span>
-                </p>
-              </div>
-            </Card>
-            <Card className="widget-card">
-              <div className="widget-up">
-                <span>
-                  <ShoppingOutlined />
-                </span>
-                <span>
-                  <DashOutlined />
-                </span>
-              </div>
-              <div>
-                <span className="card-title"> Open Order Value</span>
-                <p className="card-orders"> 564.34</p>
-                <p className="card-percentage-rise">
-                  <RiseOutlined />
-                  &nbsp; 3.02% &nbsp;
-                  <span className="card-month">From May</span>
-                </p>
-              </div>
-            </Card>
-            <Card className="widget-card">
-              <div className="widget-up">
-                <span>
-                  <ShoppingOutlined />
-                </span>
-                <span>
-                  <DashOutlined />
-                </span>
-              </div>
-              <div>
-                <span className="card-title"> Total Business Customer</span>
-                <p className="card-orders"> 8,560</p>
-                <p className="card-percentage-rise">
-                  <RiseOutlined />
-                  &nbsp; 13.02% &nbsp;
-                  <span className="card-month">From May</span>
-                </p>
-              </div>
-            </Card>
-            <Card className="widget-card">
-              <div className="widget-up">
-                <span>
-                  <ShoppingOutlined />
-                </span>
-                <span>
-                  <DashOutlined />
-                </span>
-              </div>
-              <div>
-                <span className="card-title"> Total BC Users</span>
-                <p className="card-orders"> 6,434</p>
-                <p className="card-percentage-rise">
-                  <RiseOutlined />
-                  &nbsp; 3.02% &nbsp;
-                  <span className="card-month">From May</span>
-                </p>
-              </div>
-            </Card>
-            <Card className="widget-card">
-              <div className="widget-up">
-                <span>
-                  <ShoppingOutlined />
-                </span>
-                <span>
-                  <DashOutlined />
-                </span>
-              </div>
-              <div>
-                <span className="card-title"> BC Pending Approval</span>
-                <p className="card-orders"> 34</p>
-                <p className="card-percentage-rise">
-                  <RiseOutlined />
-                  &nbsp; 3.02% &nbsp;
-                  <span className="card-month">From May</span>
-                </p>
-              </div>
-            </Card>
-          </div>
-          <div className="widgets-featureInfo-div">
-            <Card className="widgets-customer-div">
-              <div className="widgets-customerTitle-div">
-                <span className="widgets-customer-title">
-                  Top 10 Business Customer
-                </span>
-                <select className="sales-month">
-                  <option>8 Jul&nbsp; - &nbsp;24 Jul</option>
-                </select>
-              </div>
-              <div className="widgets-customerInfo-div">
-                <FeaturedCusTable />
-              </div>
-            </Card>
-            <Card className="widgets-top-product-div">
-              <div className="widgets-productTitle-div">
-                <span className="widgets-product-title">
-                  Top 10 Frequently Ordered Products
-                </span>
-                <select className="sales-month">
-                  <option>8 Jul&nbsp; - &nbsp;24 Jul</option>
-                </select>
-              </div>
-              <div className="widgets-productInfo-div">
-                <FeaturedProductTable />
-              </div>
-            </Card>
-          </div>
-        </div>
-        {/* <div className="main">
-          <div className="top-main-div">
-            <div className="top-main-left">
-              <div className="top-main-left-up">
-                <div className="top-main-left-up-left">
-                  <p className="top-main-left-up-left-orders">Overall Orders</p>
-                  <div className="top-main-left-up-left-child">
-                    <p className="top-main-left-up-left-child-price">
-                      SAR 238,560.93 &nbsp;
-                    </p>
-                    <span className="top-main-left-up-left-child-percent">
-                      <RiseOutlined />
-                      13.02%
-                    </span>
-                  </div>
-                </div>
-                <div className="top-main-left-up-right">RightUp</div>
-              </div>
-              <div className="top-main-left-down">leftDown</div>
-            </div>
-            <div className="top-main-right">Right Main</div>
-          </div>
-        </div> */}
+        </Card>
       </div>
     </div>
   );

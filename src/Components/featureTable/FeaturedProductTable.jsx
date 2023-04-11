@@ -10,12 +10,12 @@ const FeaturedProductTable = ({
   count,
   freqOrderProduct,
 }) => {
-  const [sortedInfo, setSortedInfo] = useState({});
+  // const [sortedInfo, setSortedInfo] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
-  const handleChange = (pagination, filters, sorter) => {
-    console.log(sorter);
-    setSortedInfo(sorter);
-  };
+  // const handleChange = (pagination, filters, sorter) => {
+  //   console.log(sorter);
+  //   setSortedInfo(sorter);
+  // };
 
   const data = freqOrderProduct.map((product, index) => ({
     key: index + 1,
@@ -216,7 +216,7 @@ const FeaturedProductTable = ({
       <Table
         columns={columns}
         dataSource={freqOrderProduct}
-        onChange={handleChange}
+        // onChange={handleChange}
         pagination={{
           current: currentPage,
           pageSize: 5,

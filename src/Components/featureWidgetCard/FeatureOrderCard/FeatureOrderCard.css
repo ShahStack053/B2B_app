@@ -1,7 +1,4 @@
 .widget-order-card {
-    /* width: 48%;
-    height: 48%;
-    margin-bottom: 4%; */
     width: 100%;
     height: 100%;
 }
@@ -11,19 +8,19 @@
     height: fit-content;
 }
 
-.widget-up {
+.widget-orderCard-up {
     display: flex;
     justify-content: space-between;
 }
 
-.widget-orderImages-bc {
+.widget-orderCard-Images {
     background: #E8E8E8;
     border-radius: 9.2195px;
     width: 22px;
     padding: 3px;
 }
 
-/* .widget-dash-bc {
+/* .widget-orderCard-dash {
     background: #E8E8E8;
     opacity: 0.4;
     border-radius: 9.2195px;
@@ -32,19 +29,19 @@
     padding: 6px;
 } */
 
-.card-title {
+.widget-orderCard-title {
     font-family: 'Poppins';
     font-size: 12.2195px;
     color: #606060;
 }
 
-.card-orders {
+.widget-orderCard-count {
     font-family: 'Poppins';
     font-size: 22.4024px;
     color: #000000;
 }
 
-.card-percentage-rise {
+/* .card-percentage-rise {
     font-family: 'Poppins';
     font-size: 10.3809px;
     color: #16C098;
@@ -54,9 +51,9 @@
     font-family: 'Poppins';
     font-size: 10.9622px;
     color: #FF0000;
-}
+} */
 
-.card-month {
+.widget-orderCard-month {
     font-family: 'Poppins';
     font-size: 10.3809px;
     color: #606060;

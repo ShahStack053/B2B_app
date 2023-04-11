@@ -1,5 +1,5 @@
 import React from "react";
-import { DashOutlined, RiseOutlined } from "@ant-design/icons";
+import { DashOutlined, RiseOutlined, FallOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import totalBcImage from "../../../Assets/Images/totalBcImage.png";
 import "./FeatureCustomerCard.css";
@@ -12,26 +12,36 @@ const FeatureCustomerCard = ({
 }) => {
   return (
     <div>
-      <Card className="widget-card-bc">
-        <div className="widget-up-bc">
+      <Card className="widget-card">
+        <div className="widget-customerCard-up">
           <span>
             <img
-              className="widget-cardImages-bc"
+              className="widget-customerCard-Images"
               src={totalBcImage}
               alt="CompletedOrder.png"
             />
           </span>
           <span>
-            <DashOutlined className="widget-dash-bc" />
+            <DashOutlined className="widget-customerCard-dash" />
           </span>
         </div>
         <div>
-          <span className="card-title-bc"> {name}</span>
-          <p className="card-orders-bc"> {count}</p>
-          <p className="card-percentage-rise-bc">
-            <RiseOutlined />
-            &nbsp; {percentage}% &nbsp;
-            <span className="card-month-bc">From {previousMonthName}</span>
+          <span className="widget-customerCard-title"> {name}</span>
+          <p className="widget-customerCard-count"> {count}</p>
+          <p className="widget-customerCard-percentage">
+            <span
+              style={{
+                fontFamily: "Poppins",
+                fontSize: 10.3809,
+                color: percentage >= 0 ? " #16C098" : "#FF0000",
+              }}
+            >
+              {percentage >= 0 ? <RiseOutlined /> : <FallOutlined />}
+              &nbsp; {percentage}% &nbsp;
+            </span>
+            <span className="widget-customerCard-month">
+              From {previousMonthName}
+            </span>
           </p>
         </div>
       </Card>

@@ -1,47 +1,21 @@
-.widgets-card-div-bc {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 25px;
+.widget-card {
+    width: 205px;
+    height: 190px;
 }
 
-.widget-card-bc {
-    width: 210.35px;
-    height: 212px;
-}
-
-.widget-up-bc {
+.widget-valueCard-up {
     display: flex;
     justify-content: space-between;
 }
 
-.widget-orderImages-bc {
+.widget-valueCard-Image {
     background: #E8E8E8;
     border-radius: 9.2195px;
     width: 22px;
     padding: 3px;
 }
 
-/* .widget-dash-bc {
-    background: #E8E8E8;
-    opacity: 0.4;
-    border-radius: 9.2195px;
-    width: 24px;
-    height: 25px;
-    padding: 6px;
-} */
-
-.widget-cardImages-bc {
-    background: #E8E8E8;
-    border-radius: 9.2195px;
-    width: 17px;
-    /* height: 22px; */
-    padding: 6px;
-}
-
-
-
-.card-title-bc {
+.widget-valueCard-title {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -50,7 +24,7 @@
     color: #606060;
 }
 
-.card-orders-bc {
+.widget-valueCard-value {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
@@ -59,20 +33,45 @@
 
 }
 
-.card-percentage-rise-bc {
+.widget-valueCard-month {
+    font-family: 'Poppins';
+    font-size: 10.3809px;
+    color: #606060;
+}
+
+/* .widgets-card-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+} */
+/* 
+.card-percentage-rise {
     font-family: 'Poppins';
     font-size: 10.3809px;
     color: #16C098;
 }
 
-.card-percentage-fall-bc {
+.card-percentage-fall {
     font-family: 'Poppins';
     font-size: 10.9622px;
     color: #FF0000;
-}
+} 
 
-.card-month-bc {
-    font-family: 'Poppins';
-    font-size: 10.3809px;
-    color: #606060;
-}
+.widget-valueCard-dash{
+    background: #E8E8E8;
+    opacity: 0.4;
+    border-radius: 9.2195px;
+    width: 24px;
+    height: 25px;
+    padding: 6px;
+} 
+
+.widget-cardImages {
+    background: #E8E8E8;
+    border-radius: 9.2195px;
+    width: 17px;
+    height: 22px;
+    padding: 6px;
+} 
+*/

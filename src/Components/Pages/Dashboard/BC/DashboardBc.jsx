@@ -1,15 +1,15 @@
+import "./DashboardBc.css";
 import React from "react";
-import logo from "../../../../Assets/Images/logo.png";
-import userImage from "../../../../Assets/Images/userImage.png";
+
 // import rejectedOrderImage from "../../../../Assets/Images/rejectedOrderImage.png";
 // import pendingOrderImage from "../../../../Assets/Images/pendingOrderImage.png";
 // import newOrderImage from "../../../../Assets/Images/newOrderImage.png";
 // import completedOrderImage from "../../../../Assets/Images/completedOrderImage.png";
 //import bcPendingApprovalImage from "../../../../Assets/Images/bcPendingApprovalImage.png";
 //import totalBcImage from "../../../../Assets/Images/totalBcImage.png";
-import totalBcUsersImage from "../../../../Assets/Images/totalBcUsersImage.png";
 //import openValue from "../../../../Assets/Images/openValue.png";
-import { Card, Input } from "antd";
+import totalBcUsersImage from "../../../../Assets/Images/totalBcUsersImage.png";
+import { Card } from "antd";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { DownOutlined } from "@ant-design/icons";
@@ -17,49 +17,12 @@ import { Dropdown, Space, Menu } from "antd";
 
 import FeatureOrderCard from "../../../featureWidgetCard/FeatureOrderCard/FeatureOrderCard";
 import FeatureValueOrderCard from "../../../featureWidgetCard/FeatureValueOrderCard/FeatureValueOrderCard";
-//import { Menu } from "antd";
-import LangDropDown from "../../../Dropdown/LangDropDown";
-import PersonDropDown from "../../../Dropdown/PersonDropDown";
-//import MonthDropDown from "../../../Dropdown/MonthDropDown";
 import FeaturedProductTable from "../../../featureTable/FeaturedProductTable";
 import LineChart from "../../../Chart/LineChart";
-import "./DashboardBc.css";
 
-import {
-  AppstoreOutlined,
-  FormOutlined,
-  UserOutlined,
-  ShoppingCartOutlined,
-  ShopOutlined,
-  SettingOutlined,
-  SearchOutlined,
-  RiseOutlined,
-  BellOutlined,
-  // FallOutlined,
-  DashOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons";
+import { RiseOutlined, FallOutlined, DashOutlined } from "@ant-design/icons";
 import FeatureCustomerCard from "../../../featureWidgetCard/FeatureCustomerCard/FeatureCustomerCard";
 
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-//===========================================date==================
-const date = new Date("28 Jul, 2022");
-const options = { year: "numeric", month: "short", day: "numeric" };
-const formattedDate = date.toLocaleDateString("en-US", options);
-// formattedDate will be "Jul 28, 2022"
-
-const month = formattedDate.split(" ")[0];
-const day = formattedDate.split(" ")[1].slice(0, -1);
-const year = formattedDate.split(" ")[2];
-const finalDate = `${day} ${month}, ${year}`;
 //===========================Values for MonthdropDown====================
 const values = [
   {
@@ -86,20 +49,6 @@ const dates = [
     label: "1 Jul - 10 Jul",
     key: "1",
   },
-];
-//======================================Side bar Item=======================
-const items = [
-  getItem("Dashboard", "1", <AppstoreOutlined />),
-  getItem("Orders", "2", <ShoppingCartOutlined />),
-  getItem("Request for Quotations", "3", <FormOutlined />),
-  getItem("My Products", "4", <ShopOutlined />),
-  {
-    type: "divider",
-  },
-  getItem("Manage Users", "5", <UserOutlined />),
-  getItem("Company Profile", "6", <UserOutlined />),
-  getItem("Settings", "7", <SettingOutlined />),
-  getItem("Logout", "8", <LogoutOutlined />),
 ];
 const DashboardBc = () => {
   const [orders, setOrders] = useState([]);
@@ -270,180 +219,26 @@ const DashboardBc = () => {
   }, [selectedDates]);
 
   return (
-    <div className="flex-bc">
-      <div className="sideBar-bc">
-        <div className="logoSidebar-bc">
-          <img className="logobar-bc" src={logo} alt="B2b Logo" />
-        </div>
-        <div className="lowerSidebar-bc">
-          <Menu
-            style={{
-              fontFamily: "Poppins",
-              fontSize: "14px",
-              fontWeight: "400",
-              color: "#000000",
-
-              textDecoration: "none",
-            }}
-            defaultSelectedKeys={["1"]}
-            mode="inline"
-            items={items}
-          />
-        </div>
-        <div className="LangDropDiv-bc">
-          <LangDropDown />
-        </div>
-      </div>
-      <div className="rightSideDiv-bc">
-        <div className="topBar-bc">
-          <div className="searchLeftTop-bc">
-            <Input
-              style={{
-                borderRadius: 18,
-                width: 265,
-                borderStyle: "none",
-                border: "1px solid #EFEEEB",
-              }}
-              placeholder="Search..."
-              prefix={<SearchOutlined />}
-            />
-          </div>
-          <div className="dashboardTopBarDiv-bc">
-            <h3 className="dashboardTop-bc">Dashboard</h3>
-          </div>
-          <div className="topBarRight-bc">
-            <p className="DateTop-bc">{finalDate}</p>
-            <span className="iconbellTop-bc">
-              <BellOutlined />
-            </span>
-            <img src={userImage} alt="userImage" className="userImage" />
-            <PersonDropDown />
-          </div>
-        </div>
-        <div className="container-bc">
-          <div className="main-bc">
-            <Card className="graph-div-bc">
-              <div className="graph-div-up-bc">
-                <div className="graph-credential-div-bc">
-                  <span className="graph-title-bc"> Overall Orders</span>
-                  <p className="graph-price-bc">
-                    SAR 238,560.93&nbsp;&nbsp;
-                    <span className="graph-percentage-bc">
-                      <RiseOutlined />
-                      &nbsp; 13.02%
-                    </span>
-                  </p>
-                </div>
-                <div className="graph-month-div-bc">
-                  <Dropdown
-                    overlay={
-                      <Menu onClick={handleMenuClick}>
-                        {values.map((value) => (
-                          <Menu.Item key={value.key}>{value.label}</Menu.Item>
-                        ))}
-                      </Menu>
-                    }
-                    trigger={["click"]}
-                  >
-                    <Space
-                      style={{
-                        height: 35,
-                        fontFamily: "Poppins",
-                        fontSize: "14px",
-                        color: "#000000",
-                        background: " #F3F3F3",
-                        padding: 10,
-                        borderRadius: 12,
-                      }}
-                    >
-                      {selectedDuration} <DownOutlined />
-                    </Space>
-                  </Dropdown>
-                </div>
-              </div>
-              <div className="graph-bc">
-                <LineChart />
-              </div>
-            </Card>
-
-            <div className="widgets-order-div-bc">
-              {orders?.map((x, i) => {
-                return (
-                  <FeatureOrderCard
-                    key={i}
-                    count={x.count}
-                    name={x.name}
-                    previousMonthName={x.previousMonthName}
-                    percentage={x.percentage}
-                  />
-                );
-              })}
-            </div>
-          </div>
-          <div className="widgets-card-div-bc">
-            {orderValues?.map((x, i) => {
-              return (
-                <FeatureValueOrderCard
-                  key={i}
-                  openOrderValue={x.openOrderValue}
-                  totalOrderValue={x.totalOrderValue}
-                  name={x.name}
-                  previousMonthName={x.previousMonthName}
-                  percentage={x.percentage}
-                />
-              );
-            })}
-            {BcUser.map((BcUser) => (
-              <Card className="widget-card-bc">
-                <div className="widget-up-bc">
-                  <span>
-                    <img
-                      className="widget-card-tBc-UserImage-bc"
-                      src={totalBcUsersImage}
-                      alt="CompletedOrder.png"
-                    />
-                  </span>
-                  <span>
-                    <DashOutlined className="widget-dash-bc" />
-                  </span>
-                </div>
-                <div>
-                  <span className="card-title-bc"> {BcUser.name}</span>
-                  <p className="card-orders-bc"> {BcUser.count}</p>
-                  <p className="card-percentage-rise-bc">
+    <div className="container">
+      <div className="main">
+        <div className="graph-div">
+          <Card className="graph-card">
+            <div className="graph-card-up">
+              <div className="graph-credential-div">
+                <span className="graph-title"> Overall Orders</span>
+                <p className="graph-price">
+                  SAR 238,560.93&nbsp;&nbsp;
+                  <span className="graph-percentage">
                     <RiseOutlined />
-                    &nbsp; {BcUser.percentage}% &nbsp;
-                    <span className="card-month-bc">
-                      From {BcUser.previousMonthName}
-                    </span>
-                  </p>
-                </div>
-              </Card>
-            ))}
-            <>
-              {BCustomer?.map((x, i) => {
-                return (
-                  <FeatureCustomerCard
-                    key={i}
-                    count={x.count}
-                    name={x.name}
-                    previousMonthName={x.previousMonthName}
-                    percentage={x.percentage}
-                  />
-                );
-              })}
-            </>
-          </div>
-          <div className="widgets-featureInfo-div-bc">
-            <Card className="widgets-top-product-div-bc">
-              <div className="widgets-productTitle-div-bc">
-                <span className="widgets-product-title-bc">
-                  Top 10 Frequently Ordered Products
-                </span>
+                    &nbsp; 13.02%
+                  </span>
+                </p>
+              </div>
+              <div className="graph-month-div">
                 <Dropdown
                   overlay={
-                    <Menu onClick={handleClick}>
-                      {dates.map((value) => (
+                    <Menu onClick={handleMenuClick}>
+                      {values.map((value) => (
                         <Menu.Item key={value.key}>{value.label}</Menu.Item>
                       ))}
                     </Menu>
@@ -456,33 +251,133 @@ const DashboardBc = () => {
                       fontFamily: "Poppins",
                       fontSize: "14px",
                       color: "#000000",
-                      //background: " #F3F3F3",
+                      background: " #F3F3F3",
                       padding: 10,
                       borderRadius: 12,
                     }}
                   >
-                    {selectedDates} <DownOutlined />
+                    {selectedDuration} <DownOutlined />
                   </Space>
                 </Dropdown>
               </div>
-              <div className="widgets-productInfo-div-bc">
-                {/* {freqOrderProduct?.map((x, i) => {
-                  return (
-                    );
-                  })} */}
-                {/* <FeaturedProductTable 
-                  // key={i}
-                  count={freqOrderProduct.count}
-                  productImage={freqOrderProduct.productImage}
-                  arProductName={freqOrderProduct.arProductName}
-                  productName={freqOrderProduct.productName}
-                  productvalue={freqOrderProduct.productvalue}
-                /> */}
-                <FeaturedProductTable freqOrderProduct={freqOrderProduct} />
-              </div>
-            </Card>
-          </div>
+            </div>
+            <div className="graph">
+              <LineChart graphData={graphData} />
+            </div>
+          </Card>
         </div>
+        <div className="widgets-order-div">
+          {orders?.map((x, i) => {
+            return (
+              <FeatureOrderCard
+                key={i}
+                count={x.count}
+                name={x.name}
+                previousMonthName={x.previousMonthName}
+                percentage={x.percentage}
+              />
+            );
+          })}
+        </div>
+      </div>
+      {/* RAaaaaaaaaaaaaaaaaaaaaaaaaaa */}
+      <div className="widgets-card-div">
+        {orderValues?.map((x, i) => {
+          return (
+            <FeatureValueOrderCard
+              key={i}
+              openOrderValue={x.openOrderValue}
+              totalOrderValue={x.totalOrderValue}
+              name={x.name}
+              previousMonthName={x.previousMonthName}
+              percentage={x.percentage}
+            />
+          );
+        })}
+        {BcUser.map((BcUser) => (
+          <Card className="widget-card">
+            <div className="widget-userCard-up">
+              <span>
+                <img
+                  className="widget-userCard-Image"
+                  src={totalBcUsersImage}
+                  alt="CompletedOrder.png"
+                />
+              </span>
+              <span>
+                <DashOutlined className="widget-userCard-dash" />
+              </span>
+            </div>
+            <div>
+              <span className="widget-userCard-title"> {BcUser.name}</span>
+              <p className="widget-userCard-count"> {BcUser.count}</p>
+              <p className="widget-userCard-percentage">
+                <span
+                  style={{
+                    fontFamily: "Poppins",
+                    fontSize: 10.3809,
+                    color: BcUser.percentage >= 0 ? " #16C098" : "#FF0000",
+                  }}
+                >
+                  {BcUser.percentage >= 0 ? <RiseOutlined /> : <FallOutlined />}
+                  &nbsp; {BcUser.percentage}% &nbsp;
+                </span>
+                <span className="widget-userCard-month">
+                  From {BcUser.previousMonthName}
+                </span>
+              </p>
+            </div>
+          </Card>
+        ))}
+        <>
+          {BCustomer?.map((x, i) => {
+            return (
+              <FeatureCustomerCard
+                key={i}
+                count={x.count}
+                name={x.name}
+                previousMonthName={x.previousMonthName}
+                percentage={x.percentage}
+              />
+            );
+          })}
+        </>
+      </div>
+      <div className="widgets-featureInfo-div">
+        <Card className="widgets-top-product-div">
+          <div className="widgets-productTitle-div">
+            <span className="widgets-product-title">
+              Top 10 Frequently Ordered Products
+            </span>
+            <Dropdown
+              overlay={
+                <Menu onClick={handleClick}>
+                  {dates.map((value) => (
+                    <Menu.Item key={value.key}>{value.label}</Menu.Item>
+                  ))}
+                </Menu>
+              }
+              trigger={["click"]}
+            >
+              <Space
+                style={{
+                  height: 35,
+                  fontFamily: "Poppins",
+                  fontSize: "14px",
+                  color: "#000000",
+                  //background: " #F3F3F3",
+                  padding: 10,
+                  borderRadius: 12,
+                }}
+              >
+                {selectedDates} <DownOutlined />
+              </Space>
+            </Dropdown>
+          </div>
+          <div className="widgets-productInfo-div">
+            <FeaturedProductTable freqOrderProduct={freqOrderProduct} />
+          </div>
+        </Card>
       </div>
     </div>
   );
