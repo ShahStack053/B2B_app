@@ -1,0 +1,128 @@
+.orders-container {
+    background-color: rgb(241 251 251);
+    padding: 25px;
+    width: 100%;
+    padding-top: 9%;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px
+}
+
+.orders-create-btn-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manage-orders-span {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+.create-order-btn {
+    background: linear-gradient(90.55deg, #1879B8 0.29%, #14A3D8 98.5%);
+    border-radius: 7px;
+    border: none;
+    width: 156px;
+    height: 40px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+.orders-widgets-card-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+.widget-manageOrder-card {
+    width: 250px;
+    height: 154px;
+}
+
+.widget-card-up {
+    display: flex;
+    justify-content: space-between;
+}
+
+.widget-card-Images {
+    background: #E8E8E8;
+    border-radius: 9.2195px;
+    width: 22px;
+    padding: 3px;
+}
+
+.widget-card-title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    /* font-size: 12.2195px; */
+    font-size: 11.2195px;
+    color: #606060;
+}
+
+.widget-card-count {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22.4024px;
+    color: #000000;
+    margin-top: 12px;
+    margin-bottom: 0px;
+}
+
+.widget-card-percentage-rise {
+    font-family: 'Poppins';
+    font-size: 10.3809px;
+    color: #16C098;
+    margin-top: 5px;
+}
+
+.widget-card-percentage-fall {
+    font-family: 'Poppins';
+    font-size: 10.9622px;
+    color: #FF0000;
+    margin-top: 5px;
+}
+
+.widget-card-month {
+    font-family: 'Poppins';
+    font-size: 10.3809px;
+    color: #606060;
+}
+
+.orders-table-div {
+    margin-top: 30px;
+}
+
+/* 
+.orders-search-main-div {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+} */
+
+/* 
+.orders-search-div {
+    background-color: brown;
+    width: 60%;
+}
+
+.orders-dropdown-div {
+    background-color: purple;
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+} */

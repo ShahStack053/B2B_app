@@ -7,7 +7,8 @@ import SignUp from "./Components/Pages/SignUp/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardBc from "./Components/Pages/Dashboard/BC/DashboardBc";
 import Layouts from "./Components/Layouts/Layouts";
-import Dashboard from "./Components/Pages/Dashboard/SuperAdmin/Dashboard";
+// import Dashboard from "./Components/Pages/Dashboard/SuperAdmin/Dashboard";
+import Orders from "./Components/Pages/Orders/Orders";
 
 function App() {
   return (
@@ -19,11 +20,10 @@ function App() {
           <Route path="/otp" element={<OTP />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
-
-          {/* <Route path="/bc" element={<DashboardBc />} /> */}
+          <Route path="/order" element={<Orders />} />
           <Route path="/layout/*" element={<Layouts />}>
             <Route path="dashboard" element={<DashboardBc />} />
-            <Route path="order" element={<Dashboard />} />
+            <Route path="orders" element={<Orders />} />
           </Route>
         </Routes>
       </BrowserRouter>

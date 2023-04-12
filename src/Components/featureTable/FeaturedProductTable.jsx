@@ -11,11 +11,11 @@ const FeaturedProductTable = ({
   freqOrderProduct,
 }) => {
   // const [sortedInfo, setSortedInfo] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
   // const handleChange = (pagination, filters, sorter) => {
   //   console.log(sorter);
   //   setSortedInfo(sorter);
   // };
+  const [currentPage, setCurrentPage] = useState(1);
 
   const data = freqOrderProduct.map((product, index) => ({
     key: index + 1,
