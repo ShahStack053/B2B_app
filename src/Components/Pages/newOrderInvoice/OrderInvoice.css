@@ -1,0 +1,77 @@
+.new-order-invoice-container {
+    background-color: rgb(241 251 251);
+    padding: 25px;
+    width: 100%;
+    padding-top: 9%;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px
+}
+
+.create-new-order-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+}
+
+.new-order-arrow {
+    color: #7B7B7B;
+    margin-right: 18px;
+}
+
+.create-newOrder-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+.product-invoice-btn-div {
+    margin-top: 30px;
+    width: 275px;
+    height: 56px;
+    border: 1px solid #B9B8B8;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FFFFFF;
+    border: 1px solid #EFEEEB;
+    border-radius: 70px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.product-btn-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #000000;
+    opacity: 0.5;
+}
+
+.invoice-btn-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1779B8;
+}
+
+.continue-btn {
+    margin-top: 30px;
+    width: 195px;
+    height: 50px;
+    background: linear-gradient(90.55deg, #1879B8 0.29%, #14A3D8 98.5%);
+    border-radius: 7px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+}

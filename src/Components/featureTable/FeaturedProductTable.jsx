@@ -1,6 +1,7 @@
 import { Table } from "antd";
 import { useState } from "react";
 import rice from "../../Assets/Images/rice.png";
+import "./FeatureTable.css";
 
 const FeaturedProductTable = ({
   productImage,
@@ -216,6 +217,19 @@ const FeaturedProductTable = ({
       <Table
         columns={columns}
         dataSource={freqOrderProduct}
+        style={{
+          backgroundColor: "white",
+          "&:hover tbody tr": {
+            backgroundColor: "rgb(241, 251, 251)",
+          },
+          "& tbody tr.ant-table-row-selected, & tbody tr.ant-table-row-selected:hover":
+            {
+              backgroundColor: "rgb(241, 251, 251)",
+            },
+          "& thead": {
+            backgroundColor: "rgb(241, 251, 251)",
+          },
+        }}
         // onChange={handleChange}
         pagination={{
           current: currentPage,

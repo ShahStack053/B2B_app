@@ -11,10 +11,10 @@ import {
 } from "@ant-design/icons";
 import logo from "../../Assets/Images/logo.png";
 import { Layout, Menu } from "antd";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Header/Navbar";
 import LangDropDown from "../Dropdown/LangDropDown";
-const { Header, Sider, Content } = Layout;
+const { Header, Sider } = Layout;
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -42,6 +42,27 @@ const items = [
 ];
 
 const Layouts = () => {
+  const navigate = useNavigate();
+
+  const navigateRouteHandler = (e) => {
+    if (e.key === "1") {
+      navigate("/layout/dashboard");
+    } else if (e.key === "2") {
+      navigate("/layout/orders");
+    } else if (e.key === "3") {
+      navigate("/layout/requestForQuotations");
+    } else if (e.key === "4") {
+      navigate("/layout/myProduct");
+    } else if (e.key === "5") {
+      navigate("/layout/manageUser");
+    } else if (e.key === "6") {
+      navigate("/layout/companyProfile");
+    } else if (e.key === "7") {
+      navigate("/layout/settings");
+    } else {
+      navigate("/layout/logout");
+    }
+  };
   return (
     <Layout>
       <Sider style={{ background: "white" }}>
@@ -63,6 +84,7 @@ const Layouts = () => {
                 defaultSelectedKeys={["1"]}
                 mode="inline"
                 items={items}
+                onClick={(e) => navigateRouteHandler(e)}
               />
             </div>
 
@@ -85,16 +107,6 @@ const Layouts = () => {
         >
           <Navbar />
         </Header>
-        {/* <Content
-          style={{
-            margin: "24px 16px",
-            padding: 24,
-            minHeight: 280,
-            background: colorBgContainer,
-          }}
-        >
-          Content
-        </Content> */}
         <Outlet />
       </Layout>
     </Layout>

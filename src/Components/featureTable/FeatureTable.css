@@ -6,3 +6,12 @@
 .ant-table th {
     padding: 0;
 }
+
+.custom-row-style:hover,
+.custom-row-style.ant-table-row-selected {
+    background-color: rgb(241, 251, 251);
+}
+
+.custom-header-style {
+    background-color: rgb(241, 251, 251);
+}

@@ -1,0 +1,113 @@
+.new-order-detail-div {
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 100%;
+    padding: 23px;
+}
+
+.order-detail-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.order-deliveryDetail-div {
+    /* background-color: red; */
+    align-items: center;
+    display: flex;
+    width: 50%;
+    height: 35px;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.customer-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.delivery-charges-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.expected-delivery-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.order-delivery-value-div {
+    align-items: center;
+    display: flex;
+    width: 50%;
+    height: 35px;
+    justify-content: space-between;
+}
+
+.customer-value-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #252733;
+}
+
+.delivery-charges-value-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #252733;
+    width: 21%;
+}
+
+.expected-delivery-date-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #252733;
+    width: 28.5%;
+}
+
+.order-delivery-detail-div {
+    align-items: center;
+    display: flex;
+    width: 40%;
+    height: 35px;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.delivery-type-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    color: #606060;
+}
+
+.delivery-address-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    color: #606060;
+}
+
+.order-detail-dropdown-div {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 7px;
+}

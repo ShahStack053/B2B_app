@@ -1,6 +1,7 @@
 import React from "react";
 import "./Orders.css";
 import completedOrderImage from "../../../Assets/Images/completedOrderImage.png";
+import addProductBtn from "../../../Assets/Images/addProductBtn.png";
 import {
   DashOutlined,
   //   SearchOutlined,
@@ -15,14 +16,24 @@ import {
 import { Card } from "antd";
 import SearchRange from "../../SearchRangePicker/SearchRange";
 import ManageOrderTable from "../../featureTable/ManageOrderTable";
+import { useNavigate } from "react-router-dom";
 
 const Orders = () => {
   //   const { RangePicker } = DatePicker;
+  const navigate = useNavigate();
+  const myFunction = () => {
+    navigate("/layout/newOrder");
+  };
   return (
     <div className="orders-container">
       <div className="orders-create-btn-div">
         <span className="manage-orders-span">Manage Orders</span>
-        <button className="create-order-btn" type="submit">
+        <button className="create-order-btn" onClick={myFunction}>
+          <img
+            src={addProductBtn}
+            alt="add-sign-box"
+            style={{ width: 24, marginRight: 10 }}
+          />
           Create Order
         </button>
       </div>
