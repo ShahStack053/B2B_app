@@ -49,140 +49,36 @@ const menuProps = {
   items,
 };
 
-const data = [
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-  {
-    key: "1",
-    orderID: "11",
-    customer: "Brooklyn",
-    createdBy: "Admin",
-    orderDate: "16 Jun 2022",
-    deliveryDate: "16 Jun 2022",
-    priority: "Urgent",
-    status: "Cancelled",
-    paymentStatus: "Paid",
-    tAmount: "8560",
-    action: <DashOutlined />,
-  },
-];
+// const data = [
+//   {
+//     key: "1",
+//     orderID: "11",
+//     customer: "Brooklyn",
+//     createdBy: "Admin",
+//     orderDate: "16 Jun 2022",
+//     deliveryDate: "16 Jun 2022",
+//     priority: "Urgent",
+//     status: "Cancelled",
+//     paymentStatus: "Paid",
+//     tAmount: "8560",
+//     action: <DashOutlined />,
+//   },
+// ];
 
-const ManageOrderTable = () => {
+const ManageOrderTable = ({ ordersData }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const data1 = data.map((product, index) => ({
+  const data = ordersData.map((product, index) => ({
     key: index + 1,
-    orderID: product.orderID,
-    customer: product.customer,
+    orderID: product.id,
+    customer: product.bcName,
     createdBy: product.createdBy,
     orderDate: product.orderDate,
-    deliveryDate: product.deliveryDate,
-    priority: product.priority,
+    deliveryDate: product.fulfilledDate,
+    priority: product.deliveryType,
     status: product.status,
     paymentStatus: product.paymentStatus,
-    tAmount: product.tAmount,
+    tAmount: product.totalAmount,
     action: product.action,
   }));
   const columns = [
@@ -201,8 +97,8 @@ const ManageOrderTable = () => {
           Order ID
         </div>
       ),
-      dataIndex: "orderID",
-      key: "orderID",
+      dataIndex: "id",
+      key: "id",
       ellipsis: true,
       render: (text) => (
         <div
@@ -218,6 +114,7 @@ const ManageOrderTable = () => {
           {text}
         </div>
       ),
+      width: "7%",
     },
     {
       title: (
@@ -228,13 +125,14 @@ const ManageOrderTable = () => {
             fontStyle: "normal",
             fontWeight: 400,
             fontSize: "12.2195px",
+            textAlign: "center",
           }}
         >
           Customer
         </div>
       ),
-      dataIndex: "customer",
-      key: "customer",
+      dataIndex: "bcName",
+      key: "bcName",
       ellipsis: true,
       render: (text) => (
         <div
@@ -249,6 +147,7 @@ const ManageOrderTable = () => {
           {text}
         </div>
       ),
+      width: "13%",
     },
     {
       title: (
@@ -308,7 +207,6 @@ const ManageOrderTable = () => {
             fontStyle: "normal",
             fontWeight: 400,
             fontSize: "10px",
-            textAlign: "center",
           }}
         >
           {text}
@@ -330,8 +228,8 @@ const ManageOrderTable = () => {
           Delivery Date
         </div>
       ),
-      dataIndex: "deliveryDate",
-      key: "deliveryDate",
+      dataIndex: "fulfilledDate",
+      key: "fulfilledDate",
       ellipsis: true,
       render: (text) => (
         <div
@@ -357,13 +255,14 @@ const ManageOrderTable = () => {
             fontStyle: "normal",
             fontWeight: 400,
             fontSize: "12.2195px",
+            textAlign: "center",
           }}
         >
           Priority
         </div>
       ),
-      dataIndex: "priority",
-      key: "priority",
+      dataIndex: "deliveryType",
+      key: "deliveryType",
       ellipsis: true,
       render: (text) => (
         <div
@@ -378,6 +277,7 @@ const ManageOrderTable = () => {
           {text}
         </div>
       ),
+      width: "11%",
     },
     {
       title: (
@@ -421,7 +321,6 @@ const ManageOrderTable = () => {
             fontStyle: "normal",
             fontWeight: 400,
             fontSize: "12.2195px",
-            minWidth: "10%",
           }}
         >
           Payment Status
@@ -430,10 +329,12 @@ const ManageOrderTable = () => {
       dataIndex: "paymentStatus",
       key: "paymentStatus",
       ellipsis: true,
-      render: (text) => (
+      render: (paymentStatus) => (
         <div
           style={{
-            color: "#000000",
+            color: {
+              ...(paymentStatus === "Paid" ? "#028C10" : "#C70000"),
+            },
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
@@ -441,9 +342,10 @@ const ManageOrderTable = () => {
             textAlign: "center",
           }}
         >
-          {text}
+          {paymentStatus}
         </div>
       ),
+      width: "11%",
     },
     {
       title: (
@@ -460,8 +362,8 @@ const ManageOrderTable = () => {
           Total Amount
         </div>
       ),
-      dataIndex: "tAmount",
-      key: "tAmount",
+      dataIndex: "totalAmount",
+      key: "totalAmount",
       ellipsis: true,
       render: (text) => (
         <div
@@ -509,7 +411,7 @@ const ManageOrderTable = () => {
         >
           <Space>
             <Dropdown menu={menuProps}>
-              <Space>{text}</Space>
+              <Space>{<DashOutlined />}</Space>
             </Dropdown>
           </Space>
         </div>
@@ -519,11 +421,11 @@ const ManageOrderTable = () => {
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      dataSource={ordersData}
       pagination={{
         current: currentPage,
         pageSize: 5,
-        total: data1.length,
+        total: data.length,
         onChange: (page) => setCurrentPage(page),
         showTotal: (total, range) =>
           ` ${range[0]}-${range[1]} of ${total} items`,

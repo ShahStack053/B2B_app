@@ -1,25 +1,59 @@
 import React from "react";
 import "./Orders.css";
-import completedOrderImage from "../../../Assets/Images/completedOrderImage.png";
 import addProductBtn from "../../../Assets/Images/addProductBtn.png";
-import {
-  DashOutlined,
-  //   SearchOutlined,
-  FallOutlined,
-  RiseOutlined,
-} from "@ant-design/icons";
-
-// import Line from "../../../Assets/Images/Line.png";
-// import { Input } from "antd";
-// import { DatePicker, Space } from "antd";
-// import StatusDropDown from "../../Dropdown/StatusDropDown";
-import { Card } from "antd";
 import SearchRange from "../../SearchRangePicker/SearchRange";
 import ManageOrderTable from "../../featureTable/ManageOrderTable";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import ManageOrder from "../../featureWidgetCard/ManageOrderCard/ManageOrder";
 
 const Orders = () => {
-  //   const { RangePicker } = DatePicker;
+  const [ordersData, setOrdersData] = useState([]);
+  const [ordersCardData, setOrdersCardData] = useState([]);
+  useEffect(() => {
+    var data = JSON.stringify({});
+    axios({
+      method: "post",
+      url: `https://api-customer-dev.b2bprice.store/api/Order/GetAll`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("OrderData====>", res.data.data);
+        setOrdersData(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, []);
+  useEffect(() => {
+    var data = JSON.stringify({});
+    axios({
+      method: "get",
+      url: `https://api-customer-dev.b2bprice.store/api/Order/GetOrderCards`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data: data,
+    }).then(
+      (res) => {
+        // debugger;
+        console.log("OrderCardData====>", res.data.data);
+        setOrdersCardData(res.data.data);
+      },
+      (err) => {
+        console.log("err===>", err);
+      }
+    );
+  }, []);
   const navigate = useNavigate();
   const myFunction = () => {
     navigate("/layout/newOrder");
@@ -38,136 +72,23 @@ const Orders = () => {
         </button>
       </div>
       <div className="orders-widgets-card-div">
-        <Card className="widget-manageOrder-card">
-          <div className="widget-card-up">
-            <span>
-              <img
-                className="widget-card-Images"
-                src={completedOrderImage}
-                alt="CompletedOrder.png"
-              />
-            </span>
-            <span>
-              <DashOutlined className="widget-card-dash" />
-            </span>
-          </div>
-          <div>
-            <span className="widget-card-title"> Active Orders</span>
-            <p className="widget-card-count">566</p>
-            <p className="widget-card-percentage-rise">
-              <span
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: 10.3809,
-                }}
-              >
-                <RiseOutlined />
-                {/* <FallOutlined /> */}
-                &nbsp; 3.02 % &nbsp;
-              </span>
-              <span className="widget-card-month">From May</span>
-            </p>
-          </div>
-        </Card>
-        <Card className="widget-manageOrder-card">
-          <div className="widget-card-up">
-            <span>
-              <img
-                className="widget-card-Images"
-                src={completedOrderImage}
-                alt="CompletedOrder.png"
-              />
-            </span>
-            <span>
-              <DashOutlined className="widget-card-dash" />
-            </span>
-          </div>
-          <div>
-            <span className="widget-card-title"> Pending Orders</span>
-            <p className="widget-card-count">23</p>
-            <p className="widget-card-percentage-rise">
-              <span
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: 10.3809,
-                }}
-              >
-                <RiseOutlined />
-                {/* <FallOutlined /> */}
-                &nbsp; 6.02 % &nbsp;
-              </span>
-              <span className="widget-card-month">From May</span>
-            </p>
-          </div>
-        </Card>
-        <Card className="widget-manageOrder-card">
-          <div className="widget-card-up">
-            <span>
-              <img
-                className="widget-card-Images"
-                src={completedOrderImage}
-                alt="CompletedOrder.png"
-              />
-            </span>
-            <span>
-              <DashOutlined className="widget-card-dash" />
-            </span>
-          </div>
-          <div>
-            <span className="widget-card-title"> Completed Orders</span>
-            <p className="widget-card-count">10,856</p>
-            <p className="widget-card-percentage-rise">
-              <span
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: 10.3809,
-                }}
-              >
-                <RiseOutlined />
-                {/* <FallOutlined /> */}
-                &nbsp; 13.02 % &nbsp;
-              </span>
-              <span className="widget-card-month">From May</span>
-            </p>
-          </div>
-        </Card>
-        <Card className="widget-manageOrder-card">
-          <div className="widget-card-up">
-            <span>
-              <img
-                className="widget-card-Images"
-                src={completedOrderImage}
-                alt="CompletedOrder.png"
-              />
-            </span>
-            <span>
-              <DashOutlined className="widget-card-dash" />
-            </span>
-          </div>
-          <div>
-            <span className="widget-card-title"> Rejected Orders</span>
-            <p className="widget-card-count">122</p>
-            <p className="widget-card-percentage-fall">
-              <span
-                style={{
-                  fontFamily: "Poppins",
-                  fontSize: 10.3809,
-                }}
-              >
-                {/* <RiseOutlined /> */}
-                <FallOutlined />
-                &nbsp; 0.32 % &nbsp;
-              </span>
-              <span className="widget-card-month">From May</span>
-            </p>
-          </div>
-        </Card>
+        {ordersCardData?.map((x, i) => {
+          return (
+            <ManageOrder
+              key={i}
+              count={x.count}
+              name={x.name}
+              previousMonthName={x.previousMonthName}
+              percentage={x.percentage}
+            />
+          );
+        })}
       </div>
       <>
         <SearchRange />
       </>
       <div className="orders-table-div">
-        <ManageOrderTable />
+        <ManageOrderTable ordersData={ordersData} />
       </div>
     </div>
   );

@@ -43,7 +43,11 @@
     margin-top: 30px;
 }
 
+.orders-table-div {
+    margin-top: 30px;
+}
 
+/* 
 .widget-manageOrder-card {
     width: 250px;
     height: 155px;
@@ -65,7 +69,6 @@
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
-    /* font-size: 12.2195px; */
     font-size: 11.2195px;
     color: #606060;
 }
@@ -98,12 +101,7 @@
     font-family: 'Poppins';
     font-size: 10.3809px;
     color: #606060;
-}
-
-.orders-table-div {
-    margin-top: 30px;
-}
-
+} */
 /* 
 .orders-search-main-div {
     margin-top: 30px;

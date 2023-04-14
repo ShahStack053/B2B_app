@@ -97,10 +97,6 @@ const FeaturedProductTable = ({
       ),
       dataIndex: "arProductName",
       key: "name",
-      // sorter: (a, b) => a.name.length - b.name.length,
-      // sortOrder: sortedInfo.columnKey === "name" ? sortedInfo.order : null,
-      // sorter: (a, b) => a.name.localeCompare(b.name),
-      // sortOrder: sortedInfo.columnKey === "name" && sortedInfo.order,
       ellipsis: true,
       render: (arProductName, record) => (
         <div style={{ display: "flex", alignItems: "center" }}>

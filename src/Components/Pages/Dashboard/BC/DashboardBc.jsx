@@ -81,7 +81,7 @@ const DashboardBc = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("data====>", res.data.data);
+        // console.log("data====>", res.data.data);
         setOrders(res.data.data);
       },
       (err) => {
@@ -106,7 +106,7 @@ const DashboardBc = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("dataValues====>", res.data.data);
+        // console.log("dataValues====>", res.data.data);
         setOrderValues(res.data.data);
       },
       (err) => {
@@ -130,7 +130,7 @@ const DashboardBc = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("dataBCustomer====>", res.data.data);
+        // console.log("dataBCustomer====>", res.data.data);
         setBCustomer(res.data.data);
       },
       (err) => {
@@ -154,7 +154,7 @@ const DashboardBc = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("dataBCuser====>", res.data.data);
+        // console.log("dataBCuser====>", res.data.data);
         setBcUser(res.data.data);
       },
       (err) => {
@@ -178,7 +178,7 @@ const DashboardBc = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("dataGraphOrder====>", res.data.data);
+        // console.log("dataGraphOrder====>", res.data.data);
         setgraphData(res.data.data);
       },
       (err) => {
@@ -209,7 +209,7 @@ const DashboardBc = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("dataProduct====>", res.data.data);
+        // console.log("dataProduct====>", res.data.data);
         setFreqOrderProduct(res.data.data);
       },
       (err) => {
