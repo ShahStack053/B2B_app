@@ -11,6 +11,8 @@ import Orders from "./Components/Pages/Orders/Orders";
 import NewOrder from "./Components/Pages/newCreateOrder/NewOrder";
 import OrderInvoice from "./Components/Pages/newOrderInvoice/OrderInvoice";
 import AddProduct from "./Components/Pages/addProduct/AddProduct";
+import Users from "./Components/Pages/ManageUser/Users/Users";
+import AddUser from "./Components/Pages/ManageUser/newUser/AddUser";
 
 function App() {
   return (
@@ -22,13 +24,14 @@ function App() {
           <Route path="/otp" element={<OTP />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
-
           <Route path="/layout/*" element={<Layouts />}>
             <Route path="dashboard" element={<DashboardBc />} />
             <Route path="orders" element={<Orders />} />
             <Route path="newOrder" element={<NewOrder />} />
             <Route path="inVoice" element={<OrderInvoice />} />
             <Route path="addProduct" element={<AddProduct />} />
+            <Route path="manageUser" element={<Users />} />
+            <Route path="newUser" element={<AddUser />} />
           </Route>
         </Routes>
       </BrowserRouter>

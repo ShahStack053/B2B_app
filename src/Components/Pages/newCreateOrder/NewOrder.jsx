@@ -2,8 +2,8 @@ import React from "react";
 import "./NewOrder.css";
 import ProductBar from "../../ProductBar/ProductBar";
 import ProductCard from "../../featureWidgetCard/WidgetProductCard/ProductCard";
-import { ArrowLeftOutlined } from "@ant-design/icons";
 import OrderDetail from "../../OrderDetails/OrderDetail";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
 const NewOrder = () => {

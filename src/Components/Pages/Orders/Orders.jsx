@@ -55,14 +55,14 @@ const Orders = () => {
     );
   }, []);
   const navigate = useNavigate();
-  const myFunction = () => {
+  const navigatorNewOrder = () => {
     navigate("/layout/newOrder");
   };
   return (
     <div className="orders-container">
       <div className="orders-create-btn-div">
         <span className="manage-orders-span">Manage Orders</span>
-        <button className="create-order-btn" onClick={myFunction}>
+        <button className="create-order-btn" onClick={navigatorNewOrder}>
           <img
             src={addProductBtn}
             alt="add-sign-box"

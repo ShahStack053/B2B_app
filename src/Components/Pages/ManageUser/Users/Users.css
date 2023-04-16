@@ -1,0 +1,41 @@
+.users-container {
+    background-color: rgb(241 251 251);
+    padding: 25px;
+    width: 100%;
+    padding-top: 9%;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px
+}
+
+.users-add-btn-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customer-manager-span {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+.add-manager-btn {
+    background: linear-gradient(90.55deg, #1879B8 0.29%, #14A3D8 98.5%);
+    border-radius: 7px;
+    border: none;
+    width: 227px;
+    height: 40px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.users-table-div {
+    margin-top: 30px;
+}
