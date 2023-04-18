@@ -1,4 +1,3 @@
-import React from "react";
 import { SearchOutlined } from "@ant-design/icons";
 import Line from "../../Assets/Images/Line.png";
 import { Input } from "antd";
@@ -6,8 +5,14 @@ import { DatePicker, Space } from "antd";
 import StatusDropDown from "../Dropdown/StatusDropDown";
 import "./SearchRange.css";
 
-const SearchRange = () => {
+const SearchRange = ({
+  setSearchValues,
+  searchValues,
+  onChangeRange,
+  onChangeStatus,
+}) => {
   const { RangePicker } = DatePicker;
+
   return (
     <div className="orders-search-main-div">
       <div className="orders-search-div">
@@ -21,11 +26,15 @@ const SearchRange = () => {
           }}
           placeholder="Search Order, Customer..."
           prefix={<SearchOutlined style={{ color: "#7E7E7E" }} />}
+          onChange={
+            (e) => setSearchValues({ ...searchValues, search: e.target.value })
+            // setSearchData({ ...searchData, search: e.target.value })
+          }
         />
       </div>
       <img
         src={Line}
-        alt="Language"
+        alt="Line"
         style={{
           height: 30,
           opacity: 0.9,
@@ -41,13 +50,18 @@ const SearchRange = () => {
               color: "#000000",
               background: "#FFFFFF",
               height: 40,
-              width: 222,
+              width: "100%",
               borderRadius: 12,
               border: "1px solid #EFEEEB",
             }}
+            onChange={onChangeRange}
           />
         </Space>
-        <StatusDropDown />
+        <StatusDropDown
+          setSearchValues={setSearchValues}
+          searchValues={searchValues}
+          onChange={onChangeStatus}
+        />
       </div>
     </div>
   );

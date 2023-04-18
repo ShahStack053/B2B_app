@@ -199,19 +199,30 @@ const ManageOrderTable = ({ ordersData }) => {
       dataIndex: "orderDate",
       key: "orderDate",
       ellipsis: true,
-      render: (text) => (
-        <div
-          style={{
-            color: "#000000",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "10px",
-          }}
-        >
-          {text}
-        </div>
-      ),
+      render: (text) => {
+        const date = new Date(text);
+        const month = new Intl.DateTimeFormat("en-US", {
+          month: "short",
+        }).format(date);
+        const day = date.getDate();
+        const year = date.getFullYear();
+        const formattedDate = `${month} ${day}, ${year}`;
+
+        return (
+          <div
+            style={{
+              color: "#000000",
+              fontFamily: "Poppins",
+              fontStyle: "normal",
+              fontWeight: 400,
+              fontSize: "12px",
+              // textAlign: "center",
+            }}
+          >
+            {formattedDate}
+          </div>
+        );
+      },
     },
     {
       title: (
@@ -231,20 +242,30 @@ const ManageOrderTable = ({ ordersData }) => {
       dataIndex: "fulfilledDate",
       key: "fulfilledDate",
       ellipsis: true,
-      render: (text) => (
-        <div
-          style={{
-            color: "#000000",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "10px",
-            textAlign: "center",
-          }}
-        >
-          {text}
-        </div>
-      ),
+      render: (text) => {
+        const date = new Date(text);
+        const month = new Intl.DateTimeFormat("en-US", {
+          month: "short",
+        }).format(date);
+        const day = date.getDate();
+        const year = date.getFullYear();
+        const formattedDate = `${month} ${day}, ${year}`;
+
+        return (
+          <div
+            style={{
+              color: "#000000",
+              fontFamily: "Poppins",
+              fontStyle: "normal",
+              fontWeight: 400,
+              fontSize: "12px",
+              // textAlign: "center",
+            }}
+          >
+            {formattedDate}
+          </div>
+        );
+      },
     },
     {
       title: (

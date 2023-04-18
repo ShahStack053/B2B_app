@@ -20,22 +20,9 @@ const items = [
 const menuProps = {
   items,
 };
-const data = [];
-for (let i = 0; i < 10; i++) {
-  data.push({
-    key: "1",
-    id: `${i}`,
-    managerName: `Syed Raza Ur Rehman ${i}`,
-    mobileNo: "+923420518053",
-    email: "david291@gmail.com",
-    createdDate: "16 Jun 2022|12:17",
-    lastSignIn: "17 Jun 2022 | 12:00",
-    status: <StatusButton />,
-    action: <DashOutlined />,
-  });
-}
-const UserTable = () => {
+const UserTable = ({ userData }) => {
   const [currentPage, setCurrentPage] = useState(1);
+
   const columns = [
     {
       title: (
@@ -69,7 +56,7 @@ const UserTable = () => {
           {text}
         </div>
       ),
-      width: "7%",
+      // width: "7%",
     },
     {
       title: (
@@ -86,8 +73,8 @@ const UserTable = () => {
           Manager Name
         </div>
       ),
-      dataIndex: "managerName",
-      key: "managerName",
+      dataIndex: "arFullName",
+      key: "arFullName",
       ellipsis: true,
       render: (text) => (
         <div
@@ -102,7 +89,7 @@ const UserTable = () => {
           {text}
         </div>
       ),
-      width: "18%",
+      // width: "15%",
     },
     {
       title: (
@@ -119,8 +106,8 @@ const UserTable = () => {
           Mobile Number
         </div>
       ),
-      dataIndex: "mobileNo",
-      key: "mobileNo",
+      dataIndex: "phoneNumber",
+      key: "phoneNumber",
       ellipsis: true,
       render: (text) => (
         <div
@@ -136,6 +123,7 @@ const UserTable = () => {
           {text}
         </div>
       ),
+      // width: "13%",
     },
     {
       title: (
@@ -167,6 +155,7 @@ const UserTable = () => {
           {text}
         </div>
       ),
+      width: "15.5%",
     },
     {
       title: (
@@ -183,23 +172,33 @@ const UserTable = () => {
           Created Date
         </div>
       ),
-      dataIndex: "createdDate",
-      key: "createdDate",
+      dataIndex: "createdOn",
+      key: "createdOn",
       ellipsis: true,
-      render: (text) => (
-        <div
-          style={{
-            color: "#000000",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "12px",
-            // textAlign: "center",
-          }}
-        >
-          {text}
-        </div>
-      ),
+      render: (text) => {
+        const date = new Date(text);
+        const month = new Intl.DateTimeFormat("en-US", {
+          month: "short",
+        }).format(date);
+        const day = date.getDate();
+        const year = date.getFullYear();
+        const formattedDate = `${month} ${day}, ${year}`;
+
+        return (
+          <div
+            style={{
+              color: "#000000",
+              fontFamily: "Poppins",
+              fontStyle: "normal",
+              fontWeight: 400,
+              fontSize: "12px",
+              // textAlign: "center",
+            }}
+          >
+            {formattedDate}
+          </div>
+        );
+      },
     },
     {
       title: (
@@ -213,11 +212,11 @@ const UserTable = () => {
             // textAlign: "center",
           }}
         >
-          Last Sign in
+          Role
         </div>
       ),
-      dataIndex: "lastSignIn",
-      key: "lastSignIn",
+      dataIndex: "role",
+      key: "role",
       ellipsis: true,
       render: (text) => (
         <div
@@ -232,7 +231,7 @@ const UserTable = () => {
           {text}
         </div>
       ),
-      width: "13%",
+      // width: "13%",
     },
     {
       title: (
@@ -249,8 +248,8 @@ const UserTable = () => {
           Status
         </div>
       ),
-      dataIndex: "status",
-      key: "status",
+      dataIndex: "activeStatus",
+      key: "activeStatus",
       ellipsis: true,
       render: (text) => (
         <div
@@ -263,10 +262,10 @@ const UserTable = () => {
             textAlign: "center",
           }}
         >
-          {text}
+          <StatusButton activeStatus />
         </div>
       ),
-      width: "7%",
+      // width: "7%",
     },
 
     {
@@ -305,17 +304,17 @@ const UserTable = () => {
           </Space>
         </div>
       ),
-      width: "10%",
+      // width: "10%",
     },
   ];
   return (
     <Table
       columns={columns}
-      dataSource={data}
+      dataSource={userData}
       pagination={{
         current: currentPage,
-        pageSize: 5,
-        total: data.length,
+        pageSize: 10,
+        total: userData.length,
         onChange: (page) => setCurrentPage(page),
         showTotal: (total, range) =>
           ` ${range[0]}-${range[1]} of ${total} items`,

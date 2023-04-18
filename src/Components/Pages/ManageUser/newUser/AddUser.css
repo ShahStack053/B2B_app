@@ -2,7 +2,7 @@
     background-color: rgb(241 251 251);
     padding: 25px;
     width: 100%;
-    padding-top: 9%;
+    padding-top: 105px;
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 50px
@@ -37,6 +37,7 @@
     padding: 30px;
     display: flex;
     flex-direction: column;
+    height: fit-content;
 }
 
 .manager-detail-title-div {
@@ -49,7 +50,7 @@
     /* background-color: blueviolet; */
     width: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
     margin-top: 30px;
 }
@@ -184,6 +185,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 8px;
+    margin-bottom: 30px;
 }
 
 .manager-mobileNo-value-span {
@@ -201,10 +203,60 @@
     align-items: center;
     justify-content: center;
     margin-top: 8px;
+    margin-bottom: 30px;
 }
 
 .manager-whatsappNo-value-span {
     font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.manager-Pass-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.manager-PassValue-span {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.manager-cPass-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.manager-cPassValue-span {
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -225,6 +277,53 @@
     display: flex;
     align-items: center;
     padding-left: 30px;
+}
+
+.image-div {
+    width: 302px;
+    height: 149px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    flex-direction: column;
+}
+
+
+.manager-customer-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #252733;
+}
+
+.resetpassword-box {
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.reset-password-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.reset-div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .save-info-btn {

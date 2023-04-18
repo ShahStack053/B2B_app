@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Switch } from "antd";
 
-const StatusButton = () => {
+const StatusButton = (activeStatus) => {
   const [isChecked, setIsChecked] = useState(true);
 
   const onChange = (checked) => {

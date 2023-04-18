@@ -2,6 +2,7 @@ import React from "react";
 import "./AddUser.css";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
 
 const AddUser = () => {
   return (
@@ -18,24 +19,44 @@ const AddUser = () => {
         </div>
         <div className="manager-detail-div">
           <div>
-            <span className="manager-id-span">Manager ID</span>
-            <span className="managerId-value-span">123</span>
-            <span className="manager-email-span">Email Address</span>
-            <span className="manager-emailValue-span">raza@gmail.com</span>
-          </div>
-          <div>
             <span className="manager-name-span">Manager Name</span>
             <span className="managerName-value-span">Raza Shah</span>
-            <span className="manager-mobileNo-span">Mobile Number</span>
-            <span className="manager-mobileNo-value-span">+923420518053</span>
+            <span className="manager-email-span">Email Address</span>
+            <span className="manager-emailValue-span">raza@gmail.com</span>
+            <span className="manager-whatsappNo-span">Whatsapp Number</span>
+            <span className="manager-whatsappNo-value-span">+923420518053</span>
           </div>
           <div>
             <span className="manager-nameArabic-span">
               Manager Name (Arabic)
             </span>
             <span className="managerName-arabic-span">تيتيت</span>
-            <span className="manager-whatsappNo-span">Whatsapp Number</span>
-            <span className="manager-whatsappNo-value-span">+923420518053</span>
+            <span className="manager-mobileNo-span">Mobile Number</span>
+            <span className="manager-mobileNo-value-span">+923420518053</span>
+          </div>
+          <div>
+            <span className="manager-cPass-span">Manager Customer Photo</span>
+            <div className="image-div">
+              <div>
+                <UserPhoto className="user-image" />
+              </div>
+              <span className="manager-customer-span">
+                Manager Customer Photo
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="resetpassword-box">
+        <span className="reset-password-span">Reset Password</span>
+        <div className="reset-div">
+          <div>
+            <span className="manager-Pass-span">Password*</span>
+            <span className="manager-PassValue-span">123</span>
+          </div>
+          <div style={{ marginLeft: 40 }}>
+            <span className="manager-cPass-span">Confirm Password*</span>
+            <span className="manager-cPassValue-span">raza@gmail.com</span>
           </div>
         </div>
       </div>

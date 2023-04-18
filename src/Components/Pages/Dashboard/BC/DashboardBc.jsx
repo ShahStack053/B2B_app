@@ -43,11 +43,11 @@ const values = [
 const dates = [
   {
     label: "8 Jul - 24 Jul",
-    key: "0",
+    key: "3",
   },
   {
     label: "1 Jul - 10 Jul",
-    key: "1",
+    key: "4",
   },
 ];
 const DashboardBc = () => {

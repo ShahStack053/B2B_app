@@ -8,7 +8,7 @@ import rice from "../../Assets/Images/rice.png";
 const data = [];
 for (let i = 0; i < 10; i++) {
   data.push({
-    key: i,
+    key: i + 1,
     id: 32,
     productName: `Product Name ${i}`,
     barcode: `76543216543`,

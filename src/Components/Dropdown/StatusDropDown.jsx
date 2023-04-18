@@ -5,13 +5,17 @@ import statusOrder from "../../Assets/Images/statusOrder.png";
 
 const items = [
   {
-    label: "Status",
+    label: "All",
     key: "0",
   },
-  // {
-  //   label: "Open",
-  //   key: "5",
-  // },
+  {
+    label: "Active",
+    key: "1",
+  },
+  {
+    label: "In Active",
+    key: "2",
+  },
   // {
   //   label: "Submitted",
   //   key: "1",
@@ -30,12 +34,13 @@ const items = [
   // },
 ];
 
-const StatusDropDown = () => {
+const StatusDropDown = ({ onChangeStatus }) => {
   const [selectedStatus, setSelectedStatus] = useState(items[0].label);
 
   const handleMenuClick = (e) => {
     const selectedItem = items.find((item) => item.key === e.key);
     setSelectedStatus(selectedItem.label);
+    onChangeStatus = { handleMenuClick };
   };
   const statusIconStyle = {
     marginLeft: 10,
@@ -62,17 +67,57 @@ const StatusDropDown = () => {
           color: "#000000",
           background: "#FFFFFF",
           height: 40,
-          width: 183,
+          width: "35%",
           borderRadius: 12,
           border: "1px solid #EFEEEB",
           marginLeft: 20,
         }}
       >
         <img src={statusOrder} alt="Language" style={statusIconStyle} />
-        {selectedStatus} <DownOutlined style={{ marginLeft: "55px" }} />
+        {selectedStatus}
+        <DownOutlined style={{ marginLeft: "15%", position: "sticky" }} />
       </Space>
     </Dropdown>
   );
 };
 
 export default StatusDropDown;
+
+// import { Select, Space } from "antd";
+// const handleChange = (value) => {
+//   console.log(`selected ${value}`);
+// };
+// const StatusDropDown = () => (
+//   <Space wrap>
+//     <Select
+//       defaultValue="In Active"
+//       style={{
+//         fontFamily: "Poppins",
+//         fontSize: "12.2195px",
+//         color: "#000000",
+//         background: "#FFFFFF",
+//         height: 40,
+//         width: "100%",
+//         borderRadius: 12,
+//         border: "1px solid #EFEEEB",
+//         marginLeft: 20,
+//       }}
+//       onChange={handleChange}
+//       options={[
+//         {
+//           value: "All",
+//           label: "All",
+//         },
+//         {
+//           value: "Active",
+//           label: "Active",
+//         },
+//         {
+//           value: "In Active",
+//           label: "In Active",
+//         },
+//       ]}
+//     />
+//   </Space>
+// );
+// export default StatusDropDown;
