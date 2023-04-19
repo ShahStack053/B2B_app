@@ -13,20 +13,26 @@ const Users = () => {
     navigate("/layout/newUser");
   };
   const [searchValues, setSearchValues] = useState({
-    search: "",
-    dateFrom: "",
-    dateTo: "",
-    status: "",
+    search: null,
+    dateFrom: null,
+    dateTo: null,
+    status: null,
+    date: null,
+    name: null,
+    pageNumber: 1,
+    pageSize: 10,
+    sortColumn: "id",
+    sortOrder: "z",
+    userId: [],
   });
-  console.log("SearchName=========>>>", searchValues.search);
-  console.log("dateTo=========>>>", searchValues.dateTo);
-  console.log("dateFrom=========>>>", searchValues.dateFrom);
-  console.log("status=========>>>", searchValues.status);
+  // console.log("searchValues=========>>>", searchValues);
 
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState([]);
+  const [pagination, setPagination] = useState("");
 
   useEffect(() => {
-    var data = JSON.stringify({});
+    var data = JSON.stringify(searchValues);
+    setUserData([]);
     axios({
       method: "Post",
       url: "https://api-customer-dev.b2bprice.store/api/BCUser/GetAll",
@@ -38,14 +44,16 @@ const Users = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("SearchData====>", res.data.data);
+        // console.log("SearchData====>", res.data.data);
         setUserData(res.data.data);
+        // console.log("pagination=>>>", res.data);
+        setPagination(res.data);
       },
       (err) => {
         console.log("err===>", err);
       }
     );
-  }, []);
+  }, [searchValues]);
 
   const onChangeRange = (value, dateString) => {
     // console.log("Selected Time: ", value);
@@ -56,13 +64,13 @@ const Users = () => {
       dateTo: dateString[1],
     });
   };
-  const onChangeStatus = (value, selectedStatus) => {
-    console.log("selectedstatus=>.>>>", selectedStatus);
-    setSearchValues({
-      ...searchValues,
-      status: selectedStatus,
-    });
-  };
+  // const onChangeStatus = (value, selectedStatus) => {
+  //   console.log("selectedstatus=>>>>", selectedStatus);
+  //   setSearchValues({
+  //     ...searchValues,
+  //     status: selectedStatus,
+  //   });
+  // };
 
   return (
     <div className="users-container">
@@ -82,11 +90,17 @@ const Users = () => {
           setSearchValues={setSearchValues}
           searchValues={searchValues}
           onChangeRange={onChangeRange}
-          onChangeStatus={onChangeStatus}
+          // onChangeStatus={onChangeStatus}
         />
       </>
       <div className="users-table-div">
-        <UserTable userData={userData} />
+        <UserTable
+          userData={userData}
+          setUserData={setUserData}
+          pagination={pagination}
+          setPagination={setPagination}
+          searchValues={searchValues}
+        />
       </div>
     </div>
   );

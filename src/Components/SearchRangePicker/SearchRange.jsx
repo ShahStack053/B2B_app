@@ -9,7 +9,7 @@ const SearchRange = ({
   setSearchValues,
   searchValues,
   onChangeRange,
-  onChangeStatus,
+  onChange,
 }) => {
   const { RangePicker } = DatePicker;
 
@@ -60,7 +60,7 @@ const SearchRange = ({
         <StatusDropDown
           setSearchValues={setSearchValues}
           searchValues={searchValues}
-          onChange={onChangeStatus}
+          onChange={onChange}
         />
       </div>
     </div>

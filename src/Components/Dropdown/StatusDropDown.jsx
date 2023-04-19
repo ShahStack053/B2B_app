@@ -16,31 +16,21 @@ const items = [
     label: "In Active",
     key: "2",
   },
-  // {
-  //   label: "Submitted",
-  //   key: "1",
-  // },
-  // {
-  //   label: "In Transit",
-  //   key: "2",
-  // },
-  // {
-  //   label: "Cancelled",
-  //   key: "3",
-  // },
-  // {
-  //   label: "Delivered",
-  //   key: "4",
-  // },
 ];
 
-const StatusDropDown = ({ onChangeStatus }) => {
+const StatusDropDown = ({ searchValues, setSearchValues }) => {
   const [selectedStatus, setSelectedStatus] = useState(items[0].label);
 
   const handleMenuClick = (e) => {
     const selectedItem = items.find((item) => item.key === e.key);
     setSelectedStatus(selectedItem.label);
-    onChangeStatus = { handleMenuClick };
+    if (selectedItem.label === "Active") {
+      setSearchValues({ ...searchValues, status: true });
+    } else if (selectedItem.label === "In Active") {
+      setSearchValues({ ...searchValues, status: false });
+    } else {
+      setSearchValues({ ...searchValues, status: null });
+    }
   };
   const statusIconStyle = {
     marginLeft: 10,
