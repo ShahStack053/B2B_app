@@ -1,30 +1,25 @@
 import React from "react";
 import { Switch, Table } from "antd";
 import Swal from "sweetalert2";
-// import { Pagination } from "antd";
 import { useState } from "react";
 import { DashOutlined, EyeOutlined, FormOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import axios from "axios";
-const items = [
-  {
-    label: "View",
-    key: "1",
-    icon: <EyeOutlined />,
-  },
-  {
-    label: "Edit",
-    key: "2",
-    icon: <FormOutlined />,
-  },
-];
-const menuProps = {
-  items,
-};
-const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
-  console.log("userData===>", userData);
-  const [currentPage, setCurrentPage] = useState();
+import { Link } from "react-router-dom";
 
+const UserTable = ({
+  userData,
+  setUserData,
+  pagination,
+  setPagination,
+  setIsViewClicked,
+  isViewClicked,
+}) => {
+  // console.log("userData===>", userData);
+  const [currentPage, setCurrentPage] = useState();
+  const viewClickHandler = () => {
+    setIsViewClicked(!isViewClicked);
+  };
   const paginationHandler = (page) => {
     console.log("page===>", page);
     // console.log("currentpage===>", currentPage);
@@ -352,6 +347,29 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       // width: "10%",
     },
   ];
+  const items = [
+    {
+      label: "View",
+      key: "1",
+      icon: (
+        <Link to="/main/newUser">
+          <EyeOutlined onClick={() => viewClickHandler()} />
+        </Link>
+      ),
+    },
+    {
+      label: <Link to="/main/newUser">Edit</Link>,
+      key: "2",
+      icon: (
+        <Link to="/main/newUser">
+          <FormOutlined />
+        </Link>
+      ),
+    },
+  ];
+  const menuProps = {
+    items,
+  };
   return (
     <>
       <Table
@@ -370,15 +388,6 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             ` ${range[0]}-${range[1]} of ${total} items`,
         }}
       />
-      {/* <Pagination
-        total={pagination.totalRecords}
-        onChange={(page) => paginationHandler(page)}
-        showTotal={(total, range) =>
-          `${range[0]}-${range[1]} of ${total} items`
-        }
-        defaultPageSize={10}
-        defaultCurrent={currentPage}
-      /> */}
     </>
   );
 };

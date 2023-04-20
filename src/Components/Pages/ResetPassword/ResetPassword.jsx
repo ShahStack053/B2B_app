@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  // useLocation, useNavigate
+} from "react-router-dom";
 import Frame from "../../../Assets/Images/Frame.png";
 import Illustration from "../../../Assets/Images/Illustration.png";
 import "./ResetPassword.css";
-import axios from "axios";
+// import axios from "axios";
 import LangDropDown from "../../Dropdown/LangDropDown";
 
 const ResetPassword = () => {
@@ -11,8 +14,8 @@ const ResetPassword = () => {
     newPassword: "",
     confirmPassword: "",
   });
-  const navigate = useNavigate();
-  const location = useLocation();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
   console.log(
     // "LOCATION===>>>",

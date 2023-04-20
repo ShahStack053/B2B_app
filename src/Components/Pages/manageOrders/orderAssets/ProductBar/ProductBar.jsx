@@ -1,22 +1,22 @@
 import React from "react";
 import "./ProductBar.css";
-import pAngleVector from "../../Assets/Images/pAngleVector.png";
-import addProductBtn from "../../Assets/Images/addProductBtn.png";
+import pAngleVector from "../../../../../Assets/Images/pAngleVector.png";
+import addProductBtn from "../../../../../Assets/Images/addProductBtn.png";
 import { Link, useNavigate } from "react-router-dom";
 
 const ProductBar = () => {
   const navigate = useNavigate();
   const myFunction = () => {
-    navigate("/layout/addProduct");
+    navigate("/main/addProduct");
   };
   return (
     <div className="order-add-product-main-div">
       <div className="product-invoice-div">
-        <Link to="/layout/newOrder">
+        <Link to="/main/newOrder">
           <span className="product-span">Products</span>
         </Link>
         <img src={pAngleVector} alt="angle" style={{ height: 56 }} />
-        <Link to="/layout/inVoice">
+        <Link to="/main/inVoice">
           <span className="invoice-span">Invoice</span>
         </Link>
       </div>

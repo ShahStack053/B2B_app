@@ -46,21 +46,21 @@ const Layouts = () => {
 
   const navigateRouteHandler = (e) => {
     if (e.key === "1") {
-      navigate("/layout/dashboard");
+      navigate("/main/dashboard");
     } else if (e.key === "2") {
-      navigate("/layout/orders");
+      navigate("/main/orders");
     } else if (e.key === "3") {
-      navigate("/layout/requestForQuotations");
+      navigate("/main/requestForQuotations");
     } else if (e.key === "4") {
-      navigate("/layout/myProduct");
+      navigate("/main/myProduct");
     } else if (e.key === "5") {
-      navigate("/layout/manageUser");
+      navigate("/main/manageUser");
     } else if (e.key === "6") {
-      navigate("/layout/companyProfile");
+      navigate("/main/companyProfile");
     } else if (e.key === "7") {
-      navigate("/layout/settings");
+      navigate("/main/settings");
     } else {
-      navigate("/layout/logout");
+      navigate("/main/logout");
     }
   };
   return (

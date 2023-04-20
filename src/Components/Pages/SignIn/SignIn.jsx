@@ -23,7 +23,7 @@ const SignIn = () => {
         .then(function (res) {
           if (res.status === 200) {
             console.log("token==>>>", res.data.data.token);
-            navigate("/layout/dashboard");
+            navigate("/main/dashboard");
             localStorage.setItem("AuthToken", res.data.data.token);
           }
         })

@@ -1,8 +1,8 @@
 import React from "react";
 import "./NewOrder.css";
-import ProductBar from "../../ProductBar/ProductBar";
-import ProductCard from "../../featureWidgetCard/WidgetProductCard/ProductCard";
-import OrderDetail from "../../OrderDetails/OrderDetail";
+import ProductBar from "../orderAssets/ProductBar/ProductBar";
+import ProductCard from "../../../featureWidgetCard/WidgetProductCard/ProductCard";
+import OrderDetail from "../orderAssets/OrderDetails/OrderDetail";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const NewOrder = () => {
   return (
     <div className="new-order-container">
       <div className="new-order-div">
-        <Link to="/layout/orders">
+        <Link to="/main/orders">
           <ArrowLeftOutlined className="new-order-arrow" />
         </Link>
         <span className="create-newOrder-span">Create New Order</span>

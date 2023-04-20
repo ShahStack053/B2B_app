@@ -7,9 +7,9 @@ import SignUp from "./Components/Pages/SignUp/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DashboardBc from "./Components/Pages/Dashboard/BC/DashboardBc";
 import Layouts from "./Components/Layouts/Layouts";
-import Orders from "./Components/Pages/Orders/Orders";
-import NewOrder from "./Components/Pages/newCreateOrder/NewOrder";
-import OrderInvoice from "./Components/Pages/newOrderInvoice/OrderInvoice";
+import Orders from "./Components/Pages/manageOrders/Orders/Orders";
+import NewOrder from "./Components/Pages/manageOrders/newCreateOrder/NewOrder";
+import OrderInvoice from "./Components/Pages/manageOrders/newOrderInvoice/OrderInvoice";
 import AddProduct from "./Components/Pages/addProduct/AddProduct";
 import Users from "./Components/Pages/ManageUser/Users/Users";
 import AddUser from "./Components/Pages/ManageUser/newUser/AddUser";
@@ -24,7 +24,7 @@ function App() {
           <Route path="/otp" element={<OTP />} />
           <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
-          <Route path="/layout/*" element={<Layouts />}>
+          <Route path="/main/*" element={<Layouts />}>
             <Route path="dashboard" element={<DashboardBc />} />
             <Route path="orders" element={<Orders />} />
             <Route path="newOrder" element={<NewOrder />} />

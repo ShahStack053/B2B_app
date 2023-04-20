@@ -3,13 +3,19 @@ import "./AddUser.css";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
+import { useState } from "react";
 
 const AddUser = () => {
+  const [isViewClicked, setIsViewClicked] = useState(false);
   return (
     <div className="add-user-container">
       <div className="manager-customer-div">
-        <Link to="/layout/manageUser">
-          <ArrowLeftOutlined className="new-manager-arrow" />
+        <Link to="/main/manageUser">
+          <ArrowLeftOutlined
+            className="new-manager-arrow"
+            setIsViewClicked={setIsViewClicked}
+            isViewClicked={isViewClicked}
+          />
         </Link>
         <span className="customer-manager-span">Customers Manager</span>
       </div>
@@ -34,17 +40,19 @@ const AddUser = () => {
             <span className="manager-mobileNo-span">Mobile Number</span>
             <span className="manager-mobileNo-value-span">+923420518053</span>
           </div>
-          <div>
-            <span className="manager-cPass-span">Manager Customer Photo</span>
-            <div className="image-div">
-              <div>
-                <UserPhoto className="user-image" />
+          {isViewClicked ? (
+            <div>
+              <span className="manager-cPass-span">Manager Customer Photo</span>
+              <div className="image-div">
+                <div>
+                  <UserPhoto className="user-image" />
+                </div>
+                <span className="manager-customer-span">
+                  Manager Customer Photo
+                </span>
               </div>
-              <span className="manager-customer-span">
-                Manager Customer Photo
-              </span>
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
       <div className="resetpassword-box">

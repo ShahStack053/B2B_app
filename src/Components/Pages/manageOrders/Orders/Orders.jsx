@@ -1,13 +1,13 @@
 import React from "react";
 import "./Orders.css";
-import addProductBtn from "../../../Assets/Images/addProductBtn.png";
-import SearchRange from "../../SearchRangePicker/SearchRange";
-import ManageOrderTable from "../../featureTable/ManageOrderTable";
+import addProductBtn from "../../../../Assets/Images/addProductBtn.png";
+import SearchRange from "../../../SearchRangePicker/SearchRange";
+import ManageOrderTable from "../../../featureTable/ManageOrderTable";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
-import ManageOrder from "../../featureWidgetCard/ManageOrderCard/ManageOrder";
+import ManageOrder from "../../../featureWidgetCard/ManageOrderCard/ManageOrder";
 
 const Orders = () => {
   const [ordersData, setOrdersData] = useState([]);
@@ -25,7 +25,7 @@ const Orders = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("OrderData====>", res.data.data);
+        // console.log("OrderData====>", res.data.data);
         setOrdersData(res.data.data);
       },
       (err) => {
@@ -46,7 +46,7 @@ const Orders = () => {
     }).then(
       (res) => {
         // debugger;
-        console.log("OrderCardData====>", res.data.data);
+        // console.log("OrderCardData====>", res.data.data);
         setOrdersCardData(res.data.data);
       },
       (err) => {
@@ -56,7 +56,7 @@ const Orders = () => {
   }, []);
   const navigate = useNavigate();
   const navigatorNewOrder = () => {
-    navigate("/layout/newOrder");
+    navigate("/main/newOrder");
   };
   return (
     <div className="orders-container">

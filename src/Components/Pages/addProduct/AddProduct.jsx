@@ -15,7 +15,7 @@ const AddProduct = () => {
     <div className="add-product-container">
       <div className="add-product-div">
         <div className="add-product-title-div">
-          <Link to="/layout/orders">
+          <Link to="/main/orders">
             <ArrowLeftOutlined className="add-product-arrow" />
           </Link>
           <span className="add-product-span">Add Products</span>
