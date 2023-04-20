@@ -5,24 +5,23 @@ import { useState } from "react";
 import { DashOutlined, EyeOutlined, FormOutlined } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const UserTable = ({
-  userData,
-  setUserData,
-  pagination,
-  setPagination,
-  setIsViewClicked,
-  isViewClicked,
-}) => {
+const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
   // console.log("userData===>", userData);
   const [currentPage, setCurrentPage] = useState();
-  const viewClickHandler = () => {
-    setIsViewClicked(!isViewClicked);
+  const navigate = useNavigate();
+
+  const viewClickHandler = (label) => {
+    navigate("/main/newUser", { state: { label } });
   };
+
+  const editClickHandler = (label) => {
+    navigate("/main/newUser", { state: { label } });
+  };
+
   const paginationHandler = (page) => {
     console.log("page===>", page);
-    // console.log("currentpage===>", currentPage);
     setCurrentPage(page);
     setUserData([]);
     var data = JSON.stringify({});
@@ -36,9 +35,7 @@ const UserTable = ({
       data,
     }).then(
       (res) => {
-        // console.log("SearchData====>", res.data.data);
         setUserData(res.data.data);
-        // console.log("pagination1111=>>>", res.data);
         setPagination(res.data);
       },
       (err) => {
@@ -347,26 +344,31 @@ const UserTable = ({
       // width: "10%",
     },
   ];
+  // const items = [
+  //   {
+  //     label: "View",
+  //     key: "1",
+  //     icon: <EyeOutlined onClick={() => viewClickHandler("View")} />,
+  //   },
+  //   {
+  //     label: "Edit",
+  //     key: "2",
+  //     icon: <FormOutlined onClick={() => editClickHandler("Edit")} />,
+  //   },
+  // ];
   const items = [
     {
-      label: "View",
+      label: <div onClick={() => viewClickHandler("View")}>View</div>,
       key: "1",
-      icon: (
-        <Link to="/main/newUser">
-          <EyeOutlined onClick={() => viewClickHandler()} />
-        </Link>
-      ),
+      icon: <EyeOutlined onClick={() => viewClickHandler("View")} />,
     },
     {
-      label: <Link to="/main/newUser">Edit</Link>,
+      label: <div onClick={() => editClickHandler("Edit")}>Edit</div>,
       key: "2",
-      icon: (
-        <Link to="/main/newUser">
-          <FormOutlined />
-        </Link>
-      ),
+      icon: <FormOutlined onClick={() => editClickHandler("Edit")} />,
     },
   ];
+
   const menuProps = {
     items,
   };

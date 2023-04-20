@@ -9,8 +9,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 const Users = () => {
   const navigate = useNavigate();
-  const navigatorNewUser = () => {
-    navigate("/main/newUser");
+  const navigatorNewUser = (label) => {
+    navigate("/main/newUser", { state: { label } });
   };
   const [searchValues, setSearchValues] = useState({
     search: null,
@@ -76,7 +76,10 @@ const Users = () => {
     <div className="users-container">
       <div className="users-add-btn-div">
         <span className="customer-manager-span">Customers Managers</span>
-        <button className="add-manager-btn" onClick={navigatorNewUser}>
+        <button
+          className="add-manager-btn"
+          onClick={() => navigatorNewUser("addUser")}
+        >
           <img
             src={addProductBtn}
             alt="add-sign-box"
