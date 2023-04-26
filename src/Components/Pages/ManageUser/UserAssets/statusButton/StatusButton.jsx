@@ -15,7 +15,9 @@ const StatusButton = ({ userData }) => {
   return (
     <Switch
       style={{
-        background: isChecked ? "rgba(0, 207, 21, 1)" : "rgba(0, 0, 0, 0.25)",
+        background: isChecked
+          ? "rgba(0, 207, 21, 1)"
+          : "rgba(188, 188, 188, 1)",
       }}
       // defaultChecked
       onChange={onChange}

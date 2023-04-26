@@ -57,7 +57,7 @@ const Users = () => {
 
   const onChangeRange = (value, dateString) => {
     // console.log("Selected Time: ", value);
-    console.log("Formatted Selected Time: ", dateString);
+    // console.log("Formatted Selected Time: ", dateString);
     setSearchValues({
       ...searchValues,
       dateFrom: dateString[0],

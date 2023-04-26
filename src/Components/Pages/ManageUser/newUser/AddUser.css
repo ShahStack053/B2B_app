@@ -123,7 +123,27 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.managerName-value-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
     margin-top: 8px;
     margin-bottom: 30px;
 }
@@ -141,9 +161,30 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
+    padding-right: 20px;
     margin-top: 8px;
     margin-bottom: 30px;
+}
+
+.managerName-arabic-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    direction: RTL;
 }
 
 .manager-email-span {
@@ -185,7 +226,27 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.manager-emailValue-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
     margin-top: 8px;
     margin-bottom: 30px;
 }
@@ -203,7 +264,27 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.manager-mobileNo-value-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
     margin-top: 8px;
     margin-bottom: 30px;
 }
@@ -221,7 +302,27 @@
     border-radius: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.manager-whatsappNo-value-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
     margin-top: 8px;
     margin-bottom: 30px;
 }
@@ -234,9 +335,9 @@
     color: #606060;
 }
 
-.manager-PassValue-span {
+.manager-PassValue-input {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 14px;
     color: #252733;
     width: 302px;
@@ -247,6 +348,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 20px;
     margin-top: 8px;
 }
 
@@ -258,9 +360,9 @@
     color: #606060;
 }
 
-.manager-cPassValue-span {
+.manager-cPassValue-input {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     font-size: 14px;
     color: #252733;
     width: 302px;
@@ -272,6 +374,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 8px;
+    padding-left: 20px;
 }
 
 .manager-detail-btn-div {

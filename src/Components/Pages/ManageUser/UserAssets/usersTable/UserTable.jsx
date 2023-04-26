@@ -11,17 +11,18 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
   // console.log("userData===>", userData);
   const [currentPage, setCurrentPage] = useState();
   const navigate = useNavigate();
+  const [rowID, setRowID] = useState();
 
   const viewClickHandler = (label) => {
-    navigate("/main/newUser", { state: { label } });
+    navigate("/main/newUser", { state: { label, rowID } });
   };
 
   const editClickHandler = (label) => {
-    navigate("/main/newUser", { state: { label } });
+    navigate("/main/newUser", { state: { label, rowID } });
   };
 
   const paginationHandler = (page) => {
-    console.log("page===>", page);
+    // console.log("page===>", page);
     setCurrentPage(page);
     setUserData([]);
     var data = JSON.stringify({});
@@ -49,7 +50,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       id,
       status,
     };
-    console.log("status============>", status);
+    // console.log("status============>", status);
     // console.log("row id===>", id);
     const data = JSON.stringify(obj);
     Swal.fire("Status changed", "", "success");
@@ -90,7 +91,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "13px",
             textAlign: "center",
           }}
         >
@@ -124,7 +125,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "13px",
           }}
         >
           {text}
@@ -157,7 +158,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "13px",
             // textAlign: "center",
           }}
         >
@@ -190,13 +191,13 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "13px",
           }}
         >
           {text}
         </div>
       ),
-      width: "15.5%",
+      width: "17%",
     },
     {
       title: (
@@ -232,7 +233,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
               fontFamily: "Poppins",
               fontStyle: "normal",
               fontWeight: 400,
-              fontSize: "12px",
+              fontSize: "13px",
               // textAlign: "center",
             }}
           >
@@ -266,7 +267,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "13px",
             textAlign: "center",
           }}
         >
@@ -323,19 +324,19 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       dataIndex: "action",
       key: "action",
       ellipsis: true,
-      render: (text) => (
+      render: (props, row) => (
         <div
           style={{
             color: "#000000",
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "13px",
             textAlign: "center",
           }}
         >
           <Space>
-            <Dropdown menu={menuProps}>
+            <Dropdown menu={menuProps} onClick={() => setRowID(row.id)}>
               <Space>{<DashOutlined />}</Space>
             </Dropdown>
           </Space>
@@ -344,18 +345,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       // width: "10%",
     },
   ];
-  // const items = [
-  //   {
-  //     label: "View",
-  //     key: "1",
-  //     icon: <EyeOutlined onClick={() => viewClickHandler("View")} />,
-  //   },
-  //   {
-  //     label: "Edit",
-  //     key: "2",
-  //     icon: <FormOutlined onClick={() => editClickHandler("Edit")} />,
-  //   },
-  // ];
+
   const items = [
     {
       label: <div onClick={() => viewClickHandler("View")}>View</div>,

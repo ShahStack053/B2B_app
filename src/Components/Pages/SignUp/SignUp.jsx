@@ -28,20 +28,20 @@ const SignUp = () => {
   });
   const navigate = useNavigate();
 
-  console.log(
-    "fname===>",
-    values.fName,
-    "email===>",
-    values.email,
-    "companyName===>",
-    values.companyName,
-    "custCategory===>",
-    values.custCategory,
-    "password===>",
-    values.password,
-    "confirmPassword===>",
-    values.confirmPassword
-  );
+  // console.log(
+  //   "fname===>",
+  //   values.fName,
+  //   "email===>",
+  //   values.email,
+  //   "companyName===>",
+  //   values.companyName,
+  //   "custCategory===>",
+  //   values.custCategory,
+  //   "password===>",
+  //   values.password,
+  //   "confirmPassword===>",
+  //   values.confirmPassword
+  // );
 
   const myFunction = () => {
     const createData = {
