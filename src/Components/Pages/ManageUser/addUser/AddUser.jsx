@@ -6,13 +6,13 @@ import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const AddUser = () => {
   const location = useLocation();
-  const id = location.state.rowID;
-
+  const id = location.state.id;
+  // ============================== API For user get by id ====================================
   const [bcData, setBcData] = useState([]);
   useEffect(() => {
     axios({
@@ -24,7 +24,7 @@ const AddUser = () => {
       },
     }).then(
       (res) => {
-        console.log("userBy ID Data", res.data.data);
+        // console.log("userBy ID Data", res.data.data);
         setBcData(res.data.data);
       },
       (err) => {
@@ -32,38 +32,78 @@ const AddUser = () => {
       }
     );
   }, [id]);
-  // console.log("arFullName", bcData.arFullName);
-  // console.log("phoneNumber", bcData.phoneNumber);
-  // console.log("enFullName", bcData.enFullName);
-  // console.log("role", bcData.role);
-  // console.log("whatsAppNumber", bcData.whatsAppNumber);
-  // console.log("bc data", bcData);
 
+  // =================================API for update user================================
   const [bcUpdatedValues, setBcUpdatedValues] = useState({
     arFullName: bcData.arFullName,
     bcId: 2,
-    bcData: bcData.email,
     enFullName: bcData.enFullName,
-    id: bcData.id,
     phoneNumber: bcData.phoneNumber,
-    primaryBcUser: true,
-    role: bcData.role,
+    primaryBcUser: false,
     whatsAppNumber: bcData.whatsAppNumber,
   });
 
   const updateUser = () => {
-    console.log("BC updated values", bcUpdatedValues);
-    // const data = JSON.stringify(bcUpdatedValues);
-    // //Swal.fire("Updated Successfully", "", "success");
-    // axios({
-    //   method: "Post",
-    //   url: "https://api-customer-dev.b2bprice.store/api/BCUser/UpdateBCUser",
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.AuthToken}`,
-    //     "Content-Type": "application/json",
-    //   },
-    //   data,
-    // });
+    const updatedBcData = { ...bcData, ...bcUpdatedValues };
+    // console.log("BC updated values", updatedBcData);
+    const data = JSON.stringify(updatedBcData);
+
+    axios({
+      method: "Post",
+      url: "https://api-customer-dev.b2bprice.store/api/BCUser/UpdateBCUser",
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+      data,
+    }).then(
+      (res) => {
+        Swal.fire("Updated Successfully", "", "success");
+        console.log("Update successful");
+      },
+      (err) => {
+        console.log(err);
+        Swal.fire("Updated Failed", "", "error");
+      }
+    );
+  };
+
+  // =================================API for Add user===============================
+  const [createUserData, setCreateUserData] = useState({
+    arFullName: "",
+    bcId: 2,
+    bcName: "Muhammad Faizan",
+    confrimPassword: "",
+    email: "",
+    enFullName: "",
+    password: "",
+    passwordExpired: false,
+    phoneNumber: "",
+    primaryBcUser: false,
+    whatsAppNumber: "",
+  });
+
+  // console.log("create Data=================>>>>>>>>>.", createUserData);
+  const createUser = () => {
+    const data = JSON.stringify(createUserData);
+    axios({
+      method: "Post",
+      url: "https://api-customer-dev.b2bprice.store/api/BCUser/CreateBCUser",
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/Json",
+      },
+      data,
+    }).then(
+      (res) => {
+        Swal.fire("User created Successfully", "", "success");
+        console.log("user created successful");
+      },
+      (err) => {
+        console.log(err);
+        Swal.fire("user creation Failed", "", "error");
+      }
+    );
   };
   const navigate = useNavigate();
   const cancelNavigate = () => {
@@ -119,7 +159,6 @@ const AddUser = () => {
             <>
               <div>
                 <span className="manager-name-span">Manager Name*</span>
-
                 <input
                   className="managerName-value-span"
                   type="text"
@@ -130,6 +169,7 @@ const AddUser = () => {
                       enFullName: e.target.value,
                     })
                   }
+                  // onChange={handleInputChange}
                 />
                 <span className="manager-email-span">Email Address*</span>
                 <span className="manager-emailValue-span">{bcData.email}</span>
@@ -148,6 +188,7 @@ const AddUser = () => {
                       whatsAppNumber: e.target.value,
                     })
                   }
+                  // onChange={handleInputChange}
                 />
               </div>
               <div>
@@ -159,7 +200,6 @@ const AddUser = () => {
                   dir="RTL"
                   className="managerName-arabic-span"
                   type="text"
-                  //
                   defaultValue={bcData.arFullName}
                   onChange={(e) =>
                     setBcUpdatedValues({
@@ -167,12 +207,12 @@ const AddUser = () => {
                       arFullName: e.target.value,
                     })
                   }
+                  // onChange={handleInputChange}
                 />
                 <span className="manager-mobileNo-span">Mobile Number*</span>
                 <input
                   className="manager-mobileNo-value-span"
                   type="text"
-                  //
                   defaultValue={bcData.phoneNumber}
                   onChange={(e) =>
                     setBcUpdatedValues({
@@ -180,6 +220,7 @@ const AddUser = () => {
                       phoneNumber: e.target.value,
                     })
                   }
+                  // onChange={handleInputChange}
                 />
               </div>
             </>
@@ -192,12 +233,26 @@ const AddUser = () => {
                   className="managerName-value-input"
                   type="text"
                   placeholder="Manager Name (English)"
+                  onChange={(e) =>
+                    setCreateUserData({
+                      ...createUserData,
+                      enFullName: e.target.value,
+                    })
+                  }
                 />
+
                 <span className="manager-mobileNo-span">Mobile Number*</span>
                 <input
                   className="manager-mobileNo-value-input"
                   type="text"
                   placeholder="Mobile Number"
+                  defaultValue={966}
+                  onChange={(e) =>
+                    setCreateUserData({
+                      ...createUserData,
+                      phoneNumber: e.target.value,
+                    })
+                  }
                 />
               </div>
               <div>
@@ -209,6 +264,12 @@ const AddUser = () => {
                   className="managerName-arabic-input"
                   type="text"
                   placeholder="Manager Name (العربية)"
+                  onChange={(e) =>
+                    setCreateUserData({
+                      ...createUserData,
+                      arFullName: e.target.value,
+                    })
+                  }
                 />
                 <span className="manager-whatsappNo-span">
                   Whatsapp Number*
@@ -218,6 +279,13 @@ const AddUser = () => {
                   className="manager-whatsappNo-value-input"
                   type="text"
                   placeholder="Whatsapp Number"
+                  defaultValue={966}
+                  onChange={(e) =>
+                    setCreateUserData({
+                      ...createUserData,
+                      whatsAppNumber: e.target.value,
+                    })
+                  }
                 />
               </div>
               <div>
@@ -227,6 +295,12 @@ const AddUser = () => {
                   className="manager-emailValue-input"
                   type="email"
                   placeholder="Email Address"
+                  onChange={(e) =>
+                    setCreateUserData({
+                      ...createUserData,
+                      email: e.target.value,
+                    })
+                  }
                 />
               </div>
             </>
@@ -261,6 +335,12 @@ const AddUser = () => {
                 className="manager-PassValue-input"
                 type="password"
                 placeholder="Password"
+                onChange={(e) =>
+                  setCreateUserData({
+                    ...createUserData,
+                    password: e.target.value,
+                  })
+                }
               />
             </div>
             <div style={{ marginLeft: 40 }}>
@@ -270,6 +350,12 @@ const AddUser = () => {
                 className="manager-cPassValue-input"
                 type="password"
                 placeholder="Confirm Password"
+                onChange={(e) =>
+                  setCreateUserData({
+                    ...createUserData,
+                    confrimPassword: e.target.value,
+                  })
+                }
               />
             </div>
           </div>
@@ -278,7 +364,9 @@ const AddUser = () => {
       {location.state.label === "View" ||
       location.state.label === "Edit" ? null : (
         <div className="manager-detail-btn-div">
-          <button className="save-info-btn">Save Information</button>
+          <button className="save-info-btn" onClick={createUser}>
+            Save Information
+          </button>
           <button className="cancel-btn">Cancel</button>
         </div>
       )}

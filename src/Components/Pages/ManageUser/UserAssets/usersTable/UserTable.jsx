@@ -2,7 +2,12 @@ import React from "react";
 import { Switch, Table } from "antd";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import { DashOutlined, EyeOutlined, FormOutlined } from "@ant-design/icons";
+import {
+  DashOutlined,
+  EyeOutlined,
+  FormOutlined,
+  DeleteOutlined,
+} from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -11,14 +16,34 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
   // console.log("userData===>", userData);
   const [currentPage, setCurrentPage] = useState();
   const navigate = useNavigate();
-  const [rowID, setRowID] = useState();
+  const [id, setRowID] = useState();
 
   const viewClickHandler = (label) => {
-    navigate("/main/newUser", { state: { label, rowID } });
+    navigate("/main/newUser", { state: { label, id } });
   };
 
   const editClickHandler = (label) => {
-    navigate("/main/newUser", { state: { label, rowID } });
+    navigate("/main/newUser", { state: { label, id } });
+  };
+
+  const deleteClickHandler = () => {
+    axios({
+      method: "Delete",
+      url: `https://api-customer-dev.b2bprice.store/api/BCUser/DeleteById?Id=${id}&BCId=2`,
+      headers: {
+        Authorization: `Bearer ${localStorage.AuthToken}`,
+        "Content-Type": "application/json",
+      },
+    }).then(
+      (res) => {
+        Swal.fire("User Deleted Successfully", "", "success");
+        console.log("Deleted successful");
+      },
+      (err) => {
+        console.log(err);
+        Swal.fire("Deletion Failed", "", "error");
+      }
+    );
   };
 
   const paginationHandler = (page) => {
@@ -53,7 +78,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
     // console.log("status============>", status);
     // console.log("row id===>", id);
     const data = JSON.stringify(obj);
-    Swal.fire("Status changed", "", "success");
+
     axios({
       method: "post",
       url: "https://api-customer-dev.b2bprice.store/api/BCUser/ChangeUserStatus",
@@ -62,7 +87,16 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
         "Content-Type": "application/json",
       },
       data,
-    });
+    }).then(
+      (res) => {
+        Swal.fire("Updated Successfully", "", "success");
+        console.log("Update successful");
+      },
+      (err) => {
+        console.log(err);
+        Swal.fire("Updated Failed", "", "error");
+      }
+    );
   };
 
   const columns = [
@@ -356,6 +390,11 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       label: <div onClick={() => editClickHandler("Edit")}>Edit</div>,
       key: "2",
       icon: <FormOutlined onClick={() => editClickHandler("Edit")} />,
+    },
+    {
+      label: <div onClick={deleteClickHandler}>Delete</div>,
+      key: "3",
+      icon: <DeleteOutlined onClick={deleteClickHandler} />,
     },
   ];
 

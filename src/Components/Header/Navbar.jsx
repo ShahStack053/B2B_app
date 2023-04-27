@@ -5,7 +5,7 @@ import userImage from "../../Assets/Images/userImage.png";
 import { SearchOutlined, BellOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 
-const date = new Date("28 Jul, 2022");
+const date = new Date();
 const options = { year: "numeric", month: "short", day: "numeric" };
 const formattedDate = date.toLocaleDateString("en-US", options);
 // formattedDate will be "Jul 28, 2022"

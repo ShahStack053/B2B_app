@@ -1,0 +1,320 @@
+.add-user-container {
+    background-color: rgb(241 251 251);
+    padding: 25px;
+    width: 100%;
+    padding-top: 105px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px
+}
+
+.manager-customer-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+}
+
+.new-manager-arrow {
+    color: #7B7B7B;
+    margin-right: 18px;
+}
+
+.customer-manager-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+}
+
+.manager-detail-box-div {
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 100%;
+    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.manager-detail-title-div {
+    display: flex;
+    width: 100%;
+
+}
+
+
+.manager-detail-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.manager-detail-div {
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.manager-name-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+
+.managerName-value-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.manager-mobileNo-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.manager-mobileNo-value-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.manager-nameArabic-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+
+}
+
+.managerName-arabic-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+    direction: RTL;
+}
+
+
+.manager-whatsappNo-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+
+}
+
+.manager-whatsappNo-value-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+
+
+.manager-email-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+
+}
+
+.manager-emailValue-input {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 20px;
+    margin-top: 8px;
+    margin-bottom: 30px;
+}
+
+.resetpassword-box {
+    margin-top: 30px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.reset-password-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #000000;
+}
+
+.reset-div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+
+.manager-Pass-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.manager-PassValue-input {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    margin-top: 8px;
+}
+
+.manager-cPass-span {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.2195px;
+    color: #606060;
+}
+
+.manager-cPassValue-input {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #252733;
+    width: 302px;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.manager-detail-btn-div {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.save-info-btn {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    width: 195px;
+    height: 50px;
+    background: linear-gradient(90.55deg, #1879B8 0.29%, #14A3D8 98.5%);
+    border-radius: 7px;
+    border: none;
+}
+
+.cancel-btn {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    width: 195px;
+    height: 50px;
+    background: #95989A;
+    border-radius: 10px;
+    border: none;
+    margin-left: 20px;
+}

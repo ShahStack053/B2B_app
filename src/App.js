@@ -12,7 +12,8 @@ import NewOrder from "./Components/Pages/manageOrders/newCreateOrder/NewOrder";
 import OrderInvoice from "./Components/Pages/manageOrders/newOrderInvoice/OrderInvoice";
 import AddProduct from "./Components/Pages/addProduct/AddProduct";
 import Users from "./Components/Pages/ManageUser/Users/Users";
-import AddUser from "./Components/Pages/ManageUser/newUser/AddUser";
+import AddUser from "./Components/Pages/ManageUser/addUser/AddUser";
+import NewUser from "./Components/Pages/ManageUser/newUser/NewUser";
 
 function App() {
   return (
@@ -31,7 +32,8 @@ function App() {
             <Route path="inVoice" element={<OrderInvoice />} />
             <Route path="addProduct" element={<AddProduct />} />
             <Route path="manageUser" element={<Users />} />
-            <Route path="newUser" element={<AddUser />} />
+            <Route path="addUser" element={<AddUser />} />
+            <Route path="newUser" element={<NewUser />} />
           </Route>
         </Routes>
       </BrowserRouter>
