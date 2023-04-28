@@ -13,6 +13,7 @@ import { Layout, Menu } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Header/Navbar";
 import LangDropDown from "../Dropdown/LangDropDown";
+import Swal from "sweetalert2";
 const { Header, Sider } = Layout;
 
 function getItem(label, key, icon, children, type) {
@@ -26,83 +27,6 @@ function getItem(label, key, icon, children, type) {
 }
 
 //======================================Side bar Item=======================
-const items = [
-  getItem(
-    "Dashboard",
-    "1",
-    <img
-      src={dashboardSidebar}
-      alt="Dashboard"
-      style={{ width: 22, height: 19, marginRight: 7 }}
-    />
-  ),
-  getItem(
-    "Orders",
-    "2",
-    <img
-      src={orderSidebar}
-      alt="Orders"
-      style={{ width: 22, height: 19, marginRight: 7 }}
-    />
-  ),
-  getItem(
-    "RFQs",
-    "3",
-    <img
-      src={RFQs}
-      alt="RFQs"
-      style={{ width: 22, height: 19, marginRight: 7 }}
-    />
-  ),
-  getItem(
-    "My Products",
-    "4",
-    <img
-      src={productSide}
-      alt="My Products"
-      style={{ width: 22, height: 19, marginRight: 7 }}
-    />
-  ),
-  {
-    type: "divider",
-  },
-  getItem(
-    "Manage Users",
-    "5",
-    <img
-      src={UserSidebar}
-      alt="Manage Users"
-      style={{ width: 22, height: 19, marginRight: 7 }}
-    />
-  ),
-  getItem(
-    "Company Profile",
-    "6",
-    <img
-      src={companySidebar}
-      alt="Company Profile"
-      style={{ width: 22, height: 19 }}
-    />
-  ),
-  getItem(
-    "Settings",
-    "7",
-    <img
-      src={setting}
-      alt="Settings"
-      style={{ width: 22, height: 19, marginRight: 7 }}
-    />
-  ),
-  getItem(
-    "Logout",
-    "8",
-    <img
-      src={logout}
-      alt="Logout"
-      style={{ width: 22, height: 19, marginRight: 7 }}
-    />
-  ),
-];
 
 const Layouts = () => {
   const navigate = useNavigate();
@@ -122,10 +46,118 @@ const Layouts = () => {
       navigate("/main/companyProfile");
     } else if (e.key === "7") {
       navigate("/main/settings");
-    } else {
-      navigate("/main/logout");
     }
   };
+
+  const mylogout = () => {
+    Swal.fire({
+      title: "Do you want to logout?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.clear();
+        navigate("/");
+      }
+    });
+  };
+  const items = [
+    getItem(
+      <button style={{ border: "none", background: "none", paddingLeft: 0 }}>
+        <img
+          src={dashboardSidebar}
+          alt="Dashboard"
+          style={{ width: 22, height: 19, marginRight: 17 }}
+        />
+        Dashboard
+      </button>,
+      "1"
+    ),
+    getItem(
+      <button style={{ border: "none", background: "none", paddingLeft: 0 }}>
+        <img
+          src={orderSidebar}
+          alt="Orders"
+          style={{ width: 22, height: 19, marginRight: 17 }}
+        />
+        Orders
+      </button>,
+      "2"
+    ),
+    getItem(
+      <button style={{ border: "none", background: "none", paddingLeft: 0 }}>
+        <img
+          src={RFQs}
+          alt="RFQs"
+          style={{ width: 22, height: 19, marginRight: 15, marginLeft: 4 }}
+        />
+        RFQs
+      </button>,
+      "3"
+    ),
+    getItem(
+      <button style={{ border: "none", background: "none", paddingLeft: 0 }}>
+        <img
+          src={productSide}
+          alt="My Products"
+          style={{ width: 22, height: 19, marginRight: 17 }}
+        />
+        My Products
+      </button>,
+      "4"
+    ),
+    {
+      type: "divider",
+    },
+    getItem(
+      <button style={{ border: "none", background: "none", paddingLeft: 0 }}>
+        <img
+          src={UserSidebar}
+          alt="Manage Users"
+          style={{ width: 19, height: 19, marginRight: 17 }}
+        />
+        Manage Users
+      </button>,
+      "5"
+    ),
+    getItem(
+      <button style={{ border: "none", background: "none", paddingLeft: 0 }}>
+        <img
+          src={companySidebar}
+          alt="Company Profile"
+          style={{ width: 24, height: 24, marginRight: 8 }}
+        />
+        Company Profile
+      </button>,
+      "6"
+    ),
+    getItem(
+      <button style={{ border: "none", background: "none", paddingLeft: 0 }}>
+        <img
+          src={setting}
+          alt="Settings"
+          style={{ width: 22, height: 19, marginRight: 14 }}
+        />
+        Settings
+      </button>,
+      "7"
+    ),
+
+    getItem(
+      <button
+        style={{ border: "none", background: "none", paddingLeft: 0 }}
+        onClick={mylogout}
+      >
+        <img
+          src={logout}
+          alt="Logout"
+          style={{ width: 22, height: 19, marginRight: 20 }}
+        />
+        Logout
+      </button>,
+      "8"
+    ),
+  ];
   return (
     <Layout>
       <Sider style={{ background: "white" }}>
@@ -137,13 +169,13 @@ const Layouts = () => {
             <div className="lower-sidebar-menu-div">
               <Menu
                 style={{
+                  paddingLeft: 0,
                   fontFamily: "Poppins",
                   fontSize: "14px",
                   fontWeight: "400",
                   color: "#000000",
                   borderInlineEnd: "none",
-                  width: "97.3%",
-                  paddingLeft: 0,
+                  width: "100%",
                 }}
                 defaultSelectedKeys={["1"]}
                 mode="inline"

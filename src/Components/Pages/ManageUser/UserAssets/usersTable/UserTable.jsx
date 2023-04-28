@@ -29,23 +29,31 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
   };
 
   const deleteClickHandler = () => {
-    axios({
-      method: "Delete",
-      url: `https://api-customer-dev.b2bprice.store/api/BCUser/DeleteById?Id=${id}&BCId=2`,
-      headers: {
-        Authorization: `Bearer ${localStorage.AuthToken}`,
-        "Content-Type": "application/json",
-      },
-    }).then(
-      (res) => {
-        Swal.fire("User Deleted Successfully", "", "success");
-        console.log("Deleted successful");
-      },
-      (err) => {
-        console.log(err);
-        Swal.fire("Deletion Failed", "", "error");
+    Swal.fire({
+      title: "Do you want to delete user?",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios({
+          method: "Delete",
+          url: `https://api-customer-dev.b2bprice.store/api/BCUser/DeleteById?Id=${id}&BCId=2`,
+          headers: {
+            Authorization: `Bearer ${localStorage.AuthToken}`,
+            "Content-Type": "application/json",
+          },
+        }).then(
+          (res) => {
+            Swal.fire("User Deleted Successfully", "", "success");
+            console.log("User Deleted successful");
+          },
+          (err) => {
+            console.log(err);
+            Swal.fire("User Deletion Failed", "", "error");
+          }
+        );
       }
-    );
+    });
   };
 
   const paginationHandler = (page) => {
@@ -91,12 +99,12 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       data,
     }).then(
       (res) => {
-        Swal.fire("Updated Successfully", "", "success");
-        console.log("Update successful");
+        Swal.fire("Status Changed Successfully", "", "success");
+        console.log("Status Changed successful");
       },
       (err) => {
         console.log(err);
-        Swal.fire("Updated Failed", "", "error");
+        Swal.fire("Status Changed Failed", "", "error");
       }
     );
   };
@@ -405,6 +413,9 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontSize: "14px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           onClick={() => viewClickHandler("View")}
         >
@@ -424,6 +435,9 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontSize: "14px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           onClick={() => editClickHandler("Edit")}
         >
@@ -443,6 +457,9 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontSize: "14px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           onClick={deleteClickHandler}
         >

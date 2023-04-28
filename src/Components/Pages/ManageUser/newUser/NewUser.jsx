@@ -50,7 +50,7 @@ const NewUser = () => {
 
   const updateUser = () => {
     const updatedBcData = { ...bcData, ...createUserData };
-    // console.log("BC updated values", updatedBcData);
+    console.log("BC updated values", updatedBcData);
     const data = JSON.stringify(updatedBcData);
     axios({
       method: "Post",
@@ -63,7 +63,7 @@ const NewUser = () => {
     }).then(
       (res) => {
         Swal.fire("Updated Successfully", "", "success");
-        console.log("Update successful");
+        console.log("response", res);
       },
       (err) => {
         console.log(err);
