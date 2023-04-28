@@ -2,14 +2,16 @@ import React from "react";
 import { Switch, Table } from "antd";
 import Swal from "sweetalert2";
 import { useState } from "react";
+
 import {
-  DashOutlined,
+  // DashOutlined,
   EyeOutlined,
   FormOutlined,
   DeleteOutlined,
 } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import axios from "axios";
+import Dashes from "../../../../../Assets/Images/Dashes.png";
 import { useNavigate } from "react-router-dom";
 
 const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
@@ -371,7 +373,19 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
         >
           <Space>
             <Dropdown menu={menuProps} onClick={() => setRowID(row.id)}>
-              <Space>{<DashOutlined />}</Space>
+              {/* <Space>{<DashOutlined />}</Space> */}
+              <Space>
+                <img
+                  src={Dashes}
+                  alt="Dashes"
+                  style={{
+                    width: 20,
+                    height: 5,
+                    opacity: "0.7",
+                    // color: "grey",
+                  }}
+                />
+              </Space>
             </Dropdown>
           </Space>
         </div>
@@ -382,19 +396,61 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
 
   const items = [
     {
-      label: <div onClick={() => viewClickHandler("View")}>View</div>,
+      label: (
+        <button
+          style={{
+            border: "none",
+            background: "none",
+            color: "#252733",
+            fontFamily: "Poppins",
+            fontStyle: "normal",
+            fontSize: "14px",
+          }}
+          onClick={() => viewClickHandler("View")}
+        >
+          <EyeOutlined style={{ color: "rgba(23, 121, 184, 1)" }} />
+          &nbsp;&nbsp; View
+        </button>
+      ),
       key: "1",
-      icon: <EyeOutlined onClick={() => viewClickHandler("View")} />,
     },
     {
-      label: <div onClick={() => editClickHandler("Edit")}>Edit</div>,
+      label: (
+        <button
+          style={{
+            border: "none",
+            background: "none",
+            color: "#252733",
+            fontFamily: "Poppins",
+            fontStyle: "normal",
+            fontSize: "14px",
+          }}
+          onClick={() => editClickHandler("Edit")}
+        >
+          <FormOutlined style={{ color: "rgba(23, 121, 184, 1)" }} />
+          &nbsp;&nbsp; Edit
+        </button>
+      ),
       key: "2",
-      icon: <FormOutlined onClick={() => editClickHandler("Edit")} />,
     },
     {
-      label: <div onClick={deleteClickHandler}>Delete</div>,
+      label: (
+        <button
+          style={{
+            border: "none",
+            background: "none",
+            color: " #C70000",
+            fontFamily: "Poppins",
+            fontStyle: "normal",
+            fontSize: "14px",
+          }}
+          onClick={deleteClickHandler}
+        >
+          <DeleteOutlined style={{ color: " #C70000" }} />
+          &nbsp;&nbsp; Delete
+        </button>
+      ),
       key: "3",
-      icon: <DeleteOutlined onClick={deleteClickHandler} />,
     },
   ];
 
@@ -402,7 +458,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
     items,
   };
   return (
-    <>
+    <div>
       <Table
         columns={columns}
         dataSource={userData}
@@ -419,7 +475,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
             ` ${range[0]}-${range[1]} of ${total} items`,
         }}
       />
-    </>
+    </div>
   );
 };
 

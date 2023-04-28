@@ -1,6 +1,6 @@
 import React from "react";
 import "./ManageOrder.css";
-import completedOrderImage from "../../../Assets/Images/completedOrderImage.png";
+import completedOrderImage from "../../../Assets/Images/Orders/completedOrderImage.png";
 import { DashOutlined, FallOutlined, RiseOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { DashOutlined, RiseOutlined, FallOutlined } from "@ant-design/icons";
 import { Card } from "antd";
-import openValue from "../../../Assets/Images/openValue.png";
+import openValue from "../../../Assets/Images/Orders/openValue.png";
 import "./FeatureValueOrderCard.css";
 
 const FeatureValueOrderCard = ({

@@ -1,14 +1,13 @@
 import React from "react";
 import "./Layouts.css";
-import {
-  AppstoreOutlined,
-  FormOutlined,
-  UserOutlined,
-  ShoppingCartOutlined,
-  ShopOutlined,
-  SettingOutlined,
-  LogoutOutlined,
-} from "@ant-design/icons";
+import dashboardSidebar from "../../Assets/Images/Sidebar/dashboardSidebar.png";
+import orderSidebar from "../../Assets/Images/Sidebar/orderSidebar.png";
+import RFQs from "../../Assets/Images/Sidebar/RFQs.png";
+import productSide from "../../Assets/Images/Sidebar/productSide.png";
+import UserSidebar from "../../Assets/Images/Sidebar/UserSidebar.png";
+import logout from "../../Assets/Images/Sidebar/logout.png";
+import setting from "../../Assets/Images/Sidebar/setting.png";
+import companySidebar from "../../Assets/Images/Sidebar/companySidebar.png";
 import logo from "../../Assets/Images/logo.png";
 import { Layout, Menu } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -28,17 +27,81 @@ function getItem(label, key, icon, children, type) {
 
 //======================================Side bar Item=======================
 const items = [
-  getItem("Dashboard", "1", <AppstoreOutlined />),
-  getItem("Orders", "2", <ShoppingCartOutlined />),
-  getItem("RFQs", "3", <FormOutlined />),
-  getItem("My Products", "4", <ShopOutlined />),
+  getItem(
+    "Dashboard",
+    "1",
+    <img
+      src={dashboardSidebar}
+      alt="Dashboard"
+      style={{ width: 22, height: 19, marginRight: 7 }}
+    />
+  ),
+  getItem(
+    "Orders",
+    "2",
+    <img
+      src={orderSidebar}
+      alt="Orders"
+      style={{ width: 22, height: 19, marginRight: 7 }}
+    />
+  ),
+  getItem(
+    "RFQs",
+    "3",
+    <img
+      src={RFQs}
+      alt="RFQs"
+      style={{ width: 22, height: 19, marginRight: 7 }}
+    />
+  ),
+  getItem(
+    "My Products",
+    "4",
+    <img
+      src={productSide}
+      alt="My Products"
+      style={{ width: 22, height: 19, marginRight: 7 }}
+    />
+  ),
   {
     type: "divider",
   },
-  getItem("Manage Users", "5", <UserOutlined />),
-  getItem("Company Profile", "6", <UserOutlined />),
-  getItem("Settings", "7", <SettingOutlined />),
-  getItem("Logout", "8", <LogoutOutlined />),
+  getItem(
+    "Manage Users",
+    "5",
+    <img
+      src={UserSidebar}
+      alt="Manage Users"
+      style={{ width: 22, height: 19, marginRight: 7 }}
+    />
+  ),
+  getItem(
+    "Company Profile",
+    "6",
+    <img
+      src={companySidebar}
+      alt="Company Profile"
+      style={{ width: 22, height: 19 }}
+    />
+  ),
+  getItem(
+    "Settings",
+    "7",
+    <img
+      src={setting}
+      alt="Settings"
+      style={{ width: 22, height: 19, marginRight: 7 }}
+    />
+  ),
+  getItem(
+    "Logout",
+    "8",
+    <img
+      src={logout}
+      alt="Logout"
+      style={{ width: 22, height: 19, marginRight: 7 }}
+    />
+  ),
 ];
 
 const Layouts = () => {
@@ -79,7 +142,8 @@ const Layouts = () => {
                   fontWeight: "400",
                   color: "#000000",
                   borderInlineEnd: "none",
-                  width: "100%",
+                  width: "97.3%",
+                  paddingLeft: 0,
                 }}
                 defaultSelectedKeys={["1"]}
                 mode="inline"

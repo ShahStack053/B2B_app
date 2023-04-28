@@ -10,7 +10,7 @@ import { useEffect } from "react";
 const Users = () => {
   const navigate = useNavigate();
   const navigatorNewUser = (label) => {
-    navigate("/main/newUser", { state: { label } });
+    navigate("/main/addUser", { state: { label } });
   };
   const [searchValues, setSearchValues] = useState({
     search: null,

@@ -1,3 +1,4 @@
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import ForgetPassword from "./Components/Pages/ForgetPassword/ForgetPassword";
 import OTP from "./Components/Pages/OTP/Otp";
 import ResetPassword from "./Components/Pages/ResetPassword/ResetPassword";
