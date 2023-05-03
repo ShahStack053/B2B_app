@@ -6,52 +6,71 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
+// import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
+import Photo from "../UserAssets/userPhoto/Photo";
+import "./NewUser.css";
 
 const NewUser = () => {
   const location = useLocation();
   let { id, label } = location.state;
   //   const id = location.state.id;
   const [bcData, setBcData] = useState([]);
-  //   const [bcUpdatedValues, setBcUpdatedValues] = useState({});
   const [createUserData, setCreateUserData] = useState({
     arFullName: "",
+    email: "",
+    phoneNumber: "",
+    enFullName: "",
+    whatsAppNumber: "",
+    confrimPassword: "",
+    password: "",
     bcId: 2,
     bcName: "Muhammad Faizan",
-    confrimPassword: "",
-    email: "",
-    enFullName: "",
-    password: "",
     passwordExpired: false,
-    phoneNumber: "",
     primaryBcUser: false,
-    whatsAppNumber: "",
   });
 
-  // console.log("create Data=================>>>>>>>>>.", createUserData);
   useEffect(() => {
-    axios({
-      method: "GET",
-      url: `https://api-customer-dev.b2bprice.store/api/BCUser/GetByIdAsync?Id=${id}&BcId=2`,
-      headers: {
-        Authorization: `Bearer ${localStorage.AuthToken}`,
-        "Content-Type": "application/json",
-      },
-    }).then(
-      (res) => {
-        // console.log("userBy ID Data", res.data.data);
-        setBcData(res.data.data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }, [id]);
+    if (label === "Edit" || label === "View") {
+      axios({
+        method: "GET",
+        url: `https://api-customer-dev.b2bprice.store/api/BCUser/GetByIdAsync?Id=${id}&BcId=2`,
+        headers: {
+          Authorization: `Bearer ${localStorage.AuthToken}`,
+          "Content-Type": "application/json",
+        },
+      }).then(
+        (res) => {
+          setBcData(res.data.data);
+          console.log("BC Data==============>>>", res.data.data);
+          setCreateUserData({
+            ...createUser,
+            arFullName: res.data.data?.arFullName,
+            enFullName: res.data.data?.enFullName,
+            phoneNumber: res.data.data?.phoneNumber,
+            whatsAppNumber: res.data.data?.whatsAppNumber,
+          });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
+  }, []);
 
   const updateUser = () => {
-    const updatedBcData = { ...bcData, ...createUserData };
-    console.log("BC updated values", updatedBcData);
-    const data = JSON.stringify(updatedBcData);
+    const updateValue = {
+      arFullName: createUserData.arFullName,
+      bcId: 2,
+      email: bcData.email,
+      enFullName: createUserData.enFullName,
+      id: bcData.id,
+      phoneNumber: createUserData.phoneNumber,
+      primaryBcUser: false,
+      role: bcData.role,
+      whatsAppNumber: createUserData.whatsAppNumber,
+    };
+
+    const data = JSON.stringify(updateValue);
     axios({
       method: "Post",
       url: "https://api-customer-dev.b2bprice.store/api/BCUser/UpdateBCUser",
@@ -63,7 +82,8 @@ const NewUser = () => {
     }).then(
       (res) => {
         Swal.fire("Updated Successfully", "", "success");
-        console.log("response", res);
+        // console.log("response", res);
+        navigate("/main/manageUser");
       },
       (err) => {
         console.log(err);
@@ -86,6 +106,7 @@ const NewUser = () => {
       (res) => {
         Swal.fire("User created Successfully", "", "success");
         console.log("user created successful");
+        navigate("/main/manageUser");
       },
       (err) => {
         console.log(err);
@@ -125,18 +146,18 @@ const NewUser = () => {
                   enFullName: e.target.value,
                 })
               }
+              // onChange={handleChange}
             />
             {label === "View" || label === "Edit" ? (
               <>
                 <span className="manager-email-span">Email Address*</span>
-
                 <input
                   className="manager-emailValue-input"
                   type="email"
                   placeholder="Email Address"
                   defaultValue={label === "addUser" ? null : bcData.email}
                   readOnly={label === "View" || label === "Edit"}
-                  //   contentEditable={label === "Edit"}
+                  // contentEditable={label === "Edit"}
                   onChange={(e) =>
                     setCreateUserData({
                       ...createUserData,
@@ -204,13 +225,12 @@ const NewUser = () => {
               <span className="manager-cPass-span">
                 Manager Customer Photo*
               </span>
-              <div className="image-div">
+              <div className="img-div">
                 <div>
-                  <UserPhoto className="user-image" />
+                  <Photo id={id} label={label} bcData={bcData} />
+                  {/* <UserPhoto className="user-image" id={id} /> */}
+                  {/* <Pic /> */}
                 </div>
-                <span className="manager-customer-span">
-                  Manager Customer Photo
-                </span>
               </div>
             </div>
           ) : (

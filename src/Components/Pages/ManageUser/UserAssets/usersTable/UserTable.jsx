@@ -46,6 +46,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           (res) => {
             Swal.fire("User Deleted Successfully", "", "success");
             console.log("User Deleted successful");
+            paginationHandler();
           },
           (err) => {
             console.log(err);

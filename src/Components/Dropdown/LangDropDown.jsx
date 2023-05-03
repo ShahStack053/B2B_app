@@ -51,7 +51,7 @@ const LangDropDown = () => {
           height: 39,
           width: 170,
           borderRadius: 7,
-          marginTop: 14,
+          // marginTop: 14,
         }}
       >
         <img src={lang} alt="Language" style={langIconStyle} /> {selectedLang}{" "}

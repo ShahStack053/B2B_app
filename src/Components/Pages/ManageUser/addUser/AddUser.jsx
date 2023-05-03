@@ -96,7 +96,7 @@ const AddUser = () => {
       data,
     }).then(
       (res) => {
-        Swal.fire("User created Successfully", "", "success");
+        Swal.fire("User created Successfullydddddddddddd", "", "success");
         console.log("user created successful");
       },
       (err) => {

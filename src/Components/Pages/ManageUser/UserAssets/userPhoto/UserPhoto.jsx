@@ -3,6 +3,7 @@ import { Upload } from "antd";
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
+// import axios from "axios";
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -12,7 +13,7 @@ const getBase64 = (file) =>
     reader.onerror = (error) => reject(error);
   });
 
-const App = () => {
+const App = ({ id }) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
@@ -32,25 +33,37 @@ const App = () => {
   };
 
   const handleChange = ({ fileList: newFileList }) => {
-    // Remove all but the last item from the newFileList
     if (newFileList.length > 1) {
       newFileList.splice(0, newFileList.length - 1);
     }
     setFileList(newFileList);
   };
+  const handleClick = () => {
+    console.log("upload image is clicked");
+  };
 
   const uploadButton =
     fileList.length === 0 ? (
-      <div>
+      <button
+        onClick={handleClick}
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: 50,
+          border: "none",
+          backgroundColor: "white",
+        }}
+      >
         <PlusOutlined />
         <div style={{ marginTop: 8 }}>Upload Image</div>
-      </div>
+      </button>
     ) : null;
 
   return (
     <>
       <Upload
-        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+        action="https://api-customer-dev.b2bprice.store/api/BCUser/UpdateProfileImage"
+        // headers={localStorage.AuthToken}
         listType="picture-circle"
         fileList={fileList}
         onPreview={handlePreview}
@@ -59,7 +72,6 @@ const App = () => {
       >
         {uploadButton}
       </Upload>
-
       <Modal
         open={previewOpen}
         title={previewTitle}
