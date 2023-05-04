@@ -2,7 +2,7 @@ import React from "react";
 import "./AddUser.css";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link, useLocation } from "react-router-dom";
-import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
+// import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -312,9 +312,7 @@ const AddUser = () => {
                 Manager Customer Photo*
               </span>
               <div className="image-div">
-                <div>
-                  <UserPhoto className="user-image" />
-                </div>
+                <div>{/* <UserPhoto className="user-image" /> */}</div>
                 <span className="manager-customer-span">
                   Manager Customer Photo
                 </span>

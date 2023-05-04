@@ -6,9 +6,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-// import UserPhoto from "../UserAssets/userPhoto/UserPhoto";
-import Photo from "../UserAssets/userPhoto/Photo";
+
+// import Photo from "../UserAssets/userPhoto/Photo";
 import "./NewUser.css";
+import DummyPhoto from "../UserAssets/userPhoto/dummy/DummyPhoto";
 
 const NewUser = () => {
   const location = useLocation();
@@ -41,7 +42,6 @@ const NewUser = () => {
       }).then(
         (res) => {
           setBcData(res.data.data);
-          console.log("BC Data==============>>>", res.data.data);
           setCreateUserData({
             ...createUser,
             arFullName: res.data.data?.arFullName,
@@ -227,9 +227,8 @@ const NewUser = () => {
               </span>
               <div className="img-div">
                 <div>
-                  <Photo id={id} label={label} bcData={bcData} />
-                  {/* <UserPhoto className="user-image" id={id} /> */}
-                  {/* <Pic /> */}
+                  {/* <Photo id={id} label={label} bcData={bcData} /> */}
+                  <DummyPhoto id={id} label={label} bcData={bcData} />
                 </div>
               </div>
             </div>

@@ -1,0 +1,55 @@
+.image-Div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 10px;
+    width: 220px;
+    height: 135px;
+}
+
+
+
+/* 
+.ant-upload-list .ant-upload-list-text {
+    display: none !important;
+} */
+
+.ant-upload-list-item-name {
+    display: none !important;
+}
+
+.anticon-paper-clip {
+    display: none !important;
+}
+
+.ant-upload-list-item-actions.ant-btn .css-dev-only-do-not-override-1e3x2xa .ant-btn-text .ant-btn-sm .ant-btn-icon-only .ant-upload-list-item-action {
+    display: none !important;
+}
+
+.anticon .anticon-delete .ant-upload-list-item .ant-upload-list-item-undefined {
+    display: none !important;
+}
+
+.ant-upload-wrapper .ant-upload-list .ant-upload-list-item:hover {
+    display: none !important;
+}
+
+/* .ant-upload-list-item-container .ant-upload-list-item .ant-upload-list-item-undefined .ant-upload-icon .anticon .ant-upload-list-item-actions.ant-btn .ant-upload-list-item-action {
+    display: none !important;
+} */
+.ant-upload-list-item {
+    display: none !important;
+}
+
+.ant-upload-list-item-error {
+    display: none !important;
+}
+
+.ant-upload-list-item .ant-upload-list-item-error {
+    display: none !important;
+}
+
+.anticon .anticon-delete {
+    display: none !important;
+}

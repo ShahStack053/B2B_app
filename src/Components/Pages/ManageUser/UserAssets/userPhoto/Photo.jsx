@@ -3,7 +3,7 @@ import "./Photo.css";
 // import { CameraFilled, DeleteFilled } from "@ant-design/icons";
 import { Upload } from "antd";
 import deleteBin from "../../../../../Assets/Images/deleteBin.png";
-import previewImg from "../../../../../Assets/Images/previewImg.png";
+import dummyImage from "../../../../../Assets/Images/dummyImage.png";
 import camera from "../../../../../Assets/Images/camera.png";
 import { useEffect } from "react";
 
@@ -19,7 +19,7 @@ const Photo = ({ label, id, bcData }) => {
       const imageUrl = URL.createObjectURL(file);
       setPreviewImage(imageUrl);
     } else {
-      setPreviewImage(previewImg);
+      setPreviewImage("");
     }
     setFileList(newFileList);
   };
@@ -35,21 +35,22 @@ const Photo = ({ label, id, bcData }) => {
         `https://b2b-dev-bucket.s3.me-south-1.amazonaws.com/${bcData?.profileImagePath}`
       );
     setFileList([...fileList, { thumbUrl: bcData?.profileImagePath }]);
-  }, []);
+  }, [bcData]);
 
   return (
     <div style={{ padding: 10 }}>
       <div className="img-upper">
         <div className="image">
           <img
-            alt="Userimg"
+            alt="UserImg"
             type="picture-circle"
             style={{
               width: "53%",
               height: "90%",
               borderRadius: "50%",
             }}
-            src={fileList.length > 0 ? previewImage : previewImg}
+            src={fileList.length > 0 ? previewImage : dummyImage}
+            // src={previewImage || fileList[0]?.thumbUrl || dummyImage}
           />
         </div>
         <div className="button-div">
@@ -98,6 +99,7 @@ const Photo = ({ label, id, bcData }) => {
           </Upload>
           <button
             onClick={removeHandler}
+            disabled={label === "View" || fileList.length === 0 ? true : false}
             style={{
               background: "#C8C8C8",
               borderRadius: 50,
