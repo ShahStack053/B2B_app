@@ -1,5 +1,6 @@
 .topBar-bc {
     height: 84px;
+    width: 100%;
     display: flex;
     align-items: center;
     /* background: red; */
@@ -82,4 +83,9 @@
     text-align: center;
     margin-right: 8%;
     outline: none;
+}
+
+img,
+svg {
+    vertical-align: start !important;
 }

@@ -48,7 +48,7 @@ const LangDropDown = () => {
           fontSize: "14px",
           color: "#000000",
           background: "#F3F3F3",
-          height: 39,
+          height: 35,
           width: 170,
           borderRadius: 7,
           // marginTop: 14,

@@ -48,6 +48,7 @@
     font-size: 15px;
     margin-bottom: 10%;
     color: #FFFFFF;
+    margin-top: 20px;
 }
 
 .rightDiv-signup {
@@ -63,7 +64,7 @@
 .upperDiv-signup {
     display: flex;
     justify-content: space-between;
-    margin: 10px 25px 0;
+    margin: 25px 25px 0;
     max-height: 15%;
     flex-flow: row wrap;
     /* background-color: purple; */
@@ -138,7 +139,7 @@
     outline: 0;
     border-width: 0 0 1px;
     border-color: #868686;
-    width: 51%;
+    width: 51.5%;
     height: 45px;
     font-family: 'Poppins';
     font-style: normal;
@@ -184,6 +185,7 @@
     font-weight: 400;
     font-size: 14px;
     color: #868686;
+    margin-top: 15px;
 }
 
 /* 

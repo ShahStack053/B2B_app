@@ -47,6 +47,7 @@
     font-size: 15px;
     margin-bottom: 10%;
     color: #FFFFFF;
+    margin-top: 20px;
 }
 
 .rightDiv-otp {
@@ -62,7 +63,7 @@
 .upperDiv-otp {
     display: flex;
     justify-content: space-between;
-    margin: 10px 25px 0;
+    margin: 25px 25px 0;
     max-height: 15%;
     flex-flow: row wrap;
     /* background-color: blueviolet; */
@@ -172,6 +173,7 @@
     font-weight: 400;
     font-size: 14px;
     color: #868686;
+    margin-top: 15px;
 }
 
 /* .model-resendCode-btn {

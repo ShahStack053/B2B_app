@@ -160,7 +160,7 @@ const Layouts = () => {
   ];
   return (
     <Layout>
-      <Sider style={{ background: "white" }}>
+      <Sider className="sider">
         <div className="sideBar">
           <div className="logo-sidebar-div">
             <img className="logo-sidebar" src={logo} alt="B2b Logo" />
