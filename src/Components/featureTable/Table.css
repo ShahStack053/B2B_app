@@ -1,0 +1,20 @@
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-table-wrapper .ant-table-tbody>tr.ant-table-row-selected>th,
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-table-wrapper .ant-table-tbody>tr.ant-table-row-selected>td {
+    background: #EFF7FC !important;
+}
+
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-table-wrapper .ant-table-thead>tr>th,
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-table-wrapper .ant-table-thead>tr>td {
+    position: relative;
+    color: rgba(0, 0, 0, 0.88);
+    font-weight: 600;
+    text-align: start;
+    background: white !important;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s ease;
+}
+
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-table-wrapper .ant-table-tbody>tr.ant-table-row:hover>td {
+    background-color: #EFF7FC !important;
+
+}

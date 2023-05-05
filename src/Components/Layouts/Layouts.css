@@ -44,17 +44,15 @@
 }
 
 .ant-menu-inline .ant-menu-item {
-    height: 45px;
+    /* height: 45px; */
     width: 92%;
-    margin-left: 8px;
-    margin-bottom: 10px;
-
+    margin-left: 10px;
+    margin-bottom: 5px;
     /* margin-top: 20px; */
-    border-radius: 40px;
+    /* border-radius: 40px; */
     /* background: #FFFFFF; */
     /* border: 1px solid #EFEEEB; */
-    /* box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.05); */
-
+    /* box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.05);*/
 }
 
 .ant-menu::before {
@@ -69,3 +67,41 @@
     height: 105.5px;
     justify-content: center;
 }
+
+
+
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-menu-light .ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-menu-light>.ant-menu .ant-menu-item-selected {
+    /* background-color: #e6f4ff; */
+    background: #FFFFFF !important;
+    border: 1px solid #EFEEEB !important;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 40px !important;
+}
+
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-menu .ant-menu-item-divider {
+    overflow: hidden !important;
+    line-height: 0 !important;
+    border-color: rgba(5, 5, 5, 0.06) !important;
+    border-width: 0 !important;
+    border-top-width: 1px !important;
+    margin-block: 1px !important;
+    margin-bottom: 15px !important;
+    padding: 0 !important;
+}
+
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-menu .ant-menu-item:hover {
+    /* background: #FFFFFF !important;
+    border: 1px solid #EFEEEB !important; */
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.05) !important;
+    border-radius: 40px !important;
+    border: 1px solid #EFEEEB !important;
+    background-color: #fff !important;
+
+}
+
+/* 
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-menu-light .ant-menu-item-selected,
+:where(.css-dev-only-do-not-override-1e3x2xa).ant-menu-light>.ant-menu .ant-menu-item-selected {
+    color: #1677ff;
+} */

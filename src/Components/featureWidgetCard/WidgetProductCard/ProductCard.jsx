@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductCard.css";
 import {} from "@ant-design/icons";
 import { Card } from "antd";
@@ -7,6 +7,17 @@ import productPlus from "../../../Assets/Images/productPlus.png";
 import productMinus from "../../../Assets/Images/productMinus.png";
 
 const ProductCard = () => {
+  const [quantity, setQuantity] = useState(2);
+
+  function handleIncrease() {
+    setQuantity(quantity + 1);
+  }
+
+  function handleDecrease() {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  }
   return (
     <div className="widget-product-card-div">
       <Card className="widget-product-card">
@@ -33,26 +44,36 @@ const ProductCard = () => {
           >
             Qty:
           </span>
-          <img
-            src={productMinus}
-            alt="Product--"
-            style={{ width: 32, marginLeft: 18.17, marginRight: 18.17 }}
-          />
-          <span
+          <div
             style={{
-              fontFamily: "Poppins",
-              fontWeight: 500,
-              fontSize: 16,
-              color: "#000000",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            2
-          </span>
-          <img
-            src={productPlus}
-            alt="Product++"
-            style={{ width: 32, marginLeft: 18.17, marginRight: 18.17 }}
-          />
+            <img
+              src={productMinus}
+              alt="Product--"
+              style={{ width: 32, marginLeft: 18.17, marginRight: 18.17 }}
+              onClick={handleDecrease}
+            />
+            <span
+              style={{
+                fontFamily: "Poppins",
+                fontWeight: 500,
+                fontSize: 14,
+                color: "#000000",
+              }}
+            >
+              {quantity}
+            </span>
+            <img
+              src={productPlus}
+              alt="Product++"
+              style={{ width: 32, marginLeft: 18.17, marginRight: 18.17 }}
+              onClick={handleIncrease}
+            />
+          </div>
         </div>
       </Card>
     </div>

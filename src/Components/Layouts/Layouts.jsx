@@ -13,7 +13,9 @@ import { Layout, Menu } from "antd";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Header/Navbar";
 import LangDropDown from "../Dropdown/LangDropDown";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
+import confirm from "antd/es/modal/confirm";
+import { ExclamationCircleFilled } from "@ant-design/icons";
 const { Header, Sider } = Layout;
 
 function getItem(label, key, icon, children, type) {
@@ -50,15 +52,22 @@ const Layouts = () => {
   };
 
   const mylogout = () => {
-    Swal.fire({
-      title: "Do you want to logout?",
-      showCancelButton: true,
-      confirmButtonText: "Yes",
-    }).then((result) => {
-      if (result.isConfirmed) {
+    confirm({
+      title: "Do you want to Logout?",
+      icon: <ExclamationCircleFilled style={{ color: " #faad14" }} />,
+      content: "You will return to signIn page",
+      okText: "Yes",
+      cancelText: "Cancel",
+      okCancel: true,
+      okButtonProps: { style: { float: "right", marginRight: 10 } },
+      cancelButtonProps: { style: { float: "right" } },
+      onOk() {
         localStorage.clear();
         navigate("/");
-      }
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
     });
   };
   const items = [

@@ -4,12 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
-// import Photo from "../UserAssets/userPhoto/Photo";
+import Photo from "../UserAssets/userPhoto/Photo";
 import "./NewUser.css";
-import DummyPhoto from "../UserAssets/userPhoto/dummy/DummyPhoto";
+// import DummyPhoto from "../UserAssets/userPhoto/dummy/DummyPhoto";
+import { Modal } from "antd";
 
 const NewUser = () => {
   const location = useLocation();
@@ -81,13 +81,21 @@ const NewUser = () => {
       data,
     }).then(
       (res) => {
-        Swal.fire("Updated Successfully", "", "success");
+        // Swal.fire("Updated Successfully", "", "success");
+        Modal.success({
+          title: "Success",
+          content: "User Updated Successfully",
+        });
         // console.log("response", res);
         navigate("/main/manageUser");
       },
       (err) => {
         console.log(err);
-        Swal.fire("Updated Failed", "", "error");
+        Modal.error({
+          title: "Failed",
+          content: "User Not Updated",
+        });
+        // Swal.fire("Updated Failed", "", "error");
       }
     );
   };
@@ -104,13 +112,21 @@ const NewUser = () => {
       data,
     }).then(
       (res) => {
-        Swal.fire("User created Successfully", "", "success");
-        console.log("user created successful");
+        // Swal.fire("User created Successfully", "", "success");
+        Modal.success({
+          title: "Success",
+          content: "User Created Successfully",
+        });
+        console.log("User created successful");
         navigate("/main/manageUser");
       },
       (err) => {
         console.log(err);
-        Swal.fire("user creation Failed", "", "error");
+        Modal.error({
+          title: "Failed",
+          content: "User Not Created",
+        });
+        // Swal.fire("user creation Failed", "", "error");
       }
     );
   };
@@ -227,8 +243,8 @@ const NewUser = () => {
               </span>
               <div className="img-div">
                 <div>
-                  {/* <Photo id={id} label={label} bcData={bcData} /> */}
-                  <DummyPhoto id={id} label={label} bcData={bcData} />
+                  <Photo id={id} label={label} bcData={bcData} />
+                  {/* <DummyPhoto id={id} label={label} bcData={bcData} /> */}
                 </div>
               </div>
             </div>

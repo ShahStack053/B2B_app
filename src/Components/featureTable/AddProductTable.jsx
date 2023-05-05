@@ -3,6 +3,7 @@ import { useState } from "react";
 import productPlus from "../../Assets/Images/productPlus.png";
 import productMinus from "../../Assets/Images/productMinus.png";
 import rice from "../../Assets/Images/rice.png";
+import "./Table.css";
 // import { useLocation } from "react-router-dom";
 
 const data = [];
@@ -22,6 +23,17 @@ for (let i = 0; i < 10; i++) {
 
 const AddProductTable = () => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [quantity, setQuantity] = useState(2);
+
+  function handleIncrease() {
+    setQuantity(quantity + 1);
+  }
+
+  function handleDecrease() {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  }
 
   //   const productDetail = data.map((product, index) => ({
   //     key: index + 1,
@@ -331,16 +343,25 @@ const AddProductTable = () => {
         >
           <img
             src={productMinus}
-            alt="minus"
-            style={{ width: 32, marginLeft: 18.17, marginRight: 18.17 }}
-            //   onClick={() => handleQuantityChange(index, -1)}
+            alt="Product--"
+            style={{ width: 25, marginLeft: 18.17, marginRight: 18.17 }}
+            onClick={handleDecrease}
           />
-          <span style={{}}>{text}</span>
+          <span
+            style={{
+              fontFamily: "Poppins",
+              fontWeight: 500,
+              fontSize: 14,
+              color: "#000000",
+            }}
+          >
+            {quantity}
+          </span>
           <img
             src={productPlus}
-            alt="plus"
-            style={{ width: 32, marginLeft: 18.17, marginRight: 18.17 }}
-            //   onClick={() => handleQuantityChange(index, 1)}
+            alt="Product++"
+            style={{ width: 25, marginLeft: 18.17, marginRight: 18.17 }}
+            onClick={handleIncrease}
           />
         </div>
       ),

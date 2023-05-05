@@ -2,6 +2,7 @@ import React from "react";
 import "./Navbar.css";
 import PersonDropDown from "../Dropdown/PersonDropDown";
 import userImage from "../../Assets/Images/userImage.png";
+import bellIcon from "../../Assets/Images/bellIcon.png";
 import { SearchOutlined, BellOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 
@@ -35,7 +36,12 @@ const Navbar = () => {
       <div className="topBarRight-bc">
         <p className="DateTop-bc">{finalDate}</p>
         <span className="iconbellTop-span-bc">
-          <BellOutlined style={{ height: 28 }} />
+          {/* <BellOutlined style={{ height: 28 }} /> */}
+          <img
+            src={bellIcon}
+            alt="notification"
+            style={{ width: 15, height: 17 }}
+          />
         </span>
         <img src={userImage} alt="userImage" className="userImage" />
         <PersonDropDown />

@@ -1,8 +1,9 @@
 import React from "react";
-import { Switch, Table } from "antd";
-import Swal from "sweetalert2";
+import { Modal, Switch, Table } from "antd";
+import { ExclamationCircleFilled } from "@ant-design/icons";
+// import Swal from "sweetalert2";
 import { useState } from "react";
-
+import "./UserTable.css";
 import {
   // DashOutlined,
   EyeOutlined,
@@ -13,6 +14,7 @@ import { Dropdown, Space } from "antd";
 import axios from "axios";
 import Dashes from "../../../../../Assets/Images/Dashes.png";
 import { useNavigate } from "react-router-dom";
+import confirm from "antd/es/modal/confirm";
 
 const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
   // console.log("userData===>", userData);
@@ -29,12 +31,16 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
   };
 
   const deleteClickHandler = () => {
-    Swal.fire({
-      title: "Do you want to delete user?",
-      showCancelButton: true,
-      confirmButtonText: "Yes",
-    }).then((result) => {
-      if (result.isConfirmed) {
+    confirm({
+      title: "Delete User",
+      icon: <ExclamationCircleFilled style={{ color: " #faad14" }} />,
+      content: "Do you want to delete User?",
+      okText: "Yes",
+      cancelText: "Cancel",
+      okCancel: true,
+      okButtonProps: { style: { float: "right", marginRight: 10 } },
+      cancelButtonProps: { style: { float: "right" } },
+      onOk() {
         axios({
           method: "Delete",
           url: `https://api-customer-dev.b2bprice.store/api/BCUser/DeleteById?Id=${id}&BCId=2`,
@@ -44,16 +50,25 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           },
         }).then(
           (res) => {
-            Swal.fire("User Deleted Successfully", "", "success");
+            Modal.success({
+              title: "Success",
+              content: "User Deleted Successfully",
+            });
             console.log("User Deleted successful");
             paginationHandler();
           },
           (err) => {
             console.log(err);
-            Swal.fire("User Deletion Failed", "", "error");
+            Modal.error({
+              title: "Failed",
+              content: "User Deletion Failed",
+            });
           }
         );
-      }
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
     });
   };
 
@@ -100,12 +115,28 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       data,
     }).then(
       (res) => {
-        Swal.fire("Status Changed Successfully", "", "success");
+        Modal.success({
+          title: "Success",
+          content: "Status Changed Successfully",
+        });
+        // Swal.fire({
+        //   title: "Status Changed Successfully",
+        //   icon: "success",
+        //   customClass: {
+        //     heightAuto: "auto",
+        //     width: "500px",
+        //   },
+        //   showConfirmButton: false,
+        // });
         console.log("Status Changed successful");
       },
       (err) => {
         console.log(err);
-        Swal.fire("Status Changed Failed", "", "error");
+        Modal.error({
+          title: "Failed",
+          content: "Status Changed Failed",
+        });
+        // Swal.fire("Status Changed Failed", "");
       }
     );
   };

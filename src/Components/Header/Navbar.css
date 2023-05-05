@@ -68,10 +68,11 @@
 }
 
 .userImage {
-    width: 8%;
+    width: 45px;
     border-radius: 50%;
-    cursor: pointer;
+    /* cursor: pointer; */
     margin-right: 4%;
+    height: 45px;
 }
 
 .personDropDown-bc {
