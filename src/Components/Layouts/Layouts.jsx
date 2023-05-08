@@ -37,13 +37,16 @@ const Layouts = () => {
     if (e.key === "1") {
       navigate("/main/dashboard");
     } else if (e.key === "2") {
-      navigate("/main/orders");
+      let label = "Order";
+      navigate("/main/orders", { state: { label } });
     } else if (e.key === "3") {
-      navigate("/main/requestForQuotations");
+      let label = "RFQs";
+      navigate("/main/requestForQuotations", { state: { label } });
     } else if (e.key === "4") {
       navigate("/main/myProduct");
     } else if (e.key === "5") {
-      navigate("/main/manageUser");
+      let label = "User";
+      navigate("/main/manageUser", { state: { label } });
     } else if (e.key === "6") {
       navigate("/main/companyProfile");
     } else if (e.key === "7") {
@@ -76,7 +79,7 @@ const Layouts = () => {
         <img
           src={dashboardSidebar}
           alt="Dashboard"
-          style={{ width: 22, height: 19, marginRight: 17 }}
+          style={{ width: 22, height: 19, marginRight: 12 }}
         />
         Dashboard
       </button>,
@@ -87,7 +90,7 @@ const Layouts = () => {
         <img
           src={orderSidebar}
           alt="Orders"
-          style={{ width: 22, height: 19, marginRight: 17 }}
+          style={{ width: 22, height: 19, marginRight: 14 }}
         />
         Orders
       </button>,
@@ -98,7 +101,7 @@ const Layouts = () => {
         <img
           src={RFQs}
           alt="RFQs"
-          style={{ width: 22, height: 19, marginRight: 15, marginLeft: 4 }}
+          style={{ width: 22, height: 19, marginRight: 11, marginLeft: 4 }}
         />
         RFQs
       </button>,
@@ -109,7 +112,7 @@ const Layouts = () => {
         <img
           src={productSide}
           alt="My Products"
-          style={{ width: 22, height: 19, marginRight: 17 }}
+          style={{ width: 22, height: 19, marginRight: 15 }}
         />
         My Products
       </button>,
@@ -134,7 +137,7 @@ const Layouts = () => {
         <img
           src={companySidebar}
           alt="Company Profile"
-          style={{ width: 24, height: 24, marginRight: 8 }}
+          style={{ width: 24, height: 24, marginRight: 13 }}
         />
         Company Profile
       </button>,
@@ -145,7 +148,7 @@ const Layouts = () => {
         <img
           src={setting}
           alt="Settings"
-          style={{ width: 22, height: 19, marginRight: 14 }}
+          style={{ width: 22, height: 19, marginRight: 16 }}
         />
         Settings
       </button>,
@@ -160,7 +163,7 @@ const Layouts = () => {
         <img
           src={logout}
           alt="Logout"
-          style={{ width: 22, height: 19, marginRight: 20 }}
+          style={{ width: 22, height: 16, marginRight: 17 }}
         />
         Logout
       </button>,
@@ -192,7 +195,6 @@ const Layouts = () => {
                 onClick={(e) => navigateRouteHandler(e)}
               />
             </div>
-
             <div className="lower-sidebar-lang-div">
               <LangDropDown />
             </div>

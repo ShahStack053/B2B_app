@@ -3,11 +3,14 @@ import "./Users.css";
 import addProductBtn from "../../../../Assets/Images/addProductBtn.png";
 import SearchRange from "../../../SearchRangePicker/SearchRange";
 import UserTable from "../UserAssets/usersTable/UserTable";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 const Users = () => {
+  const location = useLocation();
+  // console.log("dropdown", location.state.label);
+  const label = location.state.label;
   const navigate = useNavigate();
   const navigatorNewUser = (label) => {
     navigate("/main/newUser", { state: { label } });
@@ -43,10 +46,7 @@ const Users = () => {
       data,
     }).then(
       (res) => {
-        // debugger;
-        // console.log("SearchData====>", res.data.data);
         setUserData(res.data.data);
-        // console.log("pagination=>>>", res.data);
         setPagination(res.data);
       },
       (err) => {
@@ -56,8 +56,6 @@ const Users = () => {
   }, [searchValues]);
 
   const onChangeRange = (value, dateString) => {
-    // console.log("Selected Time: ", value);
-    // console.log("Formatted Selected Time: ", dateString);
     setSearchValues({
       ...searchValues,
       dateFrom: dateString[0],
@@ -94,6 +92,7 @@ const Users = () => {
           searchValues={searchValues}
           onChangeRange={onChangeRange}
           // onChangeStatus={onChangeStatus}
+          label={label}
         />
       </>
       <div className="users-table-div">

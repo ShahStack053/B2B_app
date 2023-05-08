@@ -4,17 +4,14 @@ import { ExclamationCircleFilled } from "@ant-design/icons";
 // import Swal from "sweetalert2";
 import { useState } from "react";
 import "./UserTable.css";
-import {
-  // DashOutlined,
-  EyeOutlined,
-  FormOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import axios from "axios";
 import Dashes from "../../../../../Assets/Images/Dashes.png";
 import { useNavigate } from "react-router-dom";
 import confirm from "antd/es/modal/confirm";
+import Delete from "../../../../../Assets/Images/Action/Delete.png";
+import Edit from "../../../../../Assets/Images/Action/Edit.png";
+import View from "../../../../../Assets/Images/Action/View.png";
 
 const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
   // console.log("userData===>", userData);
@@ -119,15 +116,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           title: "Success",
           content: "Status Changed Successfully",
         });
-        // Swal.fire({
-        //   title: "Status Changed Successfully",
-        //   icon: "success",
-        //   customClass: {
-        //     heightAuto: "auto",
-        //     width: "500px",
-        //   },
-        //   showConfirmButton: false,
-        // });
+
         console.log("Status Changed successful");
       },
       (err) => {
@@ -136,7 +125,6 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           title: "Failed",
           content: "Status Changed Failed",
         });
-        // Swal.fire("Status Changed Failed", "");
       }
     );
   };
@@ -451,7 +439,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           }}
           onClick={() => viewClickHandler("View")}
         >
-          <EyeOutlined style={{ color: "rgba(23, 121, 184, 1)" }} />
+          <img src={View} alt="view" style={{ width: 18 }} />
           &nbsp;&nbsp; View
         </button>
       ),
@@ -473,7 +461,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           }}
           onClick={() => editClickHandler("Edit")}
         >
-          <FormOutlined style={{ color: "rgba(23, 121, 184, 1)" }} />
+          <img src={Edit} alt="view" style={{ width: 18 }} />
           &nbsp;&nbsp; Edit
         </button>
       ),
@@ -485,7 +473,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           style={{
             border: "none",
             background: "none",
-            color: " #C70000",
+            color: "#252733",
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontSize: "14px",
@@ -495,8 +483,8 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
           }}
           onClick={deleteClickHandler}
         >
-          <DeleteOutlined style={{ color: " #C70000" }} />
-          &nbsp;&nbsp; Delete
+          <img src={Delete} alt="view" style={{ width: 14, height: 18 }} />
+          &nbsp;&nbsp;&nbsp; Delete
         </button>
       ),
       key: "3",
@@ -511,6 +499,7 @@ const UserTable = ({ userData, setUserData, pagination, setPagination }) => {
       <Table
         columns={columns}
         dataSource={userData}
+        rowClassName={() => "table-row"}
         pagination={{
           current: currentPage,
           pageSize: 10,

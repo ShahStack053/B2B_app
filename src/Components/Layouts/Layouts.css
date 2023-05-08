@@ -1,5 +1,5 @@
 .sider {
-    flex: 0 0 210px !important;
+    flex: 0 0 215px !important;
     background-color: white !important;
     width: 250px !important;
     min-width: 200px !important;
@@ -16,7 +16,7 @@
 .logo-sidebar-div {
     /* background: purple; */
     height: 84px;
-    width: 100%;
+    width: 210px;
     display: flex;
     justify-content: center;
     align-items: center;

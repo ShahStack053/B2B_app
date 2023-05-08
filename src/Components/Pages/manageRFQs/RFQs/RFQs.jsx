@@ -1,22 +1,19 @@
 import React from "react";
-import "./Orders.css";
 import addProductBtn from "../../../../Assets/Images/addProductBtn.png";
-import SearchRange from "../../../SearchRangePicker/SearchRange";
-import ManageOrderTable from "../../../featureTable/ManageOrderTable";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import "./RFQs.css";
+import SearchRange from "../../../SearchRangePicker/SearchRange";
+import RFQsTable from "../requestAsset/Table/RFQsTable";
+import RFQsWidgetCard from "../requestAsset/widgetCard/RFQsWidgetCard";
 import { useEffect } from "react";
 import axios from "axios";
-import ManageOrder from "../../../featureWidgetCard/ManageOrderCard/ManageOrder";
+import { useState } from "react";
 
-const Orders = () => {
-  const location = useLocation();
-  // console.log("dropdown", location.state.label);
-  const label = location.state.label;
-  const [ordersData, setOrdersData] = useState([]);
-  const [ordersCardData, setOrdersCardData] = useState([]);
-  const [paginationOrder, setPaginationOrder] = useState([]);
-
+const RFQs = () => {
+  const [rfqsData, setRFQsData] = useState([]);
+  const [paginationRFQs, setPaginationRFQs] = useState([]);
+  //   console.log("rfq data", rfqsData);
+  const [rfqsCardData, setRFQsCardData] = useState([]);
   const [searchValues, setSearchValues] = useState({
     search: null,
     dateFrom: null,
@@ -33,10 +30,10 @@ const Orders = () => {
 
   useEffect(() => {
     var data = JSON.stringify(searchValues);
-    setOrdersData([]);
+    setRFQsData([]);
     axios({
       method: "Post",
-      url: "https://api-customer-dev.b2bprice.store/api/Order/GetAll",
+      url: "https://api-customer-dev.b2bprice.store/api/RFQ/GetAll",
       headers: {
         Authorization: `Bearer ${localStorage.AuthToken}`,
         "Content-Type": "application/json",
@@ -44,20 +41,21 @@ const Orders = () => {
       data,
     }).then(
       (res) => {
-        setOrdersData(res.data.data);
+        setRFQsData(res.data.data);
         // console.log("pagination=>>>", res.data);
-        setPaginationOrder(res.data);
+        setPaginationRFQs(res.data);
       },
       (err) => {
         console.log("err===>", err);
       }
     );
   }, [searchValues]);
+
   useEffect(() => {
     var data = JSON.stringify({});
     axios({
       method: "post",
-      url: `https://api-customer-dev.b2bprice.store/api/Order/GetAll`,
+      url: `https://api-customer-dev.b2bprice.store/api/RFQ/GetAll`,
       headers: {
         Authorization: `Bearer ${localStorage.AuthToken}`,
         "Content-Type": "application/json",
@@ -65,9 +63,7 @@ const Orders = () => {
       data: data,
     }).then(
       (res) => {
-        // debugger;
-        // console.log("OrderData====>", res.data.data);
-        setOrdersData(res.data.data);
+        setRFQsData(res.data.data);
       },
       (err) => {
         console.log("err===>", err);
@@ -78,7 +74,7 @@ const Orders = () => {
     var data = JSON.stringify({});
     axios({
       method: "get",
-      url: `https://api-customer-dev.b2bprice.store/api/Order/GetOrderCards`,
+      url: `https://api-customer-dev.b2bprice.store/api/RFQ/GetRFQCards`,
       headers: {
         Authorization: `Bearer ${localStorage.AuthToken}`,
         "Content-Type": "application/json",
@@ -86,19 +82,20 @@ const Orders = () => {
       data: data,
     }).then(
       (res) => {
-        // debugger;
-        // console.log("OrderCardData====>", res.data.data);
-        setOrdersCardData(res.data.data);
+        setRFQsCardData(res.data.data);
       },
       (err) => {
         console.log("err===>", err);
       }
     );
   }, []);
+  const location = useLocation();
+  const label = location.state.label;
   const navigate = useNavigate();
-  const navigatorNewOrder = () => {
-    navigate("/main/newOrder");
+  const navigatorNewRFQs = (label) => {
+    navigate("/main/newUser", { state: { label } });
   };
+
   const onChangeRange = (value, dateString) => {
     // console.log("Selected Time: ", value);
     // console.log("Formatted Selected Time: ", dateString);
@@ -109,22 +106,25 @@ const Orders = () => {
     });
   };
   return (
-    <div className="orders-container">
-      <div className="orders-create-btn-div">
-        <span className="manage-orders-span">Manage Orders</span>
-        <button className="create-order-btn" onClick={navigatorNewOrder}>
+    <div className="rfqs-container">
+      <div className="rfqs-add-btn-div">
+        <span className="rfqs-span">Request for Quotations</span>
+        <button
+          className="add-rfqs-btn"
+          onClick={() => navigatorNewRFQs("addUser")}
+        >
           <img
             src={addProductBtn}
             alt="add-sign-box"
             style={{ width: 24, marginRight: 10 }}
           />
-          Create Order
+          Create RFQ
         </button>
       </div>
-      <div className="orders-widgets-card-div">
-        {ordersCardData?.map((x, i) => {
+      <div className="rfqs-widgets-card-div" style={{ display: "flex" }}>
+        {rfqsCardData?.map((x, i) => {
           return (
-            <ManageOrder
+            <RFQsWidgetCard
               key={i}
               count={x.count}
               name={x.name}
@@ -142,16 +142,16 @@ const Orders = () => {
           onChangeRange={onChangeRange}
         />
       </>
-      <div className="orders-table-div">
-        <ManageOrderTable
-          ordersData={ordersData}
-          setPaginationOrder={setPaginationOrder}
-          paginationOrder={paginationOrder}
-          setOrdersData={setOrdersData}
+      <div className="rfqs-table-div ">
+        <RFQsTable
+          rfqsData={rfqsData}
+          setPaginationRFQs={setPaginationRFQs}
+          paginationRFQs={paginationRFQs}
+          setRFQsData={setRFQsData}
         />
       </div>
     </div>
   );
 };
 
-export default Orders;
+export default RFQs;

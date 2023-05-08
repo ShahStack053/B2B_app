@@ -1,16 +1,15 @@
 import React from "react";
 import { Table } from "antd";
 import { useState } from "react";
-import Dashes from "../../Assets/Images/Dashes.png";
-import Delete from "../../Assets/Images/Action/Delete.png";
-import Edit from "../../Assets/Images/Action/Edit.png";
-import Transit from "../../Assets/Images/Action/Transit.png";
-import View from "../../Assets/Images/Action/View.png";
-import Delivered from "../../Assets/Images/Action/Delivered.png";
-import Cancel from "../../Assets/Images/Action/Cancel.png";
+import Delete from "../../../../../Assets/Images/Action/Delete.png";
+import Edit from "../../../../../Assets/Images/Action/Edit.png";
+import Transit from "../../../../../Assets/Images/Action/Transit.png";
+import View from "../../../../../Assets/Images/Action/View.png";
+import Delivered from "../../../../../Assets/Images/Action/Delivered.png";
+import Cancel from "../../../../../Assets/Images/Action/Cancel.png";
+import Dashes from "../../../../../Assets/Images/Dashes.png";
 import { Dropdown, Space } from "antd";
 import axios from "axios";
-
 const items = [
   {
     label: (
@@ -145,26 +144,27 @@ const items = [
     key: "6",
   },
 ];
+
 const menuProps = {
   items,
 };
 
-const ManageOrderTable = ({
-  ordersData,
-  setOrdersData,
-  setPaginationOrder,
-  paginationOrder,
+const RFQsTable = ({
+  rfqsData,
+  setRFQsData,
+  setPaginationRFQs,
+  paginationRFQs,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const paginationHandler = (page) => {
     // console.log("page===>", page);
     setCurrentPage(page);
-    setOrdersData([]);
+    setRFQsData([]);
     var data = JSON.stringify({});
     axios({
       method: "Post",
-      url: "https://api-customer-dev.b2bprice.store/api/Order/GetAll",
+      url: "https://api-customer-dev.b2bprice.store/api/RFQ/GetAll",
       headers: {
         Authorization: `Bearer ${localStorage.AuthToken}`,
         "Content-Type": "application/json",
@@ -172,27 +172,14 @@ const ManageOrderTable = ({
       data,
     }).then(
       (res) => {
-        setOrdersData(res.data.data);
-        setPaginationOrder(res.data);
+        setRFQsData(res.data.data);
+        setPaginationRFQs(res.data);
       },
       (err) => {
         console.log("err===>", err);
       }
     );
   };
-  // const data = ordersData.map((product, index) => ({
-  //   key: index + 1,
-  //   orderID: product.id,
-  //   customer: product.bcName,
-  //   createdBy: product.createdBy,
-  //   orderDate: product.orderDate,
-  //   deliveryDate: product.fulfilledDate,
-  //   priority: product.deliveryType,
-  //   status: product.status,
-  //   paymentStatus: product.paymentStatus,
-  //   tAmount: product.totalAmount,
-  //   action: product.action,
-  // }));
   const columns = [
     {
       title: (
@@ -226,7 +213,7 @@ const ManageOrderTable = ({
           {text}
         </div>
       ),
-      width: "7%",
+      // width: "7%",
     },
     {
       title: (
@@ -259,7 +246,7 @@ const ManageOrderTable = ({
           {text}
         </div>
       ),
-      width: "13%",
+      // width: "13%",
     },
     {
       title: (
@@ -303,13 +290,14 @@ const ManageOrderTable = ({
             fontStyle: "normal",
             fontWeight: 400,
             fontSize: "12.2195px",
+            textAlign: "center",
           }}
         >
           Order Date
         </div>
       ),
-      dataIndex: "orderDate",
-      key: "orderDate",
+      dataIndex: "createdOn",
+      key: "createdOn",
       ellipsis: true,
       render: (text) => {
         const date = new Date(text);
@@ -328,7 +316,7 @@ const ManageOrderTable = ({
               fontStyle: "normal",
               fontWeight: 400,
               fontSize: "12px",
-              // textAlign: "center",
+              textAlign: "center",
             }}
           >
             {formattedDate}
@@ -336,82 +324,83 @@ const ManageOrderTable = ({
         );
       },
     },
-    {
-      title: (
-        <div
-          style={{
-            color: "#606060",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontSize: "12.2195px",
-            fontWeight: 400,
-            textAlign: "center",
-          }}
-        >
-          Delivery Date
-        </div>
-      ),
-      dataIndex: "fulfilledDate",
-      key: "fulfilledDate",
-      ellipsis: true,
-      render: (text) => {
-        const date = new Date(text);
-        const month = new Intl.DateTimeFormat("en-US", {
-          month: "short",
-        }).format(date);
-        const day = date.getDate();
-        const year = date.getFullYear();
-        const formattedDate = `${month} ${day}, ${year}`;
+    // {
+    //   title: (
+    //     <div
+    //       style={{
+    //         color: "#606060",
+    //         fontFamily: "Poppins",
+    //         fontStyle: "normal",
+    //         fontSize: "12.2195px",
+    //         fontWeight: 400,
+    //         textAlign: "center",
+    //       }}
+    //     >
+    //       Delivery Date
+    //     </div>
+    //   ),
+    //   dataIndex: "fulfilledDate",
+    //   key: "fulfilledDate",
+    //   ellipsis: true,
+    //   render: (text) => {
+    //     const date = new Date(text);
+    //     const month = new Intl.DateTimeFormat("en-US", {
+    //       month: "short",
+    //     }).format(date);
+    //     const day = date.getDate();
+    //     const year = date.getFullYear();
+    //     const formattedDate = `${month} ${day}, ${year}`;
 
-        return (
-          <div
-            style={{
-              color: "#000000",
-              fontFamily: "Poppins",
-              fontStyle: "normal",
-              fontWeight: 400,
-              fontSize: "12px",
-              // textAlign: "center",
-            }}
-          >
-            {formattedDate}
-          </div>
-        );
-      },
-    },
-    {
-      title: (
-        <div
-          style={{
-            color: "#606060",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "12.2195px",
-            textAlign: "center",
-          }}
-        >
-          Priority
-        </div>
-      ),
-      dataIndex: "deliveryType",
-      key: "deliveryType",
-      ellipsis: true,
-      render: (text) => (
-        <div
-          style={{
-            color: "#000000",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "12px",
-          }}
-        >
-          {text}
-        </div>
-      ),
-      width: "11%",
-    },
+    //     return (
+    //       <div
+    //         style={{
+    //           color: "#000000",
+    //           fontFamily: "Poppins",
+    //           fontStyle: "normal",
+    //           fontWeight: 400,
+    //           fontSize: "12px",
+    //           textAlign: "center",
+    //         }}
+    //       >
+    //         {formattedDate}
+    //       </div>
+    //     );
+    //   },
+    // },
+    // {
+    //   title: (
+    //     <div
+    //       style={{
+    //         color: "#606060",
+    //         fontFamily: "Poppins",
+    //         fontStyle: "normal",
+    //         fontWeight: 400,
+    //         fontSize: "12.2195px",
+    //         textAlign: "center",
+    //       }}
+    //     >
+    //       Priority
+    //     </div>
+    //   ),
+    //   dataIndex: "deliveryType",
+    //   key: "deliveryType",
+    //   ellipsis: true,
+    //   render: (text) => (
+    //     <div
+    //       style={{
+    //         color: "#000000",
+    //         fontFamily: "Poppins",
+    //         fontStyle: "normal",
+    //         fontWeight: 400,
+    //         fontSize: "12px",
+    //         textAlign: "center",
+    //       }}
+    //     >
+    //       {text}
+    //     </div>
+    //   ),
+    //   width: "11%",
+    // },
     {
       title: (
         <div
@@ -478,40 +467,7 @@ const ManageOrderTable = ({
           {paymentStatus}
         </div>
       ),
-      width: "11%",
-    },
-    {
-      title: (
-        <div
-          style={{
-            color: "#606060",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontSize: "12.2195px",
-            fontWeight: 400,
-            textAlign: "center",
-          }}
-        >
-          Total Amount
-        </div>
-      ),
-      dataIndex: "totalAmount",
-      key: "totalAmount",
-      ellipsis: true,
-      render: (text) => (
-        <div
-          style={{
-            color: "#000000",
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "12px",
-            textAlign: "center",
-          }}
-        >
-          {text}
-        </div>
-      ),
+      // width: "11%",
     },
     {
       title: (
@@ -531,19 +487,20 @@ const ManageOrderTable = ({
       dataIndex: "action",
       key: "action",
       ellipsis: true,
-      render: (text) => (
+      render: (props, row) => (
         <div
           style={{
             color: "#000000",
             fontFamily: "Poppins",
             fontStyle: "normal",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "13px",
             textAlign: "center",
           }}
         >
           <Space>
             <Dropdown menu={menuProps}>
+              {/* <Space>{<DashOutlined />}</Space> */}
               <Space>
                 <img
                   src={Dashes}
@@ -560,16 +517,17 @@ const ManageOrderTable = ({
           </Space>
         </div>
       ),
+      // width: "10%",
     },
   ];
   return (
     <Table
       columns={columns}
-      dataSource={ordersData}
+      dataSource={rfqsData}
       // pagination={{
       //   current: currentPage,
       //   pageSize: 10,
-      //   total: ordersData.length,
+      //   total: rfqsData.length,
       //   onChange: (page) => setCurrentPage(page),
       //   showTotal: (total, range) =>
       //     ` ${range[0]}-${range[1]} of ${total} items`,
@@ -578,8 +536,8 @@ const ManageOrderTable = ({
       pagination={{
         current: currentPage,
         pageSize: 10,
-        totalPages: paginationOrder.totalPages,
-        total: paginationOrder.totalRecords,
+        totalPages: paginationRFQs.totalPages,
+        total: paginationRFQs.totalRecords,
         onChange: (page) => {
           paginationHandler(page);
         },
@@ -591,4 +549,4 @@ const ManageOrderTable = ({
   );
 };
 
-export default ManageOrderTable;
+export default RFQsTable;

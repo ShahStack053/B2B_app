@@ -10,6 +10,7 @@ const SearchRange = ({
   searchValues,
   onChangeRange,
   onChange,
+  label,
 }) => {
   const { RangePicker } = DatePicker;
 
@@ -24,7 +25,9 @@ const SearchRange = ({
             border: "1px solid #EFEEEB",
             height: 40,
           }}
-          placeholder="Search Order, Customer..."
+          placeholder={
+            label === "User" ? "Search Name..." : "Search Order, Customer..."
+          }
           prefix={<SearchOutlined style={{ color: "#7E7E7E" }} />}
           onChange={
             (e) => setSearchValues({ ...searchValues, search: e.target.value })
@@ -61,6 +64,7 @@ const SearchRange = ({
           setSearchValues={setSearchValues}
           searchValues={searchValues}
           onChange={onChange}
+          label={label}
         />
       </div>
     </div>
