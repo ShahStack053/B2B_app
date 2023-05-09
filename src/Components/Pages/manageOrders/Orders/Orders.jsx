@@ -97,7 +97,8 @@ const Orders = () => {
   }, []);
   const navigate = useNavigate();
   const navigatorNewOrder = () => {
-    navigate("/main/newOrder");
+    let label = "Order";
+    navigate("/main/newOrder", { state: { label } });
   };
   const onChangeRange = (value, dateString) => {
     // console.log("Selected Time: ", value);

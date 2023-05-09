@@ -21,6 +21,11 @@
     margin-right: 18px;
 }
 
+.arrow-btn {
+    border: none;
+    background-color: rgb(241 251 251);
+}
+
 .create-newOrder-span {
     font-family: 'Poppins';
     font-style: normal;
@@ -41,4 +46,43 @@
     font-weight: 600;
     font-size: 14px;
     color: #FFFFFF;
+}
+
+.order-inVoice-div {
+    display: flex;
+    margin-top: 30px;
+}
+
+.button-div {
+    display: flex;
+    align-items: center;
+}
+
+.createOrder-btn {
+    margin-top: 30px;
+    width: 195px;
+    height: 50px;
+    background: linear-gradient(90.55deg, #1879B8 0.29%, #14A3D8 98.5%);
+    border-radius: 7px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+
+.cancel-order-btn {
+    margin-top: 30px;
+    width: 195px;
+    height: 50px;
+    background: #95989A;
+    border-radius: 7px;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    margin-left: 20px;
 }

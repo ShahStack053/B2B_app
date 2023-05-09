@@ -1,6 +1,6 @@
 import "./AddProduct.css";
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
@@ -11,13 +11,21 @@ import AddProductTable from "../../featureTable/AddProductTable";
 const AddProduct = () => {
   // const location = useLocation();
   // const selectedProduct = location.state.selectedRowKeys;
+  const navigate = useNavigate();
+  const arrowNavigate = () => {
+    let label = "Order";
+    navigate("/main/Orders", { state: { label } });
+  };
   return (
     <div className="add-product-container">
       <div className="add-product-div">
         <div className="add-product-title-div">
-          <Link to="/main/orders">
+          {/* <Link to="/main/orders">
             <ArrowLeftOutlined className="add-product-arrow" />
-          </Link>
+          </Link> */}
+          <button className="arrow-btn" onClick={arrowNavigate}>
+            <ArrowLeftOutlined className="new-order-arrow" />
+          </button>
           <span className="add-product-span">Add Products</span>
         </div>
         <p className="selected-product">

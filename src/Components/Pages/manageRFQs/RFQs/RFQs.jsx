@@ -92,8 +92,8 @@ const RFQs = () => {
   const location = useLocation();
   const label = location.state.label;
   const navigate = useNavigate();
-  const navigatorNewRFQs = (label) => {
-    navigate("/main/newUser", { state: { label } });
+  const navigatorNewRFQs = () => {
+    navigate("/main/createRFQs");
   };
 
   const onChangeRange = (value, dateString) => {
@@ -109,10 +109,7 @@ const RFQs = () => {
     <div className="rfqs-container">
       <div className="rfqs-add-btn-div">
         <span className="rfqs-span">Request for Quotations</span>
-        <button
-          className="add-rfqs-btn"
-          onClick={() => navigatorNewRFQs("addUser")}
-        >
+        <button className="add-rfqs-btn" onClick={() => navigatorNewRFQs()}>
           <img
             src={addProductBtn}
             alt="add-sign-box"

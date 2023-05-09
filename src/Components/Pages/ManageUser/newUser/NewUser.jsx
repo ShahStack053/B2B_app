@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -134,12 +134,19 @@ const NewUser = () => {
   const cancelNavigate = () => {
     navigate("/main/manageUser");
   };
+  const arrowNavigate = () => {
+    let label = "User";
+    navigate("/main/manageUser", { state: { label } });
+  };
   return (
     <div className="add-user-container">
       <div className="manager-customer-div">
-        <Link to="/main/manageUser">
+        {/* <Link to="/main/manageUser">
           <ArrowLeftOutlined className="new-manager-arrow" />
-        </Link>
+        </Link> */}
+        <button className="arrow-btn" onClick={arrowNavigate}>
+          <ArrowLeftOutlined className="new-manager-arrow" />
+        </button>
         <span className="customer-manager-span">Customers Manager</span>
       </div>
       <div className="manager-detail-box-div">

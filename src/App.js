@@ -16,6 +16,7 @@ import Users from "./Components/Pages/ManageUser/Users/Users";
 import AddUser from "./Components/Pages/ManageUser/addUser/AddUser";
 import NewUser from "./Components/Pages/ManageUser/newUser/NewUser";
 import RFQs from "./Components/Pages/manageRFQs/RFQs/RFQs";
+import CreateRFQs from "./Components/Pages/manageRFQs/createRFQs/CreateRFQs";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="addUser" element={<AddUser />} />
             <Route path="newUser" element={<NewUser />} />
             <Route path="requestForQuotations" element={<RFQs />} />
+            <Route path="createRFQs" element={<CreateRFQs />} />
           </Route>
         </Routes>
       </BrowserRouter>

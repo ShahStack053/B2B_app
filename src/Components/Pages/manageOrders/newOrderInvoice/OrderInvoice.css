@@ -21,6 +21,11 @@
     margin-right: 18px;
 }
 
+.arrow-btn {
+    border: none;
+    background-color: rgb(241 251 251);
+}
+
 .create-newOrder-span {
     font-family: 'Poppins';
     font-style: normal;
